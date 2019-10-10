@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 98193,
+  "expoServerNgrokUrl": "https://s7-mws.mbrtn.plannd.exp.direct",
+  "packagerNgrokUrl": "https://packager.s7-mws.mbrtn.plannd.exp.direct",
+  "ngrokPid": 98202,
+  "webpackServerPort": 19006
+}

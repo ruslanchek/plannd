@@ -11,7 +11,7 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		804C55681B10393A6DA86589 /* libPods-plannd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E16882B966FB4DB3C96FCB1B /* libPods-plannd.a */; };
+		4AF8A2CA320FCF63EC70EE5B /* libPods-plannd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AFF0A6D6B0ACEFB9F23DC0 /* libPods-plannd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +23,10 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = plannd/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = plannd/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = plannd/main.m; sourceTree = "<group>"; };
+		15D80C56CF778F425509E884 /* Pods-plannd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plannd.release.xcconfig"; path = "Target Support Files/Pods-plannd/Pods-plannd.release.xcconfig"; sourceTree = "<group>"; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4F3845D7AD499DF04E23719 /* Pods-plannd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plannd.debug.xcconfig"; path = "Target Support Files/Pods-plannd/Pods-plannd.debug.xcconfig"; sourceTree = "<group>"; };
-		AAE4637B887547757AA1B0C4 /* Pods-plannd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plannd.release.xcconfig"; path = "Target Support Files/Pods-plannd/Pods-plannd.release.xcconfig"; sourceTree = "<group>"; };
-		E16882B966FB4DB3C96FCB1B /* libPods-plannd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-plannd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47AFF0A6D6B0ACEFB9F23DC0 /* libPods-plannd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-plannd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88D9FCC00262BF8816A1C6CD /* Pods-plannd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-plannd.debug.xcconfig"; path = "Target Support Files/Pods-plannd/Pods-plannd.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -36,7 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				804C55681B10393A6DA86589 /* libPods-plannd.a in Frameworks */,
+				4AF8A2CA320FCF63EC70EE5B /* libPods-plannd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				E16882B966FB4DB3C96FCB1B /* libPods-plannd.a */,
+				47AFF0A6D6B0ACEFB9F23DC0 /* libPods-plannd.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,7 +82,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				C695B36119AF9B229EE04EE9 /* Pods */,
+				CE0B7012654BA7D5EFE6E4F2 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -97,11 +97,11 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C695B36119AF9B229EE04EE9 /* Pods */ = {
+		CE0B7012654BA7D5EFE6E4F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A4F3845D7AD499DF04E23719 /* Pods-plannd.debug.xcconfig */,
-				AAE4637B887547757AA1B0C4 /* Pods-plannd.release.xcconfig */,
+				88D9FCC00262BF8816A1C6CD /* Pods-plannd.debug.xcconfig */,
+				15D80C56CF778F425509E884 /* Pods-plannd.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -114,7 +114,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "plannd" */;
 			buildPhases = (
-				3B829234CA3A40A6D755EA2D /* [CP] Check Pods Manifest.lock */,
+				2BF747ECD6DA024420E094E6 /* [CP] Check Pods Manifest.lock */,
 				FD4C38642228810C00325AF5 /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -190,7 +190,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		3B829234CA3A40A6D755EA2D /* [CP] Check Pods Manifest.lock */ = {
+		2BF747ECD6DA024420E094E6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,7 +260,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A4F3845D7AD499DF04E23719 /* Pods-plannd.debug.xcconfig */;
+			baseConfigurationReference = 88D9FCC00262BF8816A1C6CD /* Pods-plannd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
@@ -280,7 +280,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAE4637B887547757AA1B0C4 /* Pods-plannd.release.xcconfig */;
+			baseConfigurationReference = 15D80C56CF778F425509E884 /* Pods-plannd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
