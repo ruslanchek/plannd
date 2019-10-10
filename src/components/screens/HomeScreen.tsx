@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationScreenProp } from "react-navigation";
+import { Carousel } from "../ui/Carousel";
 
 export interface ISettingsScreenParams {}
 
@@ -11,7 +12,7 @@ export const HomeScreen: React.FC<
 
   return (
     <View style={styles.root}>
-      <Text>Home</Text>
+      <Carousel />
     </View>
   );
 };
