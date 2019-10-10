@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 import { TabBar } from "./src/components/ui/TabBar";
 import { FONT_SIZES } from "./src/common/constants";
 import { TabBarIcon } from "./src/components/ui/TabBarIcon";
+import { COLORS } from "./src/common/colors";
+import { TabBarLabel } from "./src/components/ui/TabBarLabel";
 
 class HomeScreen extends React.Component {
   render() {
@@ -29,10 +31,6 @@ class SettingsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  labelStyle: {
-    fontSize: FONT_SIZES.TINY
-  },
-
   tabStyle: {}
 });
 
@@ -46,12 +44,15 @@ const TabNavigator = createBottomTabNavigator(
       tabBarIcon: props => {
         const { routeName } = navigation.state;
         return <TabBarIcon {...props} routeName={routeName} />;
+      },
+      tabBarLabel: props => {
+        const { routeName } = navigation.state;
+        return <TabBarLabel {...props} routeName={routeName} />;
       }
     }),
     tabBarOptions: {
       showIcon: true,
       showLabel: true,
-      labelStyle: styles.labelStyle,
       tabStyle: styles.tabStyle
     },
     tabBarComponent: TabBar
