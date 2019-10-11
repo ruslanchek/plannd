@@ -1,17 +1,22 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Button } from "react-native";
 import { NavigationSwitchScreenProps } from "react-navigation";
+import { authHandleLogOut } from "../../helpers/authHelpers";
 
 export interface ISettingsScreenParams {}
 
 export const HomeScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
-  const {} = props;
+  const { navigation } = props;
 
   return (
     <View style={styles.root}>
       <Text>HomeScreen</Text>
+      <Button
+        title="Logout"
+        onPress={() => authHandleLogOut(navigation)}
+      ></Button>
     </View>
   );
 };

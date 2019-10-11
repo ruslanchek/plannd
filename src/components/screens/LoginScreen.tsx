@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Button } from "react-native";
 import { NavigationSwitchScreenProps } from "react-navigation";
-import { authHandleLogin } from "../../helpers/authHelpers";
+import { authHandleLogIn } from "../../helpers/authHelpers";
 
 export interface ISettingsScreenParams {}
 
@@ -12,7 +12,7 @@ export const LoginScreen: React.FC<
 
   return (
     <View style={styles.root}>
-      <Button title="Login" onPress={() => authHandleLogin(navigation)} />
+      <Button title="Login" onPress={() => authHandleLogIn(navigation)} />
     </View>
   );
 };
