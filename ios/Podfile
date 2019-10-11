@@ -21,7 +21,7 @@ target 'plannd' do
     'RCTWebSocket',
   ]
 
-  pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/Ypoga'
+  pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 
   pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'

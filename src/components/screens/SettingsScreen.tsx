@@ -1,17 +1,17 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { NavigationScreenProp } from "react-navigation";
+import { NavigationSwitchScreenProps, useTheme } from "react-navigation";
 
 export interface ISettingsScreenParams {}
 
 export const SettingsScreen: React.FC<
-  NavigationScreenProp<ISettingsScreenParams>
+  NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
-  const {} = props;
+  const theme = useTheme();
 
   return (
     <View style={styles.root}>
-      <Text>Settings</Text>
+      <Text>Settings {theme}</Text>
     </View>
   );
 };

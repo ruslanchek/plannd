@@ -1,17 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Button } from "react-native";
 import { NavigationSwitchScreenProps } from "react-navigation";
+import { authHandleLogin } from "../../helpers/authHelpers";
 
 export interface ISettingsScreenParams {}
 
-export const HomeScreen: React.FC<
+export const LoginScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
-  const {} = props;
+  const { navigation } = props;
 
   return (
     <View style={styles.root}>
-      <Text>HomeScreen</Text>
+      <Button title="Login" onPress={() => authHandleLogin(navigation)} />
     </View>
   );
 };

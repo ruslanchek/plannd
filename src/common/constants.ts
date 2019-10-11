@@ -7,3 +7,7 @@ export const FONT_SIZES = {
   SMALL: 12,
   TINY: 10
 };
+
+export const ASYNC_STORAGE_KEYS = {
+  USER_TOKEN: "userToken"
+};
