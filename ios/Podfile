@@ -31,5 +31,5 @@ target 'plannd' do
   pod 'RNScreens', :path => '../node_modules/react-native-screens'
 
   use_unimodules!
-
+  use_native_modules!
 end
