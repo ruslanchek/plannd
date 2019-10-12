@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>786103925332-cq2pst8ltlh9n2uhin7pif9vm8f9160d.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.786103925332-cq2pst8ltlh9n2uhin7pif9vm8f9160d</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBnHlxvgYug4kxnH6VoDns3EoELgkM-7RY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>786103925332</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.fyramedia.plannd</string>
+	<key>PROJECT_ID</key>
+	<string>plannd-93050</string>
+	<key>STORAGE_BUCKET</key>
+	<string>plannd-93050.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:786103925332:ios:801435c8577d9da1258bc1</string>
+	<key>DATABASE_URL</key>
+	<string>https://plannd-93050.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { BottomTabBar } from 'react-navigation-tabs';
-import { ELEMENT_SIZES } from '../../common/constants';
+import { ELEMENT_SIZES, PADDING, BORDER_RADIUS } from '../../common/constants';
 import { COLORS } from '../../common/colors';
 
 export const TabBar = props => {
@@ -11,10 +11,19 @@ export const TabBar = props => {
 const styles = StyleSheet.create({
   root: {
     height: ELEMENT_SIZES.TAB_BAR_HEIGHT,
-    borderTopWidth: 2,
+    paddingTop: 4,
+    borderTopWidth: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    borderTopColor: COLORS.ELEMENT_STROKE.toString(),
     backgroundColor: COLORS.ELEMENT_BG.toString(),
+    borderTopStartRadius: BORDER_RADIUS.LARGE,
+    borderTopEndRadius: BORDER_RADIUS.LARGE,
+    shadowColor: COLORS.TEXT_FADED.toString(),
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    shadowOffset: {
+      height: -5,
+      width: 0,
+    },
   },
 });

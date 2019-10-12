@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
   },
 
   rootFocused: {
-    color: COLORS.TEXT.toString(),
+    color: COLORS.ACCENT.toString(),
   },
 });

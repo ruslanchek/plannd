@@ -13,6 +13,8 @@ import { LoginScreen } from './src/components/screens/LoginScreen';
 import { TransactionsScreen } from './src/components/screens/TransactionsScreen';
 import { TargetsScreen } from './src/components/screens/TargetsScreen';
 import { StatisticsScreen } from './src/components/screens/StatisticsScreen';
+import { COLORS } from './src/common/colors';
+import { BgTint } from './src/components/ui/BgTint';
 
 const AppStack = createBottomTabNavigator(
   {
@@ -33,10 +35,6 @@ const AppStack = createBottomTabNavigator(
         return <TabBarLabel {...props} routeName={routeName} />;
       },
     }),
-    tabBarOptions: {
-      showIcon: true,
-      showLabel: true,
-    },
     tabBarComponent: TabBar,
     initialRouteName: Routes.HomeScreen,
   },
@@ -52,7 +50,7 @@ const AuthStack = createStackNavigator(
   },
 );
 
-const App = createAppContainer(
+const Navigation = createAppContainer(
   createSwitchNavigator(
     {
       [Routes.AppLoadingScreen]: AppLoadingScreen,
@@ -65,4 +63,10 @@ const App = createAppContainer(
   ),
 );
 
-export default App;
+export default () => {
+  return (
+    <BgTint>
+      <Navigation />
+    </BgTint>
+  );
+};

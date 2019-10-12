@@ -22,7 +22,7 @@ const ICON_NAMES = {
 
 export const TabBarIcon: React.FC<IProps> = props => {
   const { focused, routeName } = props;
-  const iconColor = focused ? COLORS.TEXT.toString() : COLORS.TEXT_FADED.toString();
+  const iconColor = focused ? COLORS.ACCENT.toString() : COLORS.TEXT_FADED.toString();
 
   return (
     <View style={styles.root}>

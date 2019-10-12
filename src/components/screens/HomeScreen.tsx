@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleLogOut } from '../../helpers/authHelpers';
-import { translate } from '../../helpers/localeHelpers';
+import { BgTint } from '../ui/BgTint';
 
 export interface ISettingsScreenParams {}
 
