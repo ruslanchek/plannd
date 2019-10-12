@@ -14,7 +14,7 @@ export const authHandleRegister = async (email: string, password: string) => {
   }
 };
 
-export const authHandleLogin = async (email: string, password: string) => {
+export const authHandleLogIn = async (email: string, password: string) => {
   try {
     const result = await auth().signInWithEmailAndPassword(email, password);
     console.log(result);
@@ -28,7 +28,7 @@ export const authBootstrap = async (navigation: NavigationSwitchProp) => {
   navigation.navigate(userToken ? Routes.AppStack : Routes.AuthStack);
 };
 
-export const authHandleLogIn = async (navigation: NavigationSwitchProp) => {
+export const authHandleMockLogin = async (navigation: NavigationSwitchProp) => {
   await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.USER_TOKEN, '123');
   navigation.navigate(Routes.AppStack);
 };

@@ -11,6 +11,7 @@ interface IColors {
 
   TEXT: Color;
   TEXT_FADED: Color;
+  TEXT_PLACEHOLDER: Color;
 
   ACCENT: Color;
 }
@@ -26,6 +27,7 @@ export const THEME_LIGHT: IColors = {
 
   TEXT: Color('#262953'),
   TEXT_FADED: Color('#9597AB'),
+  TEXT_PLACEHOLDER: Color('#B8BAC8'),
 
   ACCENT: Color('#3876F6'),
 };

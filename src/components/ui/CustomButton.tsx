@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { COLORS } from '../../common/colors';
 import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
-import { FONT_SIZES, BORDER_RADIUS } from '../../common/constants';
+import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING } from '../../common/constants';
 
 interface IProps {
   theme: 'default' | 'accent';
@@ -45,8 +45,8 @@ const themedRootStyles = StyleSheet.create({
 
 const styles = StyleSheet.create({
   root: {
-    height: 48,
-    paddingHorizontal: 20,
+    height: ELEMENT_SIZES.BUTTON_HEIGHT,
+    paddingHorizontal: PADDING.MEDUIM,
     borderRadius: BORDER_RADIUS.LARGE,
     justifyContent: 'center',
     alignItems: 'center',

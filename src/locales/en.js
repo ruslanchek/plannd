@@ -4,4 +4,7 @@ export default {
   'TabBar::TargetsScreen': 'Targets',
   'TabBar::StatisticsScreen': 'Statistics',
   'TabBar::SettingsScreen': 'Settings',
+
+  'InputPlaceholder::Email': 'Email',
+  'InputPlaceholder::Password': 'Password',
 };

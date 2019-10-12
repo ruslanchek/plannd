@@ -1,4 +1,4 @@
-import I18n from 'i18n-js';
+import I18n, { TranslateOptions } from 'i18n-js';
 import { format } from 'date-fns';
 import * as RNLocalize from 'react-native-localize';
 import en from '../locales/en.js';
@@ -24,6 +24,6 @@ export const formatDate = (date: Date, dateFormat: string = 'MM/dd/yyyy') => {
   return format(date, dateFormat);
 };
 
-export const translate = (phrase: string): string => {
-  return I18n.t(phrase);
+export const localizeText = (phrase: string, options?: TranslateOptions): string => {
+  return I18n.t(phrase, options);
 };

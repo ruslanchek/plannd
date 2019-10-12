@@ -1,6 +1,8 @@
 export const ELEMENT_SIZES = {
   TAB_BAR_HEIGHT: 56,
   TAB_BAR_ICON_SIZE: 24,
+  INPUT_HEIGHT: 48,
+  BUTTON_HEIGHT: 48,
 };
 
 export const FONT_SIZES = {

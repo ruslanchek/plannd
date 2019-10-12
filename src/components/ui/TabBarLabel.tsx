@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { COLORS } from '../../common/colors';
 import { FONT_SIZES } from '../../common/constants';
-import { translate } from '../../helpers/localeHelpers';
+import { localizeText } from '../../helpers/localeHelpers';
 
 interface IProps {
   focused: boolean;
@@ -16,7 +16,7 @@ export const TabBarLabel: React.FC<IProps> = props => {
 
   return (
     <Text style={[styles.root, focused ? styles.rootFocused : null]}>
-      {translate(`TabBar::${routeName}`)}
+      {localizeText(`TabBar::${routeName}`)}
     </Text>
   );
 };

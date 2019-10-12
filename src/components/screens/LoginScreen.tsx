@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleLogIn, authHandleRegister } from '../../helpers/authHelpers';
+import {
+  authHandleLogIn,
+  authHandleRegister,
+  authHandleMockLogin,
+} from '../../helpers/authHelpers';
 import { TextInput } from 'react-native-gesture-handler';
 import { BgTint } from '../ui/BgTint';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
+import { STYLES } from '../../common/styles';
+import { localizeText } from '../../helpers/localeHelpers';
+import { COLORS } from '../../common/colors';
+import { Row } from '../ui/Row';
 
 export interface ISettingsScreenParams {}
 
@@ -17,34 +25,56 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
   return (
     <BgTint>
       <View style={styles.root}>
-        <Text>Email</Text>
-        <TextInput
-          style={{
-            backgroundColor: '#eee',
-          }}
-          value={email}
-          onChange={event => {
-            setEmail(event.nativeEvent.text);
-          }}
-        />
+        <Row>
+          <TextInput
+            numberOfLines={1}
+            placeholder={localizeText('InputPlaceholder::Email')}
+            placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+            textContentType='emailAddress'
+            style={STYLES.INPUT}
+            value={email}
+            onChange={event => {
+              setEmail(event.nativeEvent.text);
+            }}
+          />
+        </Row>
 
-        <Text>Password</Text>
-        <TextInput
-          style={{
-            backgroundColor: '#eee',
-          }}
-          value={password}
-          onChange={event => {
-            setPassword(event.nativeEvent.text);
-          }}
-        />
+        <Row>
+          <TextInput
+            numberOfLines={1}
+            placeholder={localizeText('InputPlaceholder::Password')}
+            placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+            textContentType='password'
+            secureTextEntry
+            style={STYLES.INPUT}
+            value={password}
+            onChange={event => {
+              setPassword(event.nativeEvent.text);
+            }}
+          />
+        </Row>
 
-        <CustomButton
-          theme='accent'
-          text='Register'
-          onPress={() => authHandleRegister(email, password)}
-        />
-        <CustomButton theme='default' text='Login' onPress={() => authHandleLogIn(navigation)} />
+        <Row>
+          <CustomButton
+            theme='accent'
+            text='Register'
+            onPress={() => authHandleRegister(email, password)}
+          />
+        </Row>
+        <Row>
+          <CustomButton
+            theme='default'
+            text='Login'
+            onPress={() => authHandleLogIn(email, password)}
+          />
+        </Row>
+        <Row>
+          <CustomButton
+            theme='default'
+            text='Mock'
+            onPress={() => authHandleMockLogin(navigation)}
+          />
+        </Row>
       </View>
     </BgTint>
   );
