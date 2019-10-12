@@ -36,9 +36,15 @@ const AppStack = createBottomTabNavigator(
   }
 );
 
-const AuthStack = createStackNavigator({
-  [Routes.LoginScreen]: LoginScreen
-});
+const AuthStack = createStackNavigator(
+  {
+    [Routes.LoginScreen]: LoginScreen
+  },
+  {
+    headerMode: "none",
+    initialRouteName: Routes.LoginScreen
+  }
+);
 
 const Navigation = createAppContainer(
   createSwitchNavigator(
