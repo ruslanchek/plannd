@@ -14,12 +14,15 @@ interface IProps {
 
 const ICON_NAMES = {
   [Routes.HomeScreen]: 'wallet',
+  [Routes.TransactionsScreen]: 'clipboard-list',
+  [Routes.TargetsScreen]: 'bullseye',
+  [Routes.StatisticsScreen]: 'signal',
   [Routes.SettingsScreen]: 'cog',
 };
 
 export const TabBarIcon: React.FC<IProps> = props => {
   const { focused, routeName } = props;
-  const iconColor = focused ? COLORS.TEXT.toString() : COLORS.TEXT.toString();
+  const iconColor = focused ? COLORS.TEXT.toString() : COLORS.TEXT_FADED.toString();
 
   return (
     <View style={styles.root}>

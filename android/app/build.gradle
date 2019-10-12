@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.mytsproject"
+        applicationId "com.fyramedia.plannd"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

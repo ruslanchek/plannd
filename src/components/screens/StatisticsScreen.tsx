@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { NavigationSwitchScreenProps } from 'react-navigation';
+import { NavigationSwitchScreenProps, useTheme } from 'react-navigation';
 
 export interface ISettingsScreenParams {}
 
-export const SettingsScreen: React.FC<
+export const StatisticsScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
   return (
     <View style={styles.root}>
-      <Text>Settings</Text>
+      <Text>Statistics</Text>
     </View>
   );
 };

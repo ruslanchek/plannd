@@ -10,10 +10,16 @@ import { SettingsScreen } from './src/components/screens/SettingsScreen';
 import { Routes } from './src/common/routes';
 import { AppLoadingScreen } from './src/components/screens/AppLoadingScreen';
 import { LoginScreen } from './src/components/screens/LoginScreen';
+import { TransactionsScreen } from './src/components/screens/TransactionsScreen';
+import { TargetsScreen } from './src/components/screens/TargetsScreen';
+import { StatisticsScreen } from './src/components/screens/StatisticsScreen';
 
 const AppStack = createBottomTabNavigator(
   {
     [Routes.HomeScreen]: HomeScreen,
+    [Routes.TransactionsScreen]: TransactionsScreen,
+    [Routes.TargetsScreen]: TargetsScreen,
+    [Routes.StatisticsScreen]: StatisticsScreen,
     [Routes.SettingsScreen]: SettingsScreen,
   },
   {

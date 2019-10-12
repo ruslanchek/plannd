@@ -1,4 +1,4 @@
-package com.mytsproject;
+package com.fyramedia.plannd;
 
 import android.app.Application;
 import android.util.Log;

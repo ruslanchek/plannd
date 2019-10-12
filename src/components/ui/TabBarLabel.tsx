@@ -23,7 +23,7 @@ export const TabBarLabel: React.FC<IProps> = props => {
 
 const styles = StyleSheet.create({
   root: {
-    color: COLORS.TEXT.toString(),
+    color: COLORS.TEXT_FADED.toString(),
     fontSize: FONT_SIZES.TINY,
   },
 
