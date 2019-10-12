@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -46,19 +46,17 @@ const AuthStack = createStackNavigator(
   },
 );
 
-const Navigation = createAppContainer(
+const App = createAppContainer(
   createSwitchNavigator(
     {
-      [Routes.AuthLoadingScreen]: AppLoadingScreen,
+      [Routes.AppLoadingScreen]: AppLoadingScreen,
       [Routes.AuthStack]: AuthStack,
       [Routes.AppStack]: AppStack,
     },
     {
-      initialRouteName: Routes.AuthLoadingScreen,
+      initialRouteName: Routes.AppLoadingScreen,
     },
   ),
 );
 
-export default () => {
-  return <Navigation />;
-};
+export default App;

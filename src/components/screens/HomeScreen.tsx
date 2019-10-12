@@ -11,7 +11,7 @@ export const HomeScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPar
 
   return (
     <View style={styles.root}>
-      <Text>HomeScreen {translate('TEST')}</Text>
+      <Text>HomeScreen</Text>
       <Button title='Logout' onPress={() => authHandleLogOut(navigation)}></Button>
     </View>
   );
