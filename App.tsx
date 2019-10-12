@@ -8,7 +8,7 @@ import { TabBarLabel } from "./src/components/ui/TabBarLabel";
 import { HomeScreen } from "./src/components/screens/HomeScreen";
 import { SettingsScreen } from "./src/components/screens/SettingsScreen";
 import { Routes } from "./src/common/routes";
-import { AuthLoadingScreen } from "./src/components/screens/AuthLoadingScreen";
+import { AppLoadingScreen } from "./src/components/screens/AppLoadingScreen";
 import { LoginScreen } from "./src/components/screens/LoginScreen";
 
 const AppStack = createBottomTabNavigator(
@@ -49,7 +49,7 @@ const AuthStack = createStackNavigator(
 const Navigation = createAppContainer(
   createSwitchNavigator(
     {
-      [Routes.AuthLoadingScreen]: AuthLoadingScreen,
+      [Routes.AuthLoadingScreen]: AppLoadingScreen,
       [Routes.AuthStack]: AuthStack,
       [Routes.AppStack]: AppStack
     },
@@ -60,5 +60,5 @@ const Navigation = createAppContainer(
 );
 
 export default () => {
-  return <Navigation theme="light" />;
+  return <Navigation />;
 };

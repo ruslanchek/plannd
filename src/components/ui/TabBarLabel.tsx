@@ -22,11 +22,11 @@ export const TabBarLabel: React.FC<IProps> = props => {
 
 const styles = StyleSheet.create({
   root: {
-    color: COLORS.LIGHT_GRAY_2.toString(),
+    color: COLORS.TEXT.toString(),
     fontSize: FONT_SIZES.TINY
   },
 
   rootFocused: {
-    color: COLORS.GRAY.toString()
+    color: COLORS.TEXT.toString()
   }
 });

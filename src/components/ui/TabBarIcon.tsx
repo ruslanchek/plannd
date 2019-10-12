@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { COLORS } from "../../common/colors";
+import { Routes } from "../../common/routes";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import { ELEMENT_SIZES } from "../../common/constants";
 
 interface IProps {
   focused: boolean;
@@ -9,22 +12,29 @@ interface IProps {
   horizontal?: boolean;
 }
 
+const ICON_NAMES = {
+  [Routes.HomeScreen]: "wallet",
+  [Routes.SettingsScreen]: "cog"
+};
+
 export const TabBarIcon: React.FC<IProps> = props => {
-  const { focused } = props;
+  const { focused, routeName } = props;
+  const iconColor = focused ? COLORS.TEXT.toString() : COLORS.TEXT.toString();
 
   return (
-    <View style={[styles.root, focused ? styles.rootFocused : null]}></View>
+    <View style={styles.root}>
+      <Icon
+        name={ICON_NAMES[routeName]}
+        size={ELEMENT_SIZES.TAB_BAR_ICON_SIZE}
+        color={iconColor}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    width: 20,
-    height: 20,
-    backgroundColor: COLORS.LIGHT_GRAY_2.toString()
-  },
-
-  rootFocused: {
-    backgroundColor: COLORS.GRAY.toString()
+    width: ELEMENT_SIZES.TAB_BAR_ICON_SIZE,
+    height: ELEMENT_SIZES.TAB_BAR_ICON_SIZE
   }
 });

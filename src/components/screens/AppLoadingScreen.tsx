@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { StyleSheet, View, ActivityIndicator, StatusBar } from "react-native";
 import { NavigationSwitchScreenProps } from "react-navigation";
-import { authBootstrap } from "../../helpers/authHelpers";
+import { bootstrapApp } from "../../helpers/bootstrapHelpers";
 
 export interface ISettingsScreenParams {}
 
-export const AuthLoadingScreen: React.FC<
+export const AppLoadingScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
   const { navigation } = props;
 
   useEffect(() => {
-    authBootstrap(navigation);
+    bootstrapApp(navigation);
   }, []);
 
   return (

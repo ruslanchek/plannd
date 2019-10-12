@@ -1,8 +1,12 @@
 export enum Routes {
   AppStack = "AppStack",
   AuthStack = "AuthStack",
-  HomeScreen = "HomeScreen",
-  SettingsScreen = "SettingsScreen",
   AuthLoadingScreen = "AuthLoadingScreen",
-  LoginScreen = "LoginScreen"
+  LoginScreen = "LoginScreen",
+
+  HomeScreen = "HomeScreen",
+  TransactionsScreen = "TransactionsScreen",
+  TargetsScreen = "TargetsScreen",
+  StatisticsScreen = "StatisticsScreen",
+  SettingsScreen = "SettingsScreen"
 }
