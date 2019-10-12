@@ -1,4 +1,4 @@
-import Color from "color";
+import Color from 'color';
 
 interface IColors {
   ELEMENT_BG: Color;
@@ -8,10 +8,10 @@ interface IColors {
 }
 
 export const THEME_LIGHT: IColors = {
-  ELEMENT_BG: Color("#fff"),
-  ELEMENT_STROKE: Color("#F1F1F6"),
+  ELEMENT_BG: Color('#fff'),
+  ELEMENT_STROKE: Color('#F1F1F6'),
 
-  TEXT: Color("#25245A")
+  TEXT: Color('#25245A1'),
 };
 
 export let COLORS: IColors = THEME_LIGHT;
