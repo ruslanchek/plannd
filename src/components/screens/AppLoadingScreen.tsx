@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { StyleSheet, View, ActivityIndicator, StatusBar } from "react-native";
-import { NavigationSwitchScreenProps } from "react-navigation";
-import { bootstrapApp } from "../../helpers/bootstrapHelpers";
+import React, { useEffect } from 'react';
+import { StyleSheet, View, ActivityIndicator, StatusBar } from 'react-native';
+import { NavigationSwitchScreenProps } from 'react-navigation';
+import { bootstrapApp } from '../../helpers/bootstrapHelpers';
 
 export interface ISettingsScreenParams {}
 
@@ -16,7 +16,7 @@ export const AppLoadingScreen: React.FC<
 
   return (
     <View style={styles.root}>
-      <StatusBar barStyle="default" />
+      <StatusBar barStyle='default' />
       <ActivityIndicator />
     </View>
   );
@@ -25,7 +25,7 @@ export const AppLoadingScreen: React.FC<
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

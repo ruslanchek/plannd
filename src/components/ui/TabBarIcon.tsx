@@ -1,9 +1,9 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { COLORS } from "../../common/colors";
-import { Routes } from "../../common/routes";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import { ELEMENT_SIZES } from "../../common/constants";
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { COLORS } from '../../common/colors';
+import { Routes } from '../../common/routes';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import { ELEMENT_SIZES } from '../../common/constants';
 
 interface IProps {
   focused: boolean;
@@ -13,8 +13,8 @@ interface IProps {
 }
 
 const ICON_NAMES = {
-  [Routes.HomeScreen]: "wallet",
-  [Routes.SettingsScreen]: "cog"
+  [Routes.HomeScreen]: 'wallet',
+  [Routes.SettingsScreen]: 'cog',
 };
 
 export const TabBarIcon: React.FC<IProps> = props => {
@@ -23,11 +23,7 @@ export const TabBarIcon: React.FC<IProps> = props => {
 
   return (
     <View style={styles.root}>
-      <Icon
-        name={ICON_NAMES[routeName]}
-        size={ELEMENT_SIZES.TAB_BAR_ICON_SIZE}
-        color={iconColor}
-      />
+      <Icon name={ICON_NAMES[routeName]} size={ELEMENT_SIZES.TAB_BAR_ICON_SIZE} color={iconColor} />
     </View>
   );
 };
@@ -35,6 +31,6 @@ export const TabBarIcon: React.FC<IProps> = props => {
 const styles = StyleSheet.create({
   root: {
     width: ELEMENT_SIZES.TAB_BAR_ICON_SIZE,
-    height: ELEMENT_SIZES.TAB_BAR_ICON_SIZE
-  }
+    height: ELEMENT_SIZES.TAB_BAR_ICON_SIZE,
+  },
 });

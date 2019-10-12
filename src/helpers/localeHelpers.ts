@@ -1,21 +1,21 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import { NativeModules, Platform } from "react-native";
-import { format } from "date-fns";
-import * as RNLocalize from "react-native-localize";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { NativeModules, Platform } from 'react-native';
+import { format } from 'date-fns';
+import * as RNLocalize from 'react-native-localize';
 
-const DEFAULT_LOCALE = "en";
+const DEFAULT_LOCALE = 'en';
 const LOCALES = {
   en: {
-    translation: require("../locales/en.json")
-  }
+    translation: require('../locales/en.json'),
+  },
 };
 
 let translator: i18n.TFunction | null = null;
 let locale = DEFAULT_LOCALE;
 
 const getSystemLocale = (): string | void => {
-  const systemLocale = RNLocalize.findBestAvailableLanguage(["en"]);
+  const systemLocale = RNLocalize.findBestAvailableLanguage(['en']);
 
   console.log(systemLocale);
 
@@ -36,7 +36,7 @@ const filterLocale = (filterLocale: string): string => {
   }
 };
 
-export const formatDate = (date: Date, dateFormat: string = "MM/dd/yyyy") => {
+export const formatDate = (date: Date, dateFormat: string = 'MM/dd/yyyy') => {
   return format(date, dateFormat);
 };
 
@@ -45,7 +45,7 @@ export const translate = (key: string, values?: any): string => {
     return translator(key, values);
   }
 
-  return " ";
+  return ' ';
 };
 
 export const localeBootstrap = async (): Promise<void> => {
@@ -58,12 +58,12 @@ export const localeBootstrap = async (): Promise<void> => {
     resources: LOCALES,
     lng: locale,
     fallbackLng: DEFAULT_LOCALE,
-    keySeparator: ".",
+    keySeparator: '.',
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
     },
     react: {
-      wait: true
-    }
+      wait: true,
+    },
   });
 };

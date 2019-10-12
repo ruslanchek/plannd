@@ -1,7 +1,7 @@
-import AsyncStorage from "@react-native-community/async-storage";
-import { ASYNC_STORAGE_KEYS } from "../common/constants";
-import { Routes } from "../common/routes";
-import { NavigationSwitchProp } from "react-navigation";
+import AsyncStorage from '@react-native-community/async-storage';
+import { ASYNC_STORAGE_KEYS } from '../common/constants';
+import { Routes } from '../common/routes';
+import { NavigationSwitchProp } from 'react-navigation';
 
 export const authBootstrap = async (navigation: NavigationSwitchProp) => {
   const userToken = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.USER_TOKEN);
@@ -9,7 +9,7 @@ export const authBootstrap = async (navigation: NavigationSwitchProp) => {
 };
 
 export const authHandleLogIn = async (navigation: NavigationSwitchProp) => {
-  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.USER_TOKEN, "123");
+  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.USER_TOKEN, '123');
   navigation.navigate(Routes.AppStack);
 };
 

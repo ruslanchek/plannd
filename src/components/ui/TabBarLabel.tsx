@@ -1,7 +1,8 @@
-import React from "react";
-import { StyleSheet, Text } from "react-native";
-import { COLORS } from "../../common/colors";
-import { FONT_SIZES } from "../../common/constants";
+import React from 'react';
+import { StyleSheet, Text } from 'react-native';
+import { COLORS } from '../../common/colors';
+import { FONT_SIZES } from '../../common/constants';
+import { translate } from '../../helpers/localeHelpers';
 
 interface IProps {
   focused: boolean;
@@ -15,7 +16,7 @@ export const TabBarLabel: React.FC<IProps> = props => {
 
   return (
     <Text style={[styles.root, focused ? styles.rootFocused : null]}>
-      {routeName}
+      {translate(`TabBar::${routeName}`)}
     </Text>
   );
 };
@@ -23,10 +24,10 @@ export const TabBarLabel: React.FC<IProps> = props => {
 const styles = StyleSheet.create({
   root: {
     color: COLORS.TEXT.toString(),
-    fontSize: FONT_SIZES.TINY
+    fontSize: FONT_SIZES.TINY,
   },
 
   rootFocused: {
-    color: COLORS.TEXT.toString()
-  }
+    color: COLORS.TEXT.toString(),
+  },
 });
