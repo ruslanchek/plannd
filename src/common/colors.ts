@@ -14,6 +14,9 @@ interface IColors {
   TEXT_PLACEHOLDER: Color;
 
   ACCENT: Color;
+
+  FACEBOOK: Color;
+  TWITTER: Color;
 }
 
 export const THEME_LIGHT: IColors = {
@@ -29,7 +32,10 @@ export const THEME_LIGHT: IColors = {
   TEXT_FADED: Color('#9597AB'),
   TEXT_PLACEHOLDER: Color('#B8BAC8'),
 
-  ACCENT: Color('#3876F6'),
+  ACCENT: Color('#2374FE'),
+
+  FACEBOOK: Color('#1977F3'),
+  TWITTER: Color('#1DA1F2'),
 };
 
 export let COLORS: IColors = THEME_LIGHT;

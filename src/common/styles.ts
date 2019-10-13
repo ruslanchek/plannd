@@ -19,4 +19,8 @@ export const STYLES = StyleSheet.create({
       width: 0,
     },
   },
+
+  SMALL_BUTTON: {
+    fontSize: FONT_SIZES.SMALL,
+  },
 });

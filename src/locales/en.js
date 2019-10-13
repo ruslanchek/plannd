@@ -8,8 +8,16 @@ export default {
   'InputPlaceholder::Email': 'Email',
   'InputPlaceholder::Password': 'Password',
 
-  'Button::Register': 'Sign Up',
-  'Button::Login': 'Log In',
+  'Button::Register': 'Sign up',
+  'Button::Login': 'Log in',
+
+  'Button::FacebookRegister': 'Sign up with Facebook',
+  'Button::FacebookLogin': 'Log in with Facebook',
+
+  'Button::TwitterRegister': 'Sign up with Twitter',
+  'Button::TwitterLogin': 'Log in with Twitter',
+
+  'Button::ResetPassword': 'Reset password',
 
   'Social::Or': 'or',
 };

@@ -16,8 +16,8 @@ export const SocialOr: React.FC = () => {
 
 const styles = StyleSheet.create({
   socialOr: {
-    marginVertical: PADDING.MEDUIM,
     flexDirection: 'row',
+    marginVertical: PADDING.SMALL,
   },
 
   socialOrText: {
