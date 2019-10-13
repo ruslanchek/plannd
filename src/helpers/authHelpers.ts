@@ -2,8 +2,10 @@ import AsyncStorage from '@react-native-community/async-storage';
 import { ASYNC_STORAGE_KEYS } from '../common/constants';
 import { Routes } from '../common/routes';
 import { NavigationSwitchProp } from 'react-navigation';
-import auth from '@react-native-firebase/auth';
+import auth, { firebase } from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
+import { LoginManager } from 'react-native-fbsdk';
+import { AccessToken } from 'react-native-fbsdk';
 
 export const authHandleRegister = async (email: string, password: string) => {
   try {
@@ -20,6 +22,18 @@ export const authHandleLogIn = async (email: string, password: string) => {
     console.log(result);
   } catch (e) {
     Alert.alert('Login', e.message);
+  }
+};
+
+export const authHandleFacebookLogin = async () => {
+  try {
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+    const data = await AccessToken.getCurrentAccessToken();
+    const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+    const signInData = await firebase.auth().signInWithCredential(credential);
+    console.log(result, data, credential, signInData);
+  } catch (e) {
+    Alert.alert('Facebook', e.message);
   }
 };
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
-import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleRegister } from '../../helpers/authHelpers';
+import { NavigationSwitchScreenProps, ScrollView } from 'react-navigation';
+import { authHandleRegister, authHandleFacebookLogin } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
@@ -25,7 +25,7 @@ export const RegisterScreen: React.FC<
   return (
     <ModalShadow>
       <BgTint>
-        <View style={styles.root}>
+        <ScrollView style={styles.root}>
           <Row>
             <TextInput
               numberOfLines={1}
@@ -71,7 +71,7 @@ export const RegisterScreen: React.FC<
             <CustomButton
               theme='facebook'
               text={localizeText('Button::FacebookRegister')}
-              onPress={() => {}}
+              onPress={() => authHandleFacebookLogin()}
               icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
             />
           </Row>
@@ -84,7 +84,7 @@ export const RegisterScreen: React.FC<
               icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
             />
           </Row>
-        </View>
+        </ScrollView>
       </BgTint>
     </ModalShadow>
   );

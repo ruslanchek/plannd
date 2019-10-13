@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleLogIn } from '../../helpers/authHelpers';
+import { authHandleLogIn, authHandleFacebookLogin } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
@@ -26,7 +26,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
   return (
     <ModalShadow>
       <BgTint>
-        <ScrollView style={styles.root} contentContainerStyle={styles.rootScroll}>
+        <ScrollView style={styles.root}>
           <Row>
             <TextInput
               numberOfLines={1}
@@ -78,7 +78,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
             <CustomButton
               theme='facebook'
               text={localizeText('Button::FacebookLogin')}
-              onPress={() => {}}
+              onPress={() => authHandleFacebookLogin()}
               icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
             />
           </Row>
@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
   root: {
     padding: PADDING.MEDUIM,
   },
-  rootScroll: {},
   centerButton: {
     flexDirection: 'row',
     justifyContent: 'center',
