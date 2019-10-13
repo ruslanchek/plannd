@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleLogIn, authHandleFacebookLogin } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
@@ -12,9 +12,9 @@ import { BgTint } from '../ui/BgTint';
 import { SocialOr } from '../ui/SocialOr';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Routes } from '../../common/routes';
 import { ModalShadow } from '../ui/ModalShadow';
 import { TextButton } from '../ui/TextButton';
+import { Routes } from '../../common/routes';
 
 export interface ISettingsScreenParams {}
 
@@ -28,6 +28,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
     <ModalShadow>
       <BgTint>
         <ScrollView style={styles.root}>
+          <Text style={STYLES.H1}>{localizeText('Header::Login')}</Text>
           <Row>
             <TextInput
               autoFocus
@@ -80,7 +81,10 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
           <Row>
             <View style={styles.centerButton}>
-              <TextButton onPress={() => {}} text={localizeText('Button::ResetPassword')} />
+              <TextButton
+                onPress={() => navigation.navigate(Routes.PasswordResetScreen)}
+                text={localizeText('Button::PasswordReset')}
+              />
             </View>
           </Row>
 
@@ -115,7 +119,8 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
 const styles = StyleSheet.create({
   root: {
-    padding: PADDING.MEDUIM,
+    paddingHorizontal: PADDING.MEDUIM,
+    paddingBottom: PADDING.MEDUIM,
   },
   centerButton: {
     flexDirection: 'row',

@@ -17,7 +17,12 @@ export default {
   'Button::TwitterRegister': 'Sign up with Twitter',
   'Button::TwitterLogin': 'Log in with Twitter',
 
-  'Button::ResetPassword': 'Reset password',
+  'Button::RequestPasswordReset': 'Request password reset',
+  'Button::PasswordReset': 'Password reset',
 
   'Social::Or': 'or',
+
+  'Header::Login': 'Log In',
+  'Header::Register': 'Sign Up',
+  'Header::PasswordReset': 'Password reset',
 };

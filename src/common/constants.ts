@@ -6,6 +6,7 @@ export const ELEMENT_SIZES = {
 };
 
 export const FONT_SIZES = {
+  LARGE: 32,
   MEDIUM: 16,
   REGULAR: 14,
   SMALL: 12,

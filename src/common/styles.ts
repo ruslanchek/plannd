@@ -23,4 +23,11 @@ export const STYLES = StyleSheet.create({
   SMALL_BUTTON: {
     fontSize: FONT_SIZES.SMALL,
   },
+
+  H1: {
+    fontSize: FONT_SIZES.LARGE,
+    fontWeight: '800',
+    marginBottom: PADDING.MEDUIM,
+    color: COLORS.TEXT.toString(),
+  },
 });

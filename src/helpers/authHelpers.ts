@@ -25,6 +25,15 @@ export const authHandleLogIn = async (email: string, password: string) => {
   }
 };
 
+export const authHandleResetPassword = async (email: string) => {
+  try {
+    const result = await auth().sendPasswordResetEmail(email);
+    console.log(result);
+  } catch (e) {
+    Alert.alert('Login', e.message);
+  }
+};
+
 export const authHandleFacebookLogin = async () => {
   try {
     const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);

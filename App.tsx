@@ -18,6 +18,7 @@ import { BgTint } from './src/components/ui/BgTint';
 import { StatusBar } from 'react-native';
 import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
 import { RegisterScreen } from './src/components/screens/RegisterScreen';
+import { PasswordResetScreen } from './src/components/screens/PasswordResetScreen';
 
 const AppStack = createBottomTabNavigator(
   {
@@ -48,6 +49,7 @@ const AuthStack = createStackNavigator(
     [Routes.WelcomeScreen]: WelcomeScreen,
     [Routes.RegisterScreen]: RegisterScreen,
     [Routes.LoginScreen]: LoginScreen,
+    [Routes.PasswordResetScreen]: PasswordResetScreen,
   },
   {
     headerMode: 'none',
