@@ -9,13 +9,14 @@ interface IProps {
   text: string;
   onPress: () => void;
   icon?: React.ReactNode;
+  disabled?: boolean;
 }
 
 export const CustomButton: React.FC<IProps> = props => {
-  const { theme, text, onPress, icon } = props;
+  const { theme, text, onPress, icon, disabled } = props;
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} disabled={disabled}>
       <View style={[styles.root, themedRootStyles[theme]]}>
         {icon && <View style={styles.icon}>{icon}</View>}
         <Text style={[styles.text, themedTextStyles[theme]]}>{text}</Text>

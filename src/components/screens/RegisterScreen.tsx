@@ -21,6 +21,7 @@ export const RegisterScreen: React.FC<
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   return (
     <ModalShadow>
@@ -31,7 +32,9 @@ export const RegisterScreen: React.FC<
               autoFocus
               autoCapitalize='none'
               autoCompleteType='email'
+              keyboardType='email-address'
               numberOfLines={1}
+              enablesReturnKeyAutomatically
               placeholder={localizeText('InputPlaceholder::Email')}
               placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
               textContentType='emailAddress'
@@ -48,9 +51,10 @@ export const RegisterScreen: React.FC<
               autoCapitalize='none'
               autoCompleteType='password'
               numberOfLines={1}
+              enablesReturnKeyAutomatically
               placeholder={localizeText('InputPlaceholder::Password')}
               placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-              textContentType='password'
+              textContentType='newPassword'
               secureTextEntry
               style={STYLES.INPUT}
               value={password}
@@ -62,9 +66,14 @@ export const RegisterScreen: React.FC<
 
           <Row>
             <CustomButton
+              disabled={loading}
               theme='accent'
               text={localizeText('Button::Register')}
-              onPress={() => authHandleRegister(email, password)}
+              onPress={() => {
+                setLoading(true);
+                authHandleRegister(email, password);
+                setLoading(false);
+              }}
             />
           </Row>
 
@@ -74,6 +83,7 @@ export const RegisterScreen: React.FC<
 
           <Row>
             <CustomButton
+              disabled={loading}
               theme='facebook'
               text={localizeText('Button::FacebookRegister')}
               onPress={() => authHandleFacebookLogin()}
@@ -83,6 +93,7 @@ export const RegisterScreen: React.FC<
 
           <Row>
             <CustomButton
+              disabled={loading}
               theme='twitter'
               text={localizeText('Button::TwitterRegister')}
               onPress={() => {}}

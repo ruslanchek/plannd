@@ -22,6 +22,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   return (
     <ModalShadow>
@@ -32,7 +33,9 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
               autoFocus
               autoCapitalize='none'
               autoCompleteType='email'
+              keyboardType='email-address'
               numberOfLines={1}
+              enablesReturnKeyAutomatically
               placeholder={localizeText('InputPlaceholder::Email')}
               placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
               textContentType='emailAddress'
@@ -49,6 +52,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
               autoCapitalize='none'
               autoCompleteType='password'
               numberOfLines={1}
+              enablesReturnKeyAutomatically
               placeholder={localizeText('InputPlaceholder::Password')}
               placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
               textContentType='password'
@@ -63,9 +67,14 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
           <Row>
             <CustomButton
+              disabled={loading}
               theme='accent'
               text={localizeText('Button::Login')}
-              onPress={() => authHandleLogIn(email, password)}
+              onPress={() => {
+                setLoading(true);
+                authHandleLogIn(email, password);
+                setLoading(false);
+              }}
             />
           </Row>
 
@@ -81,6 +90,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
           <Row>
             <CustomButton
+              disabled={loading}
               theme='facebook'
               text={localizeText('Button::FacebookLogin')}
               onPress={() => authHandleFacebookLogin()}
@@ -90,6 +100,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
           <Row>
             <CustomButton
+              disabled={loading}
               theme='twitter'
               text={localizeText('Button::TwitterLogin')}
               onPress={() => {}}
