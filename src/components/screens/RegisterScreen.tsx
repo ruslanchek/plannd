@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleLogIn, authHandleRegister } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
@@ -9,6 +9,7 @@ import { localizeText } from '../../helpers/localeHelpers';
 import { COLORS } from '../../common/colors';
 import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
+import { SocialOr } from '../ui/SocialOr';
 
 export interface ISettingsScreenParams {}
 
@@ -54,10 +55,12 @@ export const RegisterScreen: React.FC<
         <Row>
           <CustomButton
             theme='accent'
-            text='Register'
+            text={localizeText('Button::Register')}
             onPress={() => authHandleRegister(email, password)}
           />
         </Row>
+
+        <SocialOr />
       </View>
     </BgTint>
   );

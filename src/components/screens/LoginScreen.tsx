@@ -9,6 +9,7 @@ import { localizeText } from '../../helpers/localeHelpers';
 import { COLORS } from '../../common/colors';
 import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
+import { SocialOr } from '../ui/SocialOr';
 
 export interface ISettingsScreenParams {}
 
@@ -52,10 +53,12 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
         <Row>
           <CustomButton
             theme='accent'
-            text='Login'
+            text={localizeText('Button::Login')}
             onPress={() => authHandleLogIn(email, password)}
           />
         </Row>
+
+        <SocialOr />
       </View>
     </BgTint>
   );
@@ -65,5 +68,6 @@ const styles = StyleSheet.create({
   root: {
     padding: PADDING.MEDUIM,
     flex: 1,
+    justifyContent: 'center',
   },
 });

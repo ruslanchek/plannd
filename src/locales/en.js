@@ -10,4 +10,6 @@ export default {
 
   'Button::Register': 'Sign Up',
   'Button::Login': 'Log In',
+
+  'Social::Or': 'or',
 };
