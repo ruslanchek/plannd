@@ -29,6 +29,9 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
         <ScrollView style={styles.root}>
           <Row>
             <TextInput
+              autoFocus
+              autoCapitalize='none'
+              autoCompleteType='email'
               numberOfLines={1}
               placeholder={localizeText('InputPlaceholder::Email')}
               placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
@@ -43,6 +46,8 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
           <Row>
             <TextInput
+              autoCapitalize='none'
+              autoCompleteType='password'
               numberOfLines={1}
               placeholder={localizeText('InputPlaceholder::Password')}
               placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
