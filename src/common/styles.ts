@@ -9,5 +9,14 @@ export const STYLES = StyleSheet.create({
     height: ELEMENT_SIZES.INPUT_HEIGHT,
     paddingHorizontal: PADDING.REGULAR,
     fontSize: FONT_SIZES.MEDIUM,
+    color: COLORS.TEXT.toString(),
+    fontWeight: '600',
+    shadowColor: COLORS.TEXT_FADED.toString(),
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
   },
 });

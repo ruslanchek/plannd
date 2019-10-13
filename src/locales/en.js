@@ -7,4 +7,7 @@ export default {
 
   'InputPlaceholder::Email': 'Email',
   'InputPlaceholder::Password': 'Password',
+
+  'Button::Register': 'Sign Up',
+  'Button::Login': 'Log In',
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -13,8 +13,10 @@ import { LoginScreen } from './src/components/screens/LoginScreen';
 import { TransactionsScreen } from './src/components/screens/TransactionsScreen';
 import { TargetsScreen } from './src/components/screens/TargetsScreen';
 import { StatisticsScreen } from './src/components/screens/StatisticsScreen';
-import { COLORS } from './src/common/colors';
 import { BgTint } from './src/components/ui/BgTint';
+import { StatusBar } from 'react-native';
+import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
+import { RegisterScreen } from './src/components/screens/RegisterScreen';
 
 const AppStack = createBottomTabNavigator(
   {
@@ -42,11 +44,14 @@ const AppStack = createBottomTabNavigator(
 
 const AuthStack = createStackNavigator(
   {
+    [Routes.WelcomeScreen]: WelcomeScreen,
+    [Routes.RegisterScreen]: RegisterScreen,
     [Routes.LoginScreen]: LoginScreen,
   },
   {
     headerMode: 'none',
-    initialRouteName: Routes.LoginScreen,
+    mode: 'modal',
+    initialRouteName: Routes.WelcomeScreen,
   },
 );
 
@@ -66,6 +71,7 @@ const Navigation = createAppContainer(
 export default () => {
   return (
     <BgTint>
+      <StatusBar barStyle='dark-content' />
       <Navigation />
     </BgTint>
   );

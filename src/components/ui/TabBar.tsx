@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { BottomTabBar } from 'react-navigation-tabs';
-import { ELEMENT_SIZES, PADDING, BORDER_RADIUS } from '../../common/constants';
+import { ELEMENT_SIZES, BORDER_RADIUS } from '../../common/constants';
 import { COLORS } from '../../common/colors';
 
 export const TabBar = props => {

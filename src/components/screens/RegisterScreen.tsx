@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleLogIn } from '../../helpers/authHelpers';
+import { authHandleLogIn, authHandleRegister } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
@@ -12,7 +12,9 @@ import { BgTint } from '../ui/BgTint';
 
 export interface ISettingsScreenParams {}
 
-export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenParams>> = props => {
+export const RegisterScreen: React.FC<
+  NavigationSwitchScreenProps<ISettingsScreenParams>
+> = props => {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -52,8 +54,8 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
         <Row>
           <CustomButton
             theme='accent'
-            text='Login'
-            onPress={() => authHandleLogIn(email, password)}
+            text='Register'
+            onPress={() => authHandleRegister(email, password)}
           />
         </Row>
       </View>
