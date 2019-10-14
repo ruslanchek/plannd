@@ -28,5 +28,5 @@ export default {
   'Header::Register': 'Sign Up',
   'Header::PasswordReset': 'Password reset',
 
-  'Text::WelcomePromo': 'Sign up to use your personal budget cloud for free',
+  'Text::WelcomePromo': 'Sign up to use your personal budget cloud for free.',
 };

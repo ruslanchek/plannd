@@ -18,11 +18,10 @@ import { COLORS } from '../../common/colors';
 import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
 import { SocialOr } from '../ui/SocialOr';
-import Icon from 'react-native-vector-icons/FontAwesome5';
-import { ModalShadow } from '../ui/ModalShadow';
 import { TextButton } from '../ui/TextButton';
 import { Routes } from '../../common/routes';
 import { Col } from '../ui/Col';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
 export interface ISettingsScreenParams {}
 
@@ -35,117 +34,115 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
   const [loading, setLoading] = useState(false);
 
   return (
-    <ModalShadow>
-      <BgTint>
-        <ScrollView style={[styles.root, { width, height }]}>
-          <KeyboardAvoidingView behavior='height' enabled>
-            <View>
-              <Row>
-                <Col>
-                  <Text style={STYLES.H1}>{localizeText('Header::Login')}</Text>
-                </Col>
-              </Row>
+    <BgTint>
+      <ScrollView style={[styles.root, { width, height }]}>
+        <KeyboardAvoidingView behavior='height' enabled>
+          <View>
+            <Row>
+              <Col>
+                <Text style={STYLES.H1}>{localizeText('Header::Login')}</Text>
+              </Col>
+            </Row>
 
-              <Row>
-                <Col>
-                  <TextInput
-                    autoCapitalize='none'
-                    autoCompleteType='email'
-                    keyboardType='email-address'
-                    numberOfLines={1}
-                    enablesReturnKeyAutomatically
-                    placeholder={localizeText('InputPlaceholder::Email')}
-                    placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                    textContentType='emailAddress'
-                    style={STYLES.INPUT}
-                    value={email}
-                    onChange={event => {
-                      setEmail(event.nativeEvent.text);
-                    }}
+            <Row>
+              <Col>
+                <TextInput
+                  autoCapitalize='none'
+                  autoCompleteType='email'
+                  keyboardType='email-address'
+                  numberOfLines={1}
+                  enablesReturnKeyAutomatically
+                  placeholder={localizeText('InputPlaceholder::Email')}
+                  placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                  textContentType='emailAddress'
+                  style={STYLES.INPUT}
+                  value={email}
+                  onChange={event => {
+                    setEmail(event.nativeEvent.text);
+                  }}
+                />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <TextInput
+                  autoCapitalize='none'
+                  autoCompleteType='password'
+                  numberOfLines={1}
+                  enablesReturnKeyAutomatically
+                  placeholder={localizeText('InputPlaceholder::Password')}
+                  placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                  textContentType='password'
+                  secureTextEntry
+                  style={STYLES.INPUT}
+                  value={password}
+                  onChange={event => {
+                    setPassword(event.nativeEvent.text);
+                  }}
+                />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='accent'
+                  text={localizeText('Button::Login')}
+                  onPress={() => {
+                    setLoading(true);
+                    authHandleLogIn(email, password);
+                    setLoading(false);
+                  }}
+                />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <View style={STYLES.CENTERED}>
+                  <TextButton
+                    onPress={() => navigation.navigate(Routes.PasswordResetScreen)}
+                    text={localizeText('Button::PasswordReset')}
                   />
-                </Col>
-              </Row>
+                </View>
+              </Col>
+            </Row>
 
-              <Row>
-                <Col>
-                  <TextInput
-                    autoCapitalize='none'
-                    autoCompleteType='password'
-                    numberOfLines={1}
-                    enablesReturnKeyAutomatically
-                    placeholder={localizeText('InputPlaceholder::Password')}
-                    placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                    textContentType='password'
-                    secureTextEntry
-                    style={STYLES.INPUT}
-                    value={password}
-                    onChange={event => {
-                      setPassword(event.nativeEvent.text);
-                    }}
-                  />
-                </Col>
-              </Row>
+            <Row>
+              <Col>
+                <SocialOr />
+              </Col>
+            </Row>
 
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='accent'
-                    text={localizeText('Button::Login')}
-                    onPress={() => {
-                      setLoading(true);
-                      authHandleLogIn(email, password);
-                      setLoading(false);
-                    }}
-                  />
-                </Col>
-              </Row>
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='facebook'
+                  text={localizeText('Button::FacebookLogin')}
+                  onPress={() => authHandleFacebookLogin()}
+                  icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
+                />
+              </Col>
+            </Row>
 
-              <Row>
-                <Col>
-                  <View style={STYLES.CENTERED}>
-                    <TextButton
-                      onPress={() => navigation.navigate(Routes.PasswordResetScreen)}
-                      text={localizeText('Button::PasswordReset')}
-                    />
-                  </View>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <SocialOr />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='facebook'
-                    text={localizeText('Button::FacebookLogin')}
-                    onPress={() => authHandleFacebookLogin()}
-                    icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
-                  />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='twitter'
-                    text={localizeText('Button::TwitterLogin')}
-                    onPress={() => {}}
-                    icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
-                  />
-                </Col>
-              </Row>
-            </View>
-          </KeyboardAvoidingView>
-        </ScrollView>
-      </BgTint>
-    </ModalShadow>
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='twitter'
+                  text={localizeText('Button::TwitterLogin')}
+                  onPress={() => {}}
+                  icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
+                />
+              </Col>
+            </Row>
+          </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
+    </BgTint>
   );
 };
 

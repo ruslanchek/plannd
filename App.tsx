@@ -14,7 +14,6 @@ import { LoginScreen } from './src/components/screens/LoginScreen';
 import { TransactionsScreen } from './src/components/screens/TransactionsScreen';
 import { TargetsScreen } from './src/components/screens/TargetsScreen';
 import { StatisticsScreen } from './src/components/screens/StatisticsScreen';
-import { BgTint } from './src/components/ui/BgTint';
 import { StatusBar } from 'react-native';
 import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
 import { RegisterScreen } from './src/components/screens/RegisterScreen';
@@ -39,6 +38,7 @@ const AppStack = createBottomTabNavigator(
         return <TabBarLabel {...props} routeName={routeName} />;
       },
     }),
+    lazy: true,
     tabBarComponent: TabBar,
     initialRouteName: Routes.HomeScreen,
   },
@@ -72,9 +72,9 @@ const Navigation = createAppContainer(
 
 export default () => {
   return (
-    <BgTint>
+    <React.Fragment>
       <StatusBar barStyle='dark-content' />
       <Navigation />
-    </BgTint>
+    </React.Fragment>
   );
 };

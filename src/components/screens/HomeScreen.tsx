@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleLogOut } from '../../helpers/authHelpers';
+import { BgTint } from '../ui/BgTint';
 
 export interface ISettingsScreenParams {}
 
@@ -9,10 +10,12 @@ export const HomeScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPar
   const { navigation } = props;
 
   return (
-    <View style={styles.root}>
-      <Text>HomeScreen</Text>
-      <Button title='Logout' onPress={() => authHandleLogOut(navigation)}></Button>
-    </View>
+    <BgTint>
+      <View style={styles.root}>
+        <Text>HomeScreen</Text>
+        <Button title='Logout' onPress={() => authHandleLogOut(navigation)}></Button>
+      </View>
+    </BgTint>
   );
 };
 

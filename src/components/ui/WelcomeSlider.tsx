@@ -8,7 +8,7 @@ import {
   Dimensions,
   ImageRequireSource,
 } from 'react-native';
-import { PADDING } from '../../common/constants';
+import { PADDING, BORDER_RADIUS } from '../../common/constants';
 import { STYLES } from '../../common/styles';
 import { Row } from './Row';
 import { Col } from './Col';
@@ -77,6 +77,7 @@ export const WelcomeSlider: React.FC = props => {
           );
         }}
       />
+
       <View style={styles.paginator}>
         {DATA.map((item, index) => {
           return (
@@ -97,14 +98,24 @@ const styles = StyleSheet.create({
   },
 
   item: {
-    width,
-    paddingHorizontal: PADDING.MEDUIM,
+    width: width - PADDING.MEDUIM * 2,
+    margin: PADDING.MEDUIM,
+    padding: PADDING.MEDUIM,
+    backgroundColor: COLORS.WHITE.toString(),
+    borderRadius: BORDER_RADIUS.LARGE,
+    shadowColor: COLORS.TEXT_FADED.toString(),
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+    shadowOffset: {
+      height: 5,
+      width: 0,
+    },
   },
 
   itemImage: {
-    width: width - PADDING.MEDUIM * 2,
-    height: width - PADDING.MEDUIM * 6,
-    marginVertical: PADDING.MEDUIM,
+    width: width - PADDING.MEDUIM * 4,
+    height: width - PADDING.MEDUIM * 3,
+    marginTop: PADDING.MEDUIM,
   },
 
   paginator: {

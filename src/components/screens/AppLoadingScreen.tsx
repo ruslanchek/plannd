@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { StyleSheet, View, ActivityIndicator, StatusBar } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authBootstrap } from '../../helpers/authHelpers';
+import { BgTint } from '../ui/BgTint';
 
 export interface ISettingsScreenParams {}
 
@@ -13,10 +14,11 @@ export const AppLoadingScreen: React.FC<
   }, []);
 
   return (
-    <View style={styles.root}>
-      <StatusBar barStyle='default' />
-      <ActivityIndicator />
-    </View>
+    <BgTint>
+      <View style={styles.root}>
+        <ActivityIndicator />
+      </View>
+    </BgTint>
   );
 };
 
