@@ -24,6 +24,7 @@ import { SocialOr } from '../ui/SocialOr';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Col } from '../ui/Col';
 import { GoogleLogo } from '../ui/GoogleLogo';
+import { FullscreenLoading } from '../ui/FullscreenLoading';
 
 const { width, height } = Dimensions.get('window');
 
@@ -39,6 +40,7 @@ export const RegisterScreen: React.FC<
 
   return (
     <BgTint>
+      {loading && <FullscreenLoading />}
       <ScrollView style={[styles.root, { width, height }]}>
         <KeyboardAvoidingView behavior='position' enabled>
           <Row>
@@ -93,9 +95,9 @@ export const RegisterScreen: React.FC<
                 disabled={loading}
                 theme='accent'
                 text={localizeText('Button::Register')}
-                onPress={() => {
+                onPress={async () => {
                   setLoading(true);
-                  authHandleRegister(email, password, navigation);
+                  await authHandleRegister(email, password, navigation);
                   setLoading(false);
                 }}
               />
@@ -114,7 +116,11 @@ export const RegisterScreen: React.FC<
                 disabled={loading}
                 theme='facebook'
                 text={localizeText('Button::FacebookRegister')}
-                onPress={() => authHandleFacebookLogin(navigation)}
+                onPress={async () => {
+                  setLoading(true);
+                  await authHandleFacebookLogin(navigation);
+                  setLoading(false);
+                }}
                 icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
               />
             </Col>
@@ -126,7 +132,11 @@ export const RegisterScreen: React.FC<
                 disabled={loading}
                 theme='google'
                 text={localizeText('Button::GoogleRegister')}
-                onPress={() => authHandleGoogleLogin(navigation)}
+                onPress={async () => {
+                  setLoading(true);
+                  await authHandleGoogleLogin(navigation);
+                  setLoading(false);
+                }}
                 icon={<GoogleLogo size={26} />}
               />
             </Col>

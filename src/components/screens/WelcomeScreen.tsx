@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, View, Dimensions, Text, ScrollView, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Dimensions, Text, ScrollView } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleAnonimousLogin } from '../../helpers/authHelpers';
 import { Row } from '../ui/Row';
@@ -12,6 +12,7 @@ import { Col } from '../ui/Col';
 import { WelcomeSlider } from '../ui/WelcomeSlider';
 import { PADDING } from '../../common/constants';
 import { STYLES } from '../../common/styles';
+import { FullscreenLoading } from '../ui/FullscreenLoading';
 
 export interface ISettingsScreenParams {}
 
@@ -21,9 +22,11 @@ export const WelcomeScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
   const { navigation } = props;
+  const [loading, setLoading] = useState(false);
 
   return (
     <BgTint>
+      {loading && <FullscreenLoading />}
       <ScrollView style={{ width, height }}>
         <View style={styles.root}>
           <View>
@@ -32,7 +35,6 @@ export const WelcomeScreen: React.FC<
                 <WelcomeSlider />
               </Col>
             </Row>
-
             <View style={styles.inner}>
               <Row>
                 <Col>
@@ -51,7 +53,6 @@ export const WelcomeScreen: React.FC<
                   />
                 </Col>
               </Row>
-
               <Row>
                 <Col>
                   <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>
@@ -60,7 +61,11 @@ export const WelcomeScreen: React.FC<
                   <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
                     <TextButton
                       text={localizeText('Button::Skip')}
-                      onPress={() => authHandleAnonimousLogin(navigation)}
+                      onPress={async () => {
+                        setLoading(true);
+                        await authHandleAnonimousLogin(navigation);
+                        setLoading(false);
+                      }}
                     />
                   </View>
                 </Col>

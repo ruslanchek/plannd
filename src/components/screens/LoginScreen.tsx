@@ -27,6 +27,7 @@ import { Routes } from '../../common/routes';
 import { Col } from '../ui/Col';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { GoogleLogo } from '../ui/GoogleLogo';
+import { FullscreenLoading } from '../ui/FullscreenLoading';
 
 export interface ISettingsScreenParams {}
 
@@ -40,6 +41,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
 
   return (
     <BgTint>
+      {loading && <FullscreenLoading />}
       <ScrollView style={[styles.root, { width, height }]}>
         <KeyboardAvoidingView behavior='height' enabled>
           <View>
@@ -95,9 +97,9 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   disabled={loading}
                   theme='accent'
                   text={localizeText('Button::Login')}
-                  onPress={() => {
+                  onPress={async () => {
                     setLoading(true);
-                    authHandleLogIn(email, password, navigation);
+                    await authHandleLogIn(email, password, navigation);
                     setLoading(false);
                   }}
                 />
@@ -127,7 +129,11 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   disabled={loading}
                   theme='facebook'
                   text={localizeText('Button::FacebookLogin')}
-                  onPress={() => authHandleFacebookLogin(navigation)}
+                  onPress={async () => {
+                    setLoading(true);
+                    await authHandleFacebookLogin(navigation);
+                    setLoading(false);
+                  }}
                   icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
                 />
               </Col>
@@ -139,7 +145,11 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   disabled={loading}
                   theme='google'
                   text={localizeText('Button::GoogleLogin')}
-                  onPress={() => authHandleGoogleLogin(navigation)}
+                  onPress={async () => {
+                    setLoading(true);
+                    await authHandleGoogleLogin(navigation);
+                    setLoading(false);
+                  }}
                   icon={<GoogleLogo size={26} />}
                 />
               </Col>
