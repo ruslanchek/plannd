@@ -54,7 +54,9 @@ export const WelcomeScreen: React.FC<
 
               <Row>
                 <Col>
-                  <Text style={STYLES.FADED_TEXT}>{localizeText('Text::WelcomePromo')}</Text>
+                  <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>
+                    {localizeText('Text::WelcomePromo')}
+                  </Text>
                   <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
                     <TextButton
                       text={localizeText('Button::Skip')}

@@ -42,4 +42,8 @@ export const STYLES = StyleSheet.create({
   FADED_TEXT: {
     color: COLORS.TEXT_FADED.toString(),
   },
+
+  CENTERED_TEXT: {
+    textAlign: 'center',
+  },
 });

@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
 
   itemImage: {
     width: width - PADDING.MEDUIM * 4,
-    height: width - PADDING.MEDUIM * 3,
+    height: width - PADDING.MEDUIM * 5,
     marginTop: PADDING.MEDUIM,
   },
 
