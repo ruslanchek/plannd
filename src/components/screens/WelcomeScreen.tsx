@@ -13,8 +13,6 @@ import { WelcomeSlider } from '../ui/WelcomeSlider';
 import { PADDING } from '../../common/constants';
 import { STYLES } from '../../common/styles';
 
-const { width, height } = Dimensions.get('window');
-
 export interface ISettingsScreenParams {}
 
 export const WelcomeScreen: React.FC<
@@ -24,57 +22,50 @@ export const WelcomeScreen: React.FC<
 
   return (
     <BgTint>
-      <View
-        style={{
-          width,
-          height,
-          justifyContent: 'center',
-        }}>
-        <View>
+      <View style={styles.root}>
+        <Row>
+          <Col>
+            <WelcomeSlider />
+          </Col>
+        </Row>
+
+        <View style={styles.inner}>
+          <Row></Row>
+
+          <Row>
+            <Text style={STYLES.TEXT}>{localizeText('Text::WelcomePromo')}</Text>
+          </Row>
+
           <Row>
             <Col>
-              <WelcomeSlider />
+              <CustomButton
+                theme='default'
+                text={localizeText('Button::Login')}
+                onPress={() => navigation.navigate(ERoutes.LoginScreen)}
+              />
+            </Col>
+            <Col flex={0.1} />
+            <Col>
+              <CustomButton
+                theme='accent'
+                text={localizeText('Button::Register')}
+                onPress={() => navigation.navigate(ERoutes.RegisterScreen)}
+              />
             </Col>
           </Row>
 
-          <View style={styles.root}>
-            <Row></Row>
+          <Row></Row>
 
-            <Row>
-              <Text style={STYLES.TEXT}>{localizeText('Text::WelcomePromo')}</Text>
-            </Row>
-
-            <Row>
-              <Col>
-                <CustomButton
-                  theme='default'
-                  text={localizeText('Button::Login')}
-                  onPress={() => navigation.navigate(ERoutes.LoginScreen)}
+          <Row>
+            <Col>
+              <View style={STYLES.CENTERED}>
+                <TextButton
+                  text={localizeText('Button::Skip')}
+                  onPress={() => authHandleMockLogin(navigation)}
                 />
-              </Col>
-              <Col flex={0.1} />
-              <Col>
-                <CustomButton
-                  theme='accent'
-                  text={localizeText('Button::Register')}
-                  onPress={() => navigation.navigate(ERoutes.RegisterScreen)}
-                />
-              </Col>
-            </Row>
-
-            <Row></Row>
-
-            <Row>
-              <Col>
-                <View style={STYLES.CENTERED}>
-                  <TextButton
-                    text={localizeText('Button::Skip')}
-                    onPress={() => authHandleMockLogin(navigation)}
-                  />
-                </View>
-              </Col>
-            </Row>
-          </View>
+              </View>
+            </Col>
+          </Row>
         </View>
       </View>
     </BgTint>
@@ -83,6 +74,10 @@ export const WelcomeScreen: React.FC<
 
 const styles = StyleSheet.create({
   root: {
+    paddingVertical: PADDING.MEDUIM,
+  },
+
+  inner: {
     paddingHorizontal: PADDING.MEDUIM,
   },
 });
