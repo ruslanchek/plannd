@@ -10,5 +10,6 @@ export const Row: React.FC = props => {
 const styles = StyleSheet.create({
   root: {
     marginBottom: PADDING.MEDUIM,
+    flexDirection: 'row',
   },
 });

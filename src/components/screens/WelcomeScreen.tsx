@@ -1,11 +1,16 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleMockLogin } from '../../helpers/authHelpers';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
-import { Routes } from '../../common/routes';
+import { Routes as ERoutes } from '../../common/routes';
 import { BgTint } from '../ui/BgTint';
+import { TextButton } from '../ui/TextButton';
+import { CustomButton } from '../ui/CustomButton';
+import { localizeText } from '../../helpers/localeHelpers';
+import { Col } from '../ui/Col';
+import { WelcomeSlider } from '../ui/WelcomeSlider';
 
 export interface ISettingsScreenParams {}
 
@@ -16,11 +21,29 @@ export const WelcomeScreen: React.FC<
 
   return (
     <BgTint>
+      <Row>
+        <WelcomeSlider />
+      </Row>
       <View style={styles.root}>
         <Row>
-          <Button title='Mock' onPress={() => authHandleMockLogin(navigation)} />
-          <Button title='Login' onPress={() => navigation.navigate(Routes.LoginScreen)} />
-          <Button title='Register' onPress={() => navigation.navigate(Routes.RegisterScreen)} />
+          <Col>
+            <CustomButton
+              theme='default'
+              text={localizeText('Button::Login')}
+              onPress={() => navigation.navigate(ERoutes.LoginScreen)}
+            />
+          </Col>
+          <Col flex={0.1} />
+          <Col>
+            <CustomButton
+              theme='accent'
+              text={localizeText('Button::Register')}
+              onPress={() => navigation.navigate(ERoutes.RegisterScreen)}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <TextButton text='Mock' onPress={() => authHandleMockLogin(navigation)} />
         </Row>
       </View>
     </BgTint>

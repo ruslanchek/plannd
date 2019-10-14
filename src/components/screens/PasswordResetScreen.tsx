@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import {
-  authHandleLogIn,
-  authHandleFacebookLogin,
-  authHandleResetPassword,
-} from '../../helpers/authHelpers';
+import { authHandleResetPassword } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
@@ -13,11 +9,8 @@ import { localizeText } from '../../helpers/localeHelpers';
 import { COLORS } from '../../common/colors';
 import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
-import { SocialOr } from '../ui/SocialOr';
-import { ScrollView } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ModalShadow } from '../ui/ModalShadow';
-import { TextButton } from '../ui/TextButton';
+import { Col } from '../ui/Col';
 
 export interface ISettingsScreenParams {}
 
@@ -26,46 +19,49 @@ export const PasswordResetScreen: React.FC<
 > = props => {
   const { navigation } = props;
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   return (
     <ModalShadow>
       <BgTint>
-        <ScrollView style={styles.root}>
+        <KeyboardAvoidingView style={styles.root}>
           <Text style={STYLES.H1}>{localizeText('Header::PasswordReset')}</Text>
           <Row>
-            <TextInput
-              autoFocus
-              autoCapitalize='none'
-              autoCompleteType='email'
-              keyboardType='email-address'
-              numberOfLines={1}
-              enablesReturnKeyAutomatically
-              placeholder={localizeText('InputPlaceholder::Email')}
-              placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-              textContentType='emailAddress'
-              style={STYLES.INPUT}
-              value={email}
-              onChange={event => {
-                setEmail(event.nativeEvent.text);
-              }}
-            />
+            <Col>
+              <TextInput
+                autoFocus
+                autoCapitalize='none'
+                autoCompleteType='email'
+                keyboardType='email-address'
+                numberOfLines={1}
+                enablesReturnKeyAutomatically
+                placeholder={localizeText('InputPlaceholder::Email')}
+                placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                textContentType='emailAddress'
+                style={STYLES.INPUT}
+                value={email}
+                onChange={event => {
+                  setEmail(event.nativeEvent.text);
+                }}
+              />
+            </Col>
           </Row>
 
           <Row>
-            <CustomButton
-              disabled={loading}
-              theme='accent'
-              text={localizeText('Button::RequestPasswordReset')}
-              onPress={() => {
-                setLoading(true);
-                authHandleResetPassword(email);
-                setLoading(false);
-              }}
-            />
+            <Col>
+              <CustomButton
+                disabled={loading}
+                theme='accent'
+                text={localizeText('Button::RequestPasswordReset')}
+                onPress={() => {
+                  setLoading(true);
+                  authHandleResetPassword(email);
+                  setLoading(false);
+                }}
+              />
+            </Col>
           </Row>
-        </ScrollView>
+        </KeyboardAvoidingView>
       </BgTint>
     </ModalShadow>
   );

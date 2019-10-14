@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput } from 'react-native';
-import { NavigationSwitchScreenProps, ScrollView } from 'react-navigation';
+import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
+import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleRegister, authHandleFacebookLogin } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
@@ -12,6 +12,7 @@ import { BgTint } from '../ui/BgTint';
 import { SocialOr } from '../ui/SocialOr';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ModalShadow } from '../ui/ModalShadow';
+import { Col } from '../ui/Col';
 
 export interface ISettingsScreenParams {}
 
@@ -26,82 +27,95 @@ export const RegisterScreen: React.FC<
   return (
     <ModalShadow>
       <BgTint>
-        <ScrollView style={styles.root}>
+        <KeyboardAvoidingView style={styles.root}>
           <Text style={STYLES.H1}>{localizeText('Header::Register')}</Text>
+
           <Row>
-            <TextInput
-              autoFocus
-              autoCapitalize='none'
-              autoCompleteType='email'
-              keyboardType='email-address'
-              numberOfLines={1}
-              enablesReturnKeyAutomatically
-              placeholder={localizeText('InputPlaceholder::Email')}
-              placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-              textContentType='emailAddress'
-              style={STYLES.INPUT}
-              value={email}
-              onChange={event => {
-                setEmail(event.nativeEvent.text);
-              }}
-            />
+            <Col>
+              <TextInput
+                autoFocus
+                autoCapitalize='none'
+                autoCompleteType='email'
+                keyboardType='email-address'
+                numberOfLines={1}
+                enablesReturnKeyAutomatically
+                placeholder={localizeText('InputPlaceholder::Email')}
+                placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                textContentType='emailAddress'
+                style={STYLES.INPUT}
+                value={email}
+                onChange={event => {
+                  setEmail(event.nativeEvent.text);
+                }}
+              />
+            </Col>
           </Row>
 
           <Row>
-            <TextInput
-              autoCapitalize='none'
-              autoCompleteType='password'
-              numberOfLines={1}
-              enablesReturnKeyAutomatically
-              placeholder={localizeText('InputPlaceholder::Password')}
-              placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-              textContentType='newPassword'
-              secureTextEntry
-              style={STYLES.INPUT}
-              value={password}
-              onChange={event => {
-                setPassword(event.nativeEvent.text);
-              }}
-            />
+            <Col>
+              <TextInput
+                autoCapitalize='none'
+                autoCompleteType='password'
+                numberOfLines={1}
+                enablesReturnKeyAutomatically
+                placeholder={localizeText('InputPlaceholder::Password')}
+                placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                textContentType='newPassword'
+                secureTextEntry
+                style={STYLES.INPUT}
+                value={password}
+                onChange={event => {
+                  setPassword(event.nativeEvent.text);
+                }}
+              />
+            </Col>
           </Row>
 
           <Row>
-            <CustomButton
-              disabled={loading}
-              theme='accent'
-              text={localizeText('Button::Register')}
-              onPress={() => {
-                setLoading(true);
-                authHandleRegister(email, password);
-                setLoading(false);
-              }}
-            />
+            <Col>
+              <CustomButton
+                disabled={loading}
+                theme='accent'
+                text={localizeText('Button::Register')}
+                onPress={() => {
+                  setLoading(true);
+                  authHandleRegister(email, password);
+                  setLoading(false);
+                }}
+              />
+            </Col>
           </Row>
 
           <Row>
-            <SocialOr />
+            <Col>
+              <SocialOr />
+            </Col>
           </Row>
 
           <Row>
-            <CustomButton
-              disabled={loading}
-              theme='facebook'
-              text={localizeText('Button::FacebookRegister')}
-              onPress={() => authHandleFacebookLogin()}
-              icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
-            />
+            <Col>
+              <CustomButton
+                disabled={loading}
+                theme='facebook'
+                text={localizeText('Button::FacebookRegister')}
+                onPress={() => authHandleFacebookLogin()}
+                icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
+              />
+            </Col>
           </Row>
 
           <Row>
-            <CustomButton
-              disabled={loading}
-              theme='twitter'
-              text={localizeText('Button::TwitterRegister')}
-              onPress={() => {}}
-              icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
-            />
+            <Col>
+              <CustomButton
+                disabled={loading}
+                theme='twitter'
+                text={localizeText('Button::TwitterRegister')}
+                onPress={() => {}}
+                icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
+              />
+            </Col>
           </Row>
-        </ScrollView>
+        </KeyboardAvoidingView>
       </BgTint>
     </ModalShadow>
   );
@@ -109,7 +123,6 @@ export const RegisterScreen: React.FC<
 
 const styles = StyleSheet.create({
   root: {
-    paddingHorizontal: PADDING.MEDUIM,
-    paddingBottom: PADDING.MEDUIM,
+    padding: PADDING.MEDUIM,
   },
 });
