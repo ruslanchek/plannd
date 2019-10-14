@@ -28,6 +28,7 @@ import { Col } from '../ui/Col';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { GoogleLogo } from '../ui/GoogleLogo';
 import { FullscreenLoading } from '../ui/FullscreenLoading';
+import { FacebookLogo } from '../ui/FacebookLogo';
 
 export interface ISettingsScreenParams {}
 
@@ -140,7 +141,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                     await authHandleFacebookLogin(navigation);
                     setLoading(false);
                   }}
-                  icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
+                  icon={<FacebookLogo size={26} />}
                 />
               </Col>
             </Row>

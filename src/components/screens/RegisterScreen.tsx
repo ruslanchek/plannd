@@ -25,6 +25,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Col } from '../ui/Col';
 import { GoogleLogo } from '../ui/GoogleLogo';
 import { FullscreenLoading } from '../ui/FullscreenLoading';
+import { FacebookLogo } from '../ui/FacebookLogo';
 
 const { width, height } = Dimensions.get('window');
 
@@ -127,7 +128,7 @@ export const RegisterScreen: React.FC<
                   await authHandleFacebookLogin(navigation);
                   setLoading(false);
                 }}
-                icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
+                icon={<FacebookLogo size={26} />}
               />
             </Col>
           </Row>
