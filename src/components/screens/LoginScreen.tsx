@@ -54,6 +54,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
             <Row>
               <Col>
                 <TextInput
+                  autoCorrect={false}
                   autoCapitalize='none'
                   autoCompleteType='email'
                   keyboardType='email-address'
@@ -74,6 +75,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
             <Row>
               <Col>
                 <TextInput
+                  autoCorrect={false}
                   autoCapitalize='none'
                   autoCompleteType='password'
                   numberOfLines={1}
