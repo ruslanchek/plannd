@@ -53,7 +53,6 @@ const AuthStack = createStackNavigator(
   },
   {
     headerMode: 'none',
-    mode: 'modal',
     initialRouteName: Routes.WelcomeScreen,
   },
 );

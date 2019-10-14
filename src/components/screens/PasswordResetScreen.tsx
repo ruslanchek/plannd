@@ -27,7 +27,9 @@ export const PasswordResetScreen: React.FC<
         <ScrollView style={styles.root}>
           <KeyboardAvoidingView behavior='position' enabled>
             <Row>
-              <Text style={STYLES.H1}>{localizeText('Header::PasswordReset')}</Text>
+              <Col>
+                <Text style={STYLES.H1}>{localizeText('Header::PasswordReset')}</Text>
+              </Col>
             </Row>
 
             <Row>

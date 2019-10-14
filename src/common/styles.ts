@@ -29,4 +29,17 @@ export const STYLES = StyleSheet.create({
     fontWeight: '800',
     color: COLORS.TEXT.toString(),
   },
+
+  CENTERED: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  TEXT: {
+    color: COLORS.TEXT.toString(),
+  },
+
+  FADED_TEXT: {
+    color: COLORS.TEXT_FADED.toString(),
+  },
 });

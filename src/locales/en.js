@@ -20,9 +20,13 @@ export default {
   'Button::RequestPasswordReset': 'Request password reset',
   'Button::PasswordReset': 'Password reset',
 
+  'Button::Skip': 'Skip registration',
+
   'Social::Or': 'or',
 
   'Header::Login': 'Log In',
   'Header::Register': 'Sign Up',
   'Header::PasswordReset': 'Password reset',
+
+  'Text::WelcomePromo': 'Sign up to use your personal budget cloud for free',
 };
