@@ -9,19 +9,32 @@ import { GoogleSignin } from 'react-native-google-signin';
 
 let isGoogleAuthConfigured = false;
 
-export const authHandleRegister = async (email: string, password: string) => {
+const authorize = async (uid: string, navigation: NavigationSwitchProp) => {
+  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.UID, uid);
+  navigation.navigate(Routes.AppStack);
+};
+
+export const authHandleRegister = async (
+  email: string,
+  password: string,
+  navigation: NavigationSwitchProp,
+) => {
   try {
     const result = await auth().createUserWithEmailAndPassword(email, password);
-    console.log(result);
+    await authorize(result.user.uid, navigation);
   } catch (e) {
     Alert.alert('Register', e.message);
   }
 };
 
-export const authHandleLogIn = async (email: string, password: string) => {
+export const authHandleLogIn = async (
+  email: string,
+  password: string,
+  navigation: NavigationSwitchProp,
+) => {
   try {
     const result = await auth().signInWithEmailAndPassword(email, password);
-    console.log(result);
+    await authorize(result.user.uid, navigation);
   } catch (e) {
     Alert.alert('Login', e.message);
   }
@@ -30,24 +43,25 @@ export const authHandleLogIn = async (email: string, password: string) => {
 export const authHandleResetPassword = async (email: string) => {
   try {
     const result = await auth().sendPasswordResetEmail(email);
+    Alert.alert('Password reset', 'Check your email');
   } catch (e) {
-    Alert.alert('Login', e.message);
+    Alert.alert('Password reset', e.message);
   }
 };
 
-export const authHandleFacebookLogin = async () => {
+export const authHandleFacebookLogin = async (navigation: NavigationSwitchProp) => {
   try {
-    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+    await LoginManager.logInWithPermissions(['public_profile', 'email']);
     const data = await AccessToken.getCurrentAccessToken();
     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
     const signInData = await firebase.auth().signInWithCredential(credential);
-    console.log(result, data, signInData);
+    await authorize(signInData.user.uid, navigation);
   } catch (e) {
     Alert.alert('Facebook', e.message);
   }
 };
 
-export const authHandleGoogleLogin = async () => {
+export const authHandleGoogleLogin = async (navigation: NavigationSwitchProp) => {
   try {
     if (!isGoogleAuthConfigured) {
       await GoogleSignin.configure({
@@ -57,31 +71,29 @@ export const authHandleGoogleLogin = async () => {
 
       isGoogleAuthConfigured = true;
     }
-
     const result = await GoogleSignin.signIn();
     const credential = firebase.auth.GoogleAuthProvider.credential(
       result.idToken,
       result.serverAuthCode,
     );
     const signInData = await firebase.auth().signInWithCredential(credential);
-
-    console.log(result, signInData);
+    await authorize(signInData.user.uid, navigation);
   } catch (e) {
     Alert.alert('Google', e.message);
   }
 };
 
-export const authBootstrap = async (navigation: NavigationSwitchProp) => {
-  const userToken = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.USER_TOKEN);
-  navigation.navigate(userToken ? Routes.AppStack : Routes.AuthStack);
+export const authHandleAnonimousLogin = async (navigation: NavigationSwitchProp) => {
+  const authForDefaultApp = firebase.auth();
+  await authorize(authForDefaultApp.currentUser.uid, navigation);
 };
 
-export const authHandleMockLogin = async (navigation: NavigationSwitchProp) => {
-  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.USER_TOKEN, '123');
-  navigation.navigate(Routes.AppStack);
+export const authBootstrap = async (navigation: NavigationSwitchProp) => {
+  const uid = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID);
+  navigation.navigate(uid ? Routes.AppStack : Routes.AuthStack);
 };
 
 export const authHandleLogOut = async (navigation: NavigationSwitchProp) => {
-  await AsyncStorage.removeItem(ASYNC_STORAGE_KEYS.USER_TOKEN);
+  await AsyncStorage.removeItem(ASYNC_STORAGE_KEYS.UID);
   navigation.navigate(Routes.AuthStack);
 };

@@ -97,7 +97,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   text={localizeText('Button::Login')}
                   onPress={() => {
                     setLoading(true);
-                    authHandleLogIn(email, password);
+                    authHandleLogIn(email, password, navigation);
                     setLoading(false);
                   }}
                 />
@@ -127,7 +127,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   disabled={loading}
                   theme='facebook'
                   text={localizeText('Button::FacebookLogin')}
-                  onPress={() => authHandleFacebookLogin()}
+                  onPress={() => authHandleFacebookLogin(navigation)}
                   icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
                 />
               </Col>
@@ -139,7 +139,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   disabled={loading}
                   theme='google'
                   text={localizeText('Button::GoogleLogin')}
-                  onPress={() => authHandleGoogleLogin()}
+                  onPress={() => authHandleGoogleLogin(navigation)}
                   icon={<GoogleLogo size={26} />}
                 />
               </Col>

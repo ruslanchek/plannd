@@ -95,7 +95,7 @@ export const RegisterScreen: React.FC<
                 text={localizeText('Button::Register')}
                 onPress={() => {
                   setLoading(true);
-                  authHandleRegister(email, password);
+                  authHandleRegister(email, password, navigation);
                   setLoading(false);
                 }}
               />
@@ -114,7 +114,7 @@ export const RegisterScreen: React.FC<
                 disabled={loading}
                 theme='facebook'
                 text={localizeText('Button::FacebookRegister')}
-                onPress={() => authHandleFacebookLogin()}
+                onPress={() => authHandleFacebookLogin(navigation)}
                 icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
               />
             </Col>
@@ -126,7 +126,7 @@ export const RegisterScreen: React.FC<
                 disabled={loading}
                 theme='google'
                 text={localizeText('Button::GoogleRegister')}
-                onPress={() => authHandleGoogleLogin()}
+                onPress={() => authHandleGoogleLogin(navigation)}
                 icon={<GoogleLogo size={26} />}
               />
             </Col>

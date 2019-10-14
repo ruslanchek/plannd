@@ -14,7 +14,7 @@ export const FONT_SIZES = {
 };
 
 export const ASYNC_STORAGE_KEYS = {
-  USER_TOKEN: 'userToken',
+  UID: 'uid',
 };
 
 export const BORDER_RADIUS = {

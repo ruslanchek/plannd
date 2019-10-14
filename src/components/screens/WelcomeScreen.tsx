@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions, Text, ScrollView, SafeAreaView } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleMockLogin } from '../../helpers/authHelpers';
+import { authHandleAnonimousLogin } from '../../helpers/authHelpers';
 import { Row } from '../ui/Row';
 import { Routes as ERoutes } from '../../common/routes';
 import { BgTint } from '../ui/BgTint';
@@ -60,7 +60,7 @@ export const WelcomeScreen: React.FC<
                   <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
                     <TextButton
                       text={localizeText('Button::Skip')}
-                      onPress={() => authHandleMockLogin(navigation)}
+                      onPress={() => authHandleAnonimousLogin(navigation)}
                     />
                   </View>
                 </Col>
