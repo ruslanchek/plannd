@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleRegister, authHandleFacebookLogin } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
@@ -27,95 +27,98 @@ export const RegisterScreen: React.FC<
   return (
     <ModalShadow>
       <BgTint>
-        <KeyboardAvoidingView style={styles.root}>
-          <Text style={STYLES.H1}>{localizeText('Header::Register')}</Text>
+        <ScrollView style={styles.root}>
+          <KeyboardAvoidingView behavior='position' enabled>
+            <Row>
+              <Text style={STYLES.H1}>{localizeText('Header::Register')}</Text>
+            </Row>
 
-          <Row>
-            <Col>
-              <TextInput
-                autoFocus
-                autoCapitalize='none'
-                autoCompleteType='email'
-                keyboardType='email-address'
-                numberOfLines={1}
-                enablesReturnKeyAutomatically
-                placeholder={localizeText('InputPlaceholder::Email')}
-                placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                textContentType='emailAddress'
-                style={STYLES.INPUT}
-                value={email}
-                onChange={event => {
-                  setEmail(event.nativeEvent.text);
-                }}
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col>
+                <TextInput
+                  autoCapitalize='none'
+                  autoCompleteType='email'
+                  keyboardType='email-address'
+                  numberOfLines={1}
+                  enablesReturnKeyAutomatically
+                  placeholder={localizeText('InputPlaceholder::Email')}
+                  placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                  textContentType='emailAddress'
+                  style={STYLES.INPUT}
+                  value={email}
+                  onChange={event => {
+                    setEmail(event.nativeEvent.text);
+                  }}
+                />
+              </Col>
+            </Row>
 
-          <Row>
-            <Col>
-              <TextInput
-                autoCapitalize='none'
-                autoCompleteType='password'
-                numberOfLines={1}
-                enablesReturnKeyAutomatically
-                placeholder={localizeText('InputPlaceholder::Password')}
-                placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                textContentType='newPassword'
-                secureTextEntry
-                style={STYLES.INPUT}
-                value={password}
-                onChange={event => {
-                  setPassword(event.nativeEvent.text);
-                }}
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col>
+                <TextInput
+                  autoCapitalize='none'
+                  autoCompleteType='password'
+                  numberOfLines={1}
+                  enablesReturnKeyAutomatically
+                  placeholder={localizeText('InputPlaceholder::Password')}
+                  placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                  textContentType='newPassword'
+                  secureTextEntry
+                  style={STYLES.INPUT}
+                  value={password}
+                  onChange={event => {
+                    setPassword(event.nativeEvent.text);
+                  }}
+                />
+              </Col>
+            </Row>
 
-          <Row>
-            <Col>
-              <CustomButton
-                disabled={loading}
-                theme='accent'
-                text={localizeText('Button::Register')}
-                onPress={() => {
-                  setLoading(true);
-                  authHandleRegister(email, password);
-                  setLoading(false);
-                }}
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='accent'
+                  text={localizeText('Button::Register')}
+                  onPress={() => {
+                    setLoading(true);
+                    authHandleRegister(email, password);
+                    setLoading(false);
+                  }}
+                />
+              </Col>
+            </Row>
 
-          <Row>
-            <Col>
-              <SocialOr />
-            </Col>
-          </Row>
+            <Row>
+              <Col>
+                <SocialOr />
+              </Col>
+            </Row>
 
-          <Row>
-            <Col>
-              <CustomButton
-                disabled={loading}
-                theme='facebook'
-                text={localizeText('Button::FacebookRegister')}
-                onPress={() => authHandleFacebookLogin()}
-                icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='facebook'
+                  text={localizeText('Button::FacebookRegister')}
+                  onPress={() => authHandleFacebookLogin()}
+                  icon={<Icon name='facebook' size={26} color={COLORS.FACEBOOK.toString()} />}
+                />
+              </Col>
+            </Row>
 
-          <Row>
-            <Col>
-              <CustomButton
-                disabled={loading}
-                theme='twitter'
-                text={localizeText('Button::TwitterRegister')}
-                onPress={() => {}}
-                icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
-              />
-            </Col>
-          </Row>
-        </KeyboardAvoidingView>
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='twitter'
+                  text={localizeText('Button::TwitterRegister')}
+                  onPress={() => {}}
+                  icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
+                />
+              </Col>
+            </Row>
+          </KeyboardAvoidingView>
+        </ScrollView>
       </BgTint>
     </ModalShadow>
   );

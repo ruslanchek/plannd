@@ -1,8 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { NavigationSwitchScreenProps } from 'react-navigation';
+import { NavigationSwitchScreenProps, ScrollView } from 'react-navigation';
 import { authHandleMockLogin } from '../../helpers/authHelpers';
-import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
 import { Routes as ERoutes } from '../../common/routes';
 import { BgTint } from '../ui/BgTint';
@@ -11,6 +10,7 @@ import { CustomButton } from '../ui/CustomButton';
 import { localizeText } from '../../helpers/localeHelpers';
 import { Col } from '../ui/Col';
 import { WelcomeSlider } from '../ui/WelcomeSlider';
+import { PADDING } from '../../common/constants';
 
 export interface ISettingsScreenParams {}
 
@@ -24,6 +24,7 @@ export const WelcomeScreen: React.FC<
       <Row>
         <WelcomeSlider />
       </Row>
+
       <View style={styles.root}>
         <Row>
           <Col>

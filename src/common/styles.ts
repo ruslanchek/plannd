@@ -27,7 +27,6 @@ export const STYLES = StyleSheet.create({
   H1: {
     fontSize: FONT_SIZES.LARGE,
     fontWeight: '800',
-    marginBottom: PADDING.MEDUIM,
     color: COLORS.TEXT.toString(),
   },
 });

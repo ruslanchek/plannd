@@ -1,12 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, Dimensions } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  Dimensions,
+  ImageRequireSource,
+} from 'react-native';
 import { PADDING } from '../../common/constants';
 import { STYLES } from '../../common/styles';
 
 interface IData {
   id: number;
   title: string;
-  image: string;
+  image: ImageRequireSource;
 }
 
 const DATA: IData[] = [
@@ -53,8 +61,10 @@ export const WelcomeSlider: React.FC = props => {
       renderItem={({ item, index }) => {
         return (
           <View style={styles.item}>
-            <Text style={STYLES.H1}>{item.title}</Text>
-            <Image source={{ uri: item.image }} />
+            <View style={styles.header}>
+              <Text style={STYLES.H1}>{item.title}</Text>
+            </View>
+            <Image style={styles.itemImage} resizeMode='contain' source={item.image} />
           </View>
         );
       }}
@@ -77,5 +87,10 @@ const styles = StyleSheet.create({
   itemImage: {
     width,
     height: width,
+  },
+
+  header: {
+    paddingTop: PADDING.MEDUIM,
+    paddingHorizontal: PADDING.MEDUIM,
   },
 });

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
-import { NavigationSwitchScreenProps } from 'react-navigation';
+import { NavigationSwitchScreenProps, ScrollView } from 'react-navigation';
 import { authHandleResetPassword } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
@@ -24,44 +24,48 @@ export const PasswordResetScreen: React.FC<
   return (
     <ModalShadow>
       <BgTint>
-        <KeyboardAvoidingView style={styles.root}>
-          <Text style={STYLES.H1}>{localizeText('Header::PasswordReset')}</Text>
-          <Row>
-            <Col>
-              <TextInput
-                autoFocus
-                autoCapitalize='none'
-                autoCompleteType='email'
-                keyboardType='email-address'
-                numberOfLines={1}
-                enablesReturnKeyAutomatically
-                placeholder={localizeText('InputPlaceholder::Email')}
-                placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                textContentType='emailAddress'
-                style={STYLES.INPUT}
-                value={email}
-                onChange={event => {
-                  setEmail(event.nativeEvent.text);
-                }}
-              />
-            </Col>
-          </Row>
+        <ScrollView style={styles.root}>
+          <KeyboardAvoidingView behavior='position' enabled>
+            <Row>
+              <Text style={STYLES.H1}>{localizeText('Header::PasswordReset')}</Text>
+            </Row>
 
-          <Row>
-            <Col>
-              <CustomButton
-                disabled={loading}
-                theme='accent'
-                text={localizeText('Button::RequestPasswordReset')}
-                onPress={() => {
-                  setLoading(true);
-                  authHandleResetPassword(email);
-                  setLoading(false);
-                }}
-              />
-            </Col>
-          </Row>
-        </KeyboardAvoidingView>
+            <Row>
+              <Col>
+                <TextInput
+                  autoCapitalize='none'
+                  autoCompleteType='email'
+                  keyboardType='email-address'
+                  numberOfLines={1}
+                  enablesReturnKeyAutomatically
+                  placeholder={localizeText('InputPlaceholder::Email')}
+                  placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                  textContentType='emailAddress'
+                  style={STYLES.INPUT}
+                  value={email}
+                  onChange={event => {
+                    setEmail(event.nativeEvent.text);
+                  }}
+                />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='accent'
+                  text={localizeText('Button::RequestPasswordReset')}
+                  onPress={() => {
+                    setLoading(true);
+                    authHandleResetPassword(email);
+                    setLoading(false);
+                  }}
+                />
+              </Col>
+            </Row>
+          </KeyboardAvoidingView>
+        </ScrollView>
       </BgTint>
     </ModalShadow>
   );
@@ -69,8 +73,7 @@ export const PasswordResetScreen: React.FC<
 
 const styles = StyleSheet.create({
   root: {
-    paddingHorizontal: PADDING.MEDUIM,
-    paddingBottom: PADDING.MEDUIM,
+    padding: PADDING.MEDUIM,
   },
   centerButton: {
     flexDirection: 'row',
