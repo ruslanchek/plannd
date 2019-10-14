@@ -22,7 +22,7 @@ export const WelcomeScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
   const { navigation } = props;
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
     <BgTint>

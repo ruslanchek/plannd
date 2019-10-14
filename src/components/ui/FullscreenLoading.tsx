@@ -17,8 +17,9 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: COLORS.ELEMENT_BG.toString(),
+    backgroundColor: COLORS.ELEMENT_BG.alpha(0.75).toString(),
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 100,
   },
 });
