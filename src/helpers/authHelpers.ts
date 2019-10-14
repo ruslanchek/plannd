@@ -30,7 +30,6 @@ export const authHandleLogIn = async (email: string, password: string) => {
 export const authHandleResetPassword = async (email: string) => {
   try {
     const result = await auth().sendPasswordResetEmail(email);
-    console.log(result);
   } catch (e) {
     Alert.alert('Login', e.message);
   }
@@ -52,7 +51,7 @@ export const authHandleGoogleLogin = async () => {
   try {
     if (!isGoogleAuthConfigured) {
       await GoogleSignin.configure({
-        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+        scopes: [],
         webClientId: '786103925332-uhnh4p7u4i07joqlanbc3btjpbkl84t8.apps.googleusercontent.com',
       });
 
