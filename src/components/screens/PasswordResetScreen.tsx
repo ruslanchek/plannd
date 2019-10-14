@@ -35,6 +35,7 @@ export const PasswordResetScreen: React.FC<
           <Row>
             <Col>
               <TextInput
+                autoCorrect={false}
                 autoCapitalize='none'
                 autoCompleteType='email'
                 keyboardType='email-address'
