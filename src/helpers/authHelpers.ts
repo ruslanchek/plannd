@@ -8,10 +8,20 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import { GoogleSignin } from 'react-native-google-signin';
 
 let isGoogleAuthConfigured = false;
+let currentUid: string | undefined = undefined;
 
 const authorize = async (uid: string, navigation: NavigationSwitchProp) => {
   await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.UID, uid);
+  currentUid = uid;
   navigation.navigate(Routes.AppStack);
+};
+
+export const getUid = async (): Promise<string | undefined> => {
+  if (currentUid) {
+    return currentUid;
+  }
+  currentUid = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID);
+  return currentUid;
 };
 
 export const authHandleRegister = async (
@@ -89,11 +99,12 @@ export const authHandleAnonimousLogin = async (navigation: NavigationSwitchProp)
 };
 
 export const authBootstrap = async (navigation: NavigationSwitchProp) => {
-  const uid = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID);
+  const uid = await getUid();
   navigation.navigate(uid ? Routes.AppStack : Routes.AuthStack);
 };
 
 export const authHandleLogOut = async (navigation: NavigationSwitchProp) => {
   await AsyncStorage.removeItem(ASYNC_STORAGE_KEYS.UID);
+  currentUid = undefined;
   navigation.navigate(Routes.AuthStack);
 };
