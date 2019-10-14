@@ -73,6 +73,7 @@ export const RegisterScreen: React.FC<
           <Row>
             <Col>
               <TextInput
+                autoCorrect={false}
                 autoCapitalize='none'
                 autoCompleteType='password'
                 numberOfLines={1}
