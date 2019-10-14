@@ -66,7 +66,7 @@ const themedRootStyles = StyleSheet.create({
   },
 
   google: {
-    backgroundColor: COLORS.GOOGLE.alpha(0.125).toString(),
+    backgroundColor: COLORS.GOOGLE.alpha(0.07).toString(),
   },
 });
 

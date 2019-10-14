@@ -38,6 +38,12 @@ export const RegisterScreen: React.FC<
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async () => {
+    setLoading(true);
+    await authHandleRegister(email, password, navigation);
+    setLoading(false);
+  };
+
   return (
     <BgTint>
       {loading && <FullscreenLoading />}
@@ -63,6 +69,7 @@ export const RegisterScreen: React.FC<
                 textContentType='emailAddress'
                 style={STYLES.INPUT}
                 value={email}
+                onSubmitEditing={handleSubmit}
                 onChange={event => {
                   setEmail(event.nativeEvent.text);
                 }}
@@ -84,6 +91,7 @@ export const RegisterScreen: React.FC<
                 secureTextEntry
                 style={STYLES.INPUT}
                 value={password}
+                onSubmitEditing={handleSubmit}
                 onChange={event => {
                   setPassword(event.nativeEvent.text);
                 }}
@@ -97,11 +105,7 @@ export const RegisterScreen: React.FC<
                 disabled={loading}
                 theme='accent'
                 text={localizeText('Button::Register')}
-                onPress={async () => {
-                  setLoading(true);
-                  await authHandleRegister(email, password, navigation);
-                  setLoading(false);
-                }}
+                onPress={handleSubmit}
               />
             </Col>
           </Row>

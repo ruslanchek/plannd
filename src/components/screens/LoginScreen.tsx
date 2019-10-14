@@ -39,6 +39,12 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async () => {
+    setLoading(true);
+    await authHandleLogIn(email, password, navigation);
+    setLoading(false);
+  };
+
   return (
     <BgTint>
       {loading && <FullscreenLoading />}
@@ -65,6 +71,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   textContentType='emailAddress'
                   style={STYLES.INPUT}
                   value={email}
+                  onSubmitEditing={handleSubmit}
                   onChange={event => {
                     setEmail(event.nativeEvent.text);
                   }}
@@ -86,6 +93,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   secureTextEntry
                   style={STYLES.INPUT}
                   value={password}
+                  onSubmitEditing={handleSubmit}
                   onChange={event => {
                     setPassword(event.nativeEvent.text);
                   }}
@@ -99,11 +107,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
                   disabled={loading}
                   theme='accent'
                   text={localizeText('Button::Login')}
-                  onPress={async () => {
-                    setLoading(true);
-                    await authHandleLogIn(email, password, navigation);
-                    setLoading(false);
-                  }}
+                  onPress={handleSubmit}
                 />
               </Col>
             </Row>

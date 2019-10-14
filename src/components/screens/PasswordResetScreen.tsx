@@ -22,6 +22,12 @@ export const PasswordResetScreen: React.FC<
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async () => {
+    setLoading(true);
+    await authHandleResetPassword(email);
+    setLoading(false);
+  };
+
   return (
     <BgTint>
       <ScrollView style={[styles.root, { width, height }]}>
@@ -49,6 +55,7 @@ export const PasswordResetScreen: React.FC<
                 onChange={event => {
                   setEmail(event.nativeEvent.text);
                 }}
+                onSubmitEditing={handleSubmit}
               />
             </Col>
           </Row>
@@ -59,11 +66,7 @@ export const PasswordResetScreen: React.FC<
                 disabled={loading}
                 theme='accent'
                 text={localizeText('Button::RequestPasswordReset')}
-                onPress={() => {
-                  setLoading(true);
-                  authHandleResetPassword(email);
-                  setLoading(false);
-                }}
+                onPress={handleSubmit}
               />
             </Col>
           </Row>
