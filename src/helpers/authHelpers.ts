@@ -1,11 +1,13 @@
+import auth, { firebase } from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ASYNC_STORAGE_KEYS } from '../common/constants';
 import { Routes } from '../common/routes';
 import { NavigationSwitchProp } from 'react-navigation';
-import auth, { firebase } from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
-import { LoginManager } from 'react-native-fbsdk';
-import { AccessToken } from 'react-native-fbsdk';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { GoogleSignin } from 'react-native-google-signin';
+
+let isGoogleAuthConfigured = false;
 
 export const authHandleRegister = async (email: string, password: string) => {
   try {
@@ -40,9 +42,33 @@ export const authHandleFacebookLogin = async () => {
     const data = await AccessToken.getCurrentAccessToken();
     const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
     const signInData = await firebase.auth().signInWithCredential(credential);
-    console.log(result, data, credential, signInData);
+    console.log(result, data, signInData);
   } catch (e) {
     Alert.alert('Facebook', e.message);
+  }
+};
+
+export const authHandleGoogleLogin = async () => {
+  try {
+    if (!isGoogleAuthConfigured) {
+      await GoogleSignin.configure({
+        scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+        webClientId: '786103925332-uhnh4p7u4i07joqlanbc3btjpbkl84t8.apps.googleusercontent.com',
+      });
+
+      isGoogleAuthConfigured = true;
+    }
+
+    const result = await GoogleSignin.signIn();
+    const credential = firebase.auth.GoogleAuthProvider.credential(
+      result.idToken,
+      result.serverAuthCode,
+    );
+    const signInData = await firebase.auth().signInWithCredential(credential);
+
+    console.log(result, signInData);
+  } catch (e) {
+    Alert.alert('Google', e.message);
   }
 };
 

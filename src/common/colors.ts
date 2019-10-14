@@ -17,6 +17,7 @@ interface IColors {
 
   FACEBOOK: Color;
   TWITTER: Color;
+  GOOGLE: Color;
 }
 
 export const THEME_LIGHT: IColors = {
@@ -36,6 +37,7 @@ export const THEME_LIGHT: IColors = {
 
   FACEBOOK: Color('#1977F3'),
   TWITTER: Color('#1DA1F2'),
+  GOOGLE: Color('#767676'),
 };
 
 export let COLORS: IColors = THEME_LIGHT;

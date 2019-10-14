@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING } from '../../common/constants';
 
 interface IProps {
-  theme: 'default' | 'accent' | 'facebook' | 'twitter';
+  theme: 'default' | 'accent' | 'facebook' | 'twitter' | 'google';
   text: string;
   onPress: () => void;
   icon?: React.ReactNode;
@@ -41,6 +41,10 @@ const themedTextStyles = StyleSheet.create({
   twitter: {
     color: COLORS.TWITTER.toString(),
   },
+
+  google: {
+    color: COLORS.GOOGLE.toString(),
+  },
 });
 
 const themedRootStyles = StyleSheet.create({
@@ -59,6 +63,10 @@ const themedRootStyles = StyleSheet.create({
 
   twitter: {
     backgroundColor: COLORS.TWITTER.alpha(0.125).toString(),
+  },
+
+  google: {
+    backgroundColor: COLORS.GOOGLE.alpha(0.125).toString(),
   },
 });
 

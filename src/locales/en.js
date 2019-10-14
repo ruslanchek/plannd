@@ -17,6 +17,9 @@ export default {
   'Button::TwitterRegister': 'Sign up with Twitter',
   'Button::TwitterLogin': 'Log in with Twitter',
 
+  'Button::GoogleRegister': 'Sign up with Google',
+  'Button::GoogleLogin': 'Log in with Google',
+
   'Button::RequestPasswordReset': 'Request password reset',
   'Button::PasswordReset': 'Password reset',
 

@@ -8,7 +8,11 @@ import {
   Dimensions,
 } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleRegister, authHandleFacebookLogin } from '../../helpers/authHelpers';
+import {
+  authHandleRegister,
+  authHandleFacebookLogin,
+  authHandleGoogleLogin,
+} from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
@@ -19,6 +23,7 @@ import { BgTint } from '../ui/BgTint';
 import { SocialOr } from '../ui/SocialOr';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Col } from '../ui/Col';
+import { GoogleLogo } from '../ui/GoogleLogo';
 
 const { width, height } = Dimensions.get('window');
 
@@ -119,10 +124,10 @@ export const RegisterScreen: React.FC<
             <Col>
               <CustomButton
                 disabled={loading}
-                theme='twitter'
-                text={localizeText('Button::TwitterRegister')}
-                onPress={() => {}}
-                icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
+                theme='google'
+                text={localizeText('Button::GoogleRegister')}
+                onPress={() => authHandleGoogleLogin()}
+                icon={<GoogleLogo size={26} />}
               />
             </Col>
           </Row>

@@ -9,7 +9,11 @@ import {
   Dimensions,
 } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleLogIn, authHandleFacebookLogin } from '../../helpers/authHelpers';
+import {
+  authHandleLogIn,
+  authHandleFacebookLogin,
+  authHandleGoogleLogin,
+} from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
 import { PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
@@ -22,6 +26,7 @@ import { TextButton } from '../ui/TextButton';
 import { Routes } from '../../common/routes';
 import { Col } from '../ui/Col';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { GoogleLogo } from '../ui/GoogleLogo';
 
 export interface ISettingsScreenParams {}
 
@@ -132,10 +137,10 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
               <Col>
                 <CustomButton
                   disabled={loading}
-                  theme='twitter'
-                  text={localizeText('Button::TwitterLogin')}
-                  onPress={() => {}}
-                  icon={<Icon name='twitter' size={26} color={COLORS.TWITTER.toString()} />}
+                  theme='google'
+                  text={localizeText('Button::GoogleLogin')}
+                  onPress={() => authHandleGoogleLogin()}
+                  icon={<GoogleLogo size={26} />}
                 />
               </Col>
             </Row>
