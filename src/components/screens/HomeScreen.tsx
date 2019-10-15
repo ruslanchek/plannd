@@ -1,36 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, RefreshControl, View } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
-import { authHandleLogOut, getUid } from '../../helpers/authHelpers';
 import { BgTint } from '../ui/BgTint';
+import { ScrollView } from 'react-native-gesture-handler';
+import { COLORS } from '../../common/colors';
 
 export interface ISettingsScreenParams {}
 
 export const HomeScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenParams>> = props => {
   const { navigation } = props;
-  const [uid, setUid] = useState('Fetching...');
-
-  useEffect(() => {
-    (async () => {
-      setUid(await getUid());
-    })();
-  }, []);
+  const [refreshing, setRefreshing] = useState(false);
 
   return (
     <BgTint>
-      <View style={styles.root}>
-        <Text>HomeScreen</Text>
-        <Button title='Logout' onPress={() => authHandleLogOut(navigation)}></Button>
-        <Text>UID: {uid}</Text>
-      </View>
+      <ScrollView style={styles.root}>
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={() => {
+            setRefreshing(true);
+            setTimeout(() => {
+              setRefreshing(false);
+            }, 2000);
+          }}
+          progressBackgroundColor={COLORS.TEXT_FADED.toString()}
+        />
+        <View></View>
+      </ScrollView>
     </BgTint>
   );
 };
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  root: {},
 });
