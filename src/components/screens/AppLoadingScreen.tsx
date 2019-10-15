@@ -3,6 +3,7 @@ import { StyleSheet, View, ActivityIndicator, StatusBar } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authBootstrap } from '../../helpers/authHelpers';
 import { BgTint } from '../ui/BgTint';
+import { COLORS } from '../../common/colors';
 
 export interface ISettingsScreenParams {}
 
@@ -16,7 +17,7 @@ export const AppLoadingScreen: React.FC<
   return (
     <BgTint>
       <View style={styles.root}>
-        <ActivityIndicator />
+        <ActivityIndicator color={COLORS.TEXT_FADED.toString()} size='large' />
       </View>
     </BgTint>
   );

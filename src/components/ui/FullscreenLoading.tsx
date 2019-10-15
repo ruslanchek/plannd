@@ -5,7 +5,7 @@ import { COLORS } from '../../common/colors';
 export const FullscreenLoading: React.FC = () => {
   return (
     <View style={styles.root}>
-      <ActivityIndicator color={COLORS.ACCENT.toString()} size='large' />
+      <ActivityIndicator color={COLORS.TEXT_FADED.toString()} size='large' />
     </View>
   );
 };
