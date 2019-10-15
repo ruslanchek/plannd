@@ -50,8 +50,7 @@ const DATA: IData[] = [
 
 const { width } = Dimensions.get('window');
 
-export const WelcomeSlider: React.FC = props => {
-  const { children } = props;
+export const WelcomeSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const onViewableItemsChanged = useRef(({ viewableItems }) => {
     if (viewableItems.length === 1) {
