@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, RefreshControl, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, RefreshControl } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { BgTint } from '../ui/BgTint';
 import { ScrollView } from 'react-native-gesture-handler';
 import { COLORS } from '../../common/colors';
+import { TotalBalance } from '../ui/TotalBalance';
+import { ContainerPadding } from '../ui/ContainerPadding';
+import { AccountCard } from '../ui/AccountCard';
+import { Row } from '../ui/Row';
+import { Col } from '../ui/Col';
 
 export interface ISettingsScreenParams {}
 
@@ -24,7 +29,20 @@ export const HomeScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPar
           }}
           progressBackgroundColor={COLORS.TEXT_FADED.toString()}
         />
-        <View></View>
+        <Row>
+          <Col>
+            <ContainerPadding>
+              <TotalBalance />
+            </ContainerPadding>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <ContainerPadding>
+              <AccountCard />
+            </ContainerPadding>
+          </Col>
+        </Row>
       </ScrollView>
     </BgTint>
   );

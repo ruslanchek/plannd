@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from './colors';
-import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES } from './constants';
+import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES, SHADOWS } from './constants';
 
 export const STYLES = StyleSheet.create({
   INPUT: {
@@ -11,13 +11,7 @@ export const STYLES = StyleSheet.create({
     fontSize: FONT_SIZES.MEDIUM,
     color: COLORS.TEXT.toString(),
     fontWeight: '600',
-    shadowColor: COLORS.TEXT_FADED.toString(),
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    shadowOffset: {
-      height: 2,
-      width: 0,
-    },
+    ...SHADOWS.ELEVATION_1,
   },
 
   SMALL_BUTTON: {
@@ -45,5 +39,10 @@ export const STYLES = StyleSheet.create({
 
   CENTERED_TEXT: {
     textAlign: 'center',
+  },
+
+  SUBTITLE: {
+    fontSize: FONT_SIZES.REGULAR,
+    color: COLORS.TEXT_FADED.toString(),
   },
 });

@@ -8,7 +8,7 @@ import {
   Dimensions,
   ImageRequireSource,
 } from 'react-native';
-import { PADDING, BORDER_RADIUS } from '../../common/constants';
+import { PADDING, BORDER_RADIUS, SHADOWS } from '../../common/constants';
 import { STYLES } from '../../common/styles';
 import { Row } from './Row';
 import { Col } from './Col';
@@ -102,13 +102,7 @@ const styles = StyleSheet.create({
     padding: PADDING.MEDUIM,
     backgroundColor: COLORS.WHITE.toString(),
     borderRadius: BORDER_RADIUS.LARGE,
-    shadowColor: COLORS.TEXT_FADED.toString(),
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    shadowOffset: {
-      height: 5,
-      width: 0,
-    },
+    ...SHADOWS.ELEVATION_2,
   },
 
   itemImage: {

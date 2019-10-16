@@ -30,7 +30,7 @@ export const THEME_LIGHT: IColors = {
   ELEMENT_STROKE: Color('#F1F1F6'),
 
   TEXT: Color('#262953'),
-  TEXT_FADED: Color('#9597AB'),
+  TEXT_FADED: Color('#9294AC'),
   TEXT_PLACEHOLDER: Color('#B8BAC8'),
 
   ACCENT: Color('#2374FE'),
