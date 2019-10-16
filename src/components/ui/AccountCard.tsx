@@ -1,27 +1,24 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { PADDING, BORDER_RADIUS, FONT_SIZES } from '../../common/constants';
+import { View, StyleSheet, Text, Alert } from 'react-native';
+import { PADDING, BORDER_RADIUS, FONT_SIZES, SHADOWS } from '../../common/constants';
 import { COLORS } from '../../common/colors';
+import { Chart } from './Chart';
 
 export const AccountCard: React.FC = props => {
   return (
     <View style={styles.root}>
-      <View>
-        <Text style={styles.title}>Hellenic Bank</Text>
-        <Text style={styles.amount}>2,990.00</Text>
-      </View>
+      <Text style={styles.title}>Hellenic Bank</Text>
+      <Text style={styles.amount}>$100,990,923.12</Text>
+      <Chart />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    padding: PADDING.MEDUIM,
+    padding: PADDING.REGULAR,
     backgroundColor: COLORS.ACCENT.toString(),
     borderRadius: BORDER_RADIUS.LARGE,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
 
   title: {
@@ -32,7 +29,7 @@ const styles = StyleSheet.create({
   amount: {
     marginTop: 4,
     color: COLORS.WHITE.toString(),
-    fontSize: FONT_SIZES.SEMI_LARGE,
+    fontSize: FONT_SIZES.MEDIUM,
     fontWeight: '800',
   },
 });
