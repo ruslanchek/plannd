@@ -11,17 +11,25 @@ let isGoogleAuthConfigured = false;
 let currentUid: string | undefined = undefined;
 
 const authorize = async (uid: string, navigation: NavigationSwitchProp) => {
-  await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.UID, uid);
-  currentUid = uid;
-  navigation.navigate(Routes.AppStack);
+  try {
+    await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.UID, uid);
+    currentUid = uid;
+    navigation.navigate(Routes.AppStack);
+  } catch (e) {
+    Alert.alert('Authorize', e.message);
+  }
 };
 
 export const getUid = async (): Promise<string | undefined> => {
-  if (currentUid) {
+  try {
+    if (currentUid) {
+      return currentUid;
+    }
+    currentUid = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID);
     return currentUid;
+  } catch (e) {
+    return undefined;
   }
-  currentUid = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID);
-  return currentUid;
 };
 
 export const authHandleRegister = async (
@@ -52,7 +60,7 @@ export const authHandleLogIn = async (
 
 export const authHandleResetPassword = async (email: string) => {
   try {
-    const result = await auth().sendPasswordResetEmail(email);
+    await auth().sendPasswordResetEmail(email);
     Alert.alert('Password reset', 'Check your email');
   } catch (e) {
     Alert.alert('Password reset', e.message);
@@ -94,8 +102,12 @@ export const authHandleGoogleLogin = async (navigation: NavigationSwitchProp) =>
 };
 
 export const authHandleAnonimousLogin = async (navigation: NavigationSwitchProp) => {
-  const authForDefaultApp = firebase.auth();
-  await authorize(authForDefaultApp.currentUser.uid, navigation);
+  try {
+    const result = await firebase.auth().signInAnonymously();
+    await authorize(result.user.uid, navigation);
+  } catch (e) {
+    Alert.alert('Authorize Anonimous', e.message);
+  }
 };
 
 export const authBootstrap = async (navigation: NavigationSwitchProp) => {
@@ -104,7 +116,11 @@ export const authBootstrap = async (navigation: NavigationSwitchProp) => {
 };
 
 export const authHandleLogOut = async (navigation: NavigationSwitchProp) => {
-  await AsyncStorage.removeItem(ASYNC_STORAGE_KEYS.UID);
-  currentUid = undefined;
-  navigation.navigate(Routes.AuthStack);
+  try {
+    await AsyncStorage.removeItem(ASYNC_STORAGE_KEYS.UID);
+    currentUid = undefined;
+    navigation.navigate(Routes.AuthStack);
+  } catch (e) {
+    Alert.alert('Logout', e.message);
+  }
 };
