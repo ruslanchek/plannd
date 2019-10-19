@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   amount: {
     marginTop: 4,
     color: COLORS.WHITE.toString(),
-    fontSize: FONT_SIZES.MEDIUM,
+    fontSize: FONT_SIZES.SEMI_LARGE,
     fontWeight: '800',
   },
 });
