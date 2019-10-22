@@ -4,8 +4,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { TabBar } from './src/components/ui/TabBar';
-import { TabBarIcon } from './src/components/ui/TabBarIcon';
-import { TabBarLabel } from './src/components/ui/TabBarLabel';
 import { HomeScreen } from './src/components/screens/HomeScreen';
 import { SettingsScreen } from './src/components/screens/SettingsScreen';
 import { ERoutes } from './src/common/routes';
@@ -18,6 +16,7 @@ import { StatusBar } from 'react-native';
 import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
 import { RegisterScreen } from './src/components/screens/RegisterScreen';
 import { PasswordResetScreen } from './src/components/screens/PasswordResetScreen';
+import { AddTransactionModal } from './src/components/screens/AddTransactionModal';
 
 const AppStack = createBottomTabNavigator(
   {
@@ -53,6 +52,7 @@ const Navigation = createAppContainer(
       [ERoutes.AppLoadingScreen]: AppLoadingScreen,
       [ERoutes.AuthStack]: AuthStack,
       [ERoutes.AppStack]: AppStack,
+      [ERoutes.AddTransactionModal]: AddTransactionModal,
     },
     {
       initialRouteName: ERoutes.AppLoadingScreen,

@@ -14,7 +14,7 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
 
   useEffect(() => {
     const animatedPlusRoute =
-      navigation.state.routes[navigation.state.index].routeName === ERoutes.TargetsScreen;
+      navigation.state.routes[navigation.state.index].routeName === ERoutes.AddTransactionModal;
 
     Animated.spring(animatedPlusValue.current, {
       toValue: animatedPlusRoute ? 1 : 0,
@@ -30,7 +30,7 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
 
         <View style={styles.center}>
           <TouchableHighlight
-            onPress={() => {}}
+            onPress={() => navigation.navigate(ERoutes.AddTransactionModal)}
             underlayColor={COLORS.ACCENT.darken(0.2).toString()}
             style={styles.plus}>
             <Animated.View
