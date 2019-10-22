@@ -5,29 +5,21 @@ import { FONT_SIZES } from '../../common/constants';
 import { localizeText } from '../../helpers/localeHelpers';
 
 interface IProps {
-  focused: boolean;
   routeName: string;
-  tintColor?: string;
-  horizontal?: boolean;
+  tintColor: string;
 }
 
 export const TabBarLabel: React.FC<IProps> = props => {
-  const { focused, routeName } = props;
+  const { tintColor, routeName } = props;
 
   return (
-    <Text style={[styles.root, focused ? styles.rootFocused : null]}>
-      {localizeText(`TabBar::${routeName}`)}
-    </Text>
+    <Text style={[styles.root, { color: tintColor }]}>{localizeText(`TabBar::${routeName}`)}</Text>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    color: COLORS.TEXT_FADED.toString(),
     fontSize: FONT_SIZES.TINY,
-  },
-
-  rootFocused: {
-    color: COLORS.ACCENT.toString(),
+    marginTop: 4,
   },
 });

@@ -1,32 +1,29 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../common/colors';
-import { Routes } from '../../common/routes';
+import { ERoutes } from '../../common/routes';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ELEMENT_SIZES } from '../../common/constants';
 
 interface IProps {
-  focused: boolean;
   routeName: string;
-  tintColor?: string;
-  horizontal?: boolean;
+  tintColor: string;
 }
 
 const ICON_NAMES = {
-  [Routes.HomeScreen]: 'wallet',
-  [Routes.TransactionsScreen]: 'clipboard-list',
-  [Routes.TargetsScreen]: 'bullseye',
-  [Routes.StatisticsScreen]: 'signal',
-  [Routes.SettingsScreen]: 'cog',
+  [ERoutes.HomeScreen]: 'wallet',
+  [ERoutes.TransactionsScreen]: 'clipboard-list',
+  [ERoutes.TargetsScreen]: 'bullseye',
+  [ERoutes.StatisticsScreen]: 'signal',
+  [ERoutes.SettingsScreen]: 'cog',
 };
 
 export const TabBarIcon: React.FC<IProps> = props => {
-  const { focused, routeName } = props;
-  const iconColor = focused ? COLORS.ACCENT.toString() : COLORS.TEXT_FADED.toString();
+  const { tintColor, routeName } = props;
 
   return (
     <View style={styles.root}>
-      <Icon name={ICON_NAMES[routeName]} size={ELEMENT_SIZES.TAB_BAR_ICON_SIZE} color={iconColor} />
+      <Icon name={ICON_NAMES[routeName]} size={ELEMENT_SIZES.TAB_BAR_ICON_SIZE} color={tintColor} />
     </View>
   );
 };

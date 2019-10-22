@@ -3,7 +3,7 @@ import { StyleSheet, View, Dimensions, Text, ScrollView } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleAnonimousLogin } from '../../helpers/authHelpers';
 import { Row } from '../ui/Row';
-import { Routes as ERoutes } from '../../common/routes';
+import { ERoutes as ERoutes } from '../../common/routes';
 import { BgTint } from '../ui/BgTint';
 import { TextButton } from '../ui/TextButton';
 import { CustomButton } from '../ui/CustomButton';

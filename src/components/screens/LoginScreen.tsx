@@ -23,7 +23,7 @@ import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
 import { SocialOr } from '../ui/SocialOr';
 import { TextButton } from '../ui/TextButton';
-import { Routes } from '../../common/routes';
+import { ERoutes } from '../../common/routes';
 import { Col } from '../ui/Col';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { GoogleLogo } from '../ui/GoogleLogo';
@@ -117,7 +117,7 @@ export const LoginScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenPa
               <Col>
                 <View style={STYLES.CENTERED}>
                   <TextButton
-                    onPress={() => navigation.navigate(Routes.PasswordResetScreen)}
+                    onPress={() => navigation.navigate(ERoutes.PasswordResetScreen)}
                     text={localizeText('Button::PasswordReset')}
                   />
                 </View>

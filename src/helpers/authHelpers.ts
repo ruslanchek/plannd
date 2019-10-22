@@ -1,7 +1,7 @@
 import auth, { firebase } from '@react-native-firebase/auth';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ASYNC_STORAGE_KEYS } from '../common/constants';
-import { Routes } from '../common/routes';
+import { ERoutes } from '../common/routes';
 import { NavigationSwitchProp } from 'react-navigation';
 import { Alert } from 'react-native';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
@@ -14,7 +14,7 @@ const authorize = async (uid: string, navigation: NavigationSwitchProp) => {
   try {
     await AsyncStorage.setItem(ASYNC_STORAGE_KEYS.UID, uid);
     currentUid = uid;
-    navigation.navigate(Routes.AppStack);
+    navigation.navigate(ERoutes.AppStack);
   } catch (e) {
     Alert.alert('Authorize', e.message);
   }
@@ -112,14 +112,14 @@ export const authHandleAnonimousLogin = async (navigation: NavigationSwitchProp)
 
 export const authBootstrap = async (navigation: NavigationSwitchProp) => {
   const uid = await getUid();
-  navigation.navigate(uid ? Routes.AppStack : Routes.AuthStack);
+  navigation.navigate(uid ? ERoutes.AppStack : ERoutes.AuthStack);
 };
 
 export const authHandleLogOut = async (navigation: NavigationSwitchProp) => {
   try {
     await AsyncStorage.removeItem(ASYNC_STORAGE_KEYS.UID);
     currentUid = undefined;
-    navigation.navigate(Routes.AuthStack);
+    navigation.navigate(ERoutes.AuthStack);
   } catch (e) {
     Alert.alert('Logout', e.message);
   }

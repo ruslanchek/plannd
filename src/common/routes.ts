@@ -1,4 +1,4 @@
-export enum Routes {
+export enum ERoutes {
   AppStack = 'AppStack',
   AuthStack = 'AuthStack',
   AppLoadingScreen = 'AppLoadingScreen',

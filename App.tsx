@@ -8,7 +8,7 @@ import { TabBarIcon } from './src/components/ui/TabBarIcon';
 import { TabBarLabel } from './src/components/ui/TabBarLabel';
 import { HomeScreen } from './src/components/screens/HomeScreen';
 import { SettingsScreen } from './src/components/screens/SettingsScreen';
-import { Routes } from './src/common/routes';
+import { ERoutes } from './src/common/routes';
 import { AppLoadingScreen } from './src/components/screens/AppLoadingScreen';
 import { LoginScreen } from './src/components/screens/LoginScreen';
 import { TransactionsScreen } from './src/components/screens/TransactionsScreen';
@@ -21,51 +21,41 @@ import { PasswordResetScreen } from './src/components/screens/PasswordResetScree
 
 const AppStack = createBottomTabNavigator(
   {
-    [Routes.HomeScreen]: HomeScreen,
-    [Routes.TransactionsScreen]: TransactionsScreen,
-    [Routes.TargetsScreen]: TargetsScreen,
-    [Routes.StatisticsScreen]: StatisticsScreen,
-    [Routes.SettingsScreen]: SettingsScreen,
+    [ERoutes.HomeScreen]: HomeScreen,
+    [ERoutes.TransactionsScreen]: TransactionsScreen,
+    [ERoutes.TargetsScreen]: TargetsScreen,
+    [ERoutes.StatisticsScreen]: StatisticsScreen,
+    [ERoutes.SettingsScreen]: SettingsScreen,
   },
   {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: props => {
-        const { routeName } = navigation.state;
-        return <TabBarIcon {...props} routeName={routeName} />;
-      },
-      tabBarLabel: props => {
-        const { routeName } = navigation.state;
-        return <TabBarLabel {...props} routeName={routeName} />;
-      },
-    }),
     lazy: true,
     tabBarComponent: TabBar,
-    initialRouteName: Routes.HomeScreen,
+    initialRouteName: ERoutes.HomeScreen,
   },
 );
 
 const AuthStack = createStackNavigator(
   {
-    [Routes.WelcomeScreen]: WelcomeScreen,
-    [Routes.RegisterScreen]: RegisterScreen,
-    [Routes.LoginScreen]: LoginScreen,
-    [Routes.PasswordResetScreen]: PasswordResetScreen,
+    [ERoutes.WelcomeScreen]: WelcomeScreen,
+    [ERoutes.RegisterScreen]: RegisterScreen,
+    [ERoutes.LoginScreen]: LoginScreen,
+    [ERoutes.PasswordResetScreen]: PasswordResetScreen,
   },
   {
     headerMode: 'none',
-    initialRouteName: Routes.WelcomeScreen,
+    initialRouteName: ERoutes.WelcomeScreen,
   },
 );
 
 const Navigation = createAppContainer(
   createSwitchNavigator(
     {
-      [Routes.AppLoadingScreen]: AppLoadingScreen,
-      [Routes.AuthStack]: AuthStack,
-      [Routes.AppStack]: AppStack,
+      [ERoutes.AppLoadingScreen]: AppLoadingScreen,
+      [ERoutes.AuthStack]: AuthStack,
+      [ERoutes.AppStack]: AppStack,
     },
     {
-      initialRouteName: Routes.AppLoadingScreen,
+      initialRouteName: ERoutes.AppLoadingScreen,
     },
   ),
 );
