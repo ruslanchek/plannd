@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useContext, useCallback } from 'react';
 import { StyleSheet, View, TouchableHighlight, Animated } from 'react-native';
 import { ELEMENT_SIZES, BORDER_RADIUS, SHADOWS } from '../../common/constants';
 import { COLORS } from '../../common/colors';
@@ -7,32 +7,29 @@ import { BottomTabBarProps } from 'react-navigation-tabs/lib/typescript/src/type
 import { getInset } from 'react-native-safe-area-view';
 import { ERoutes } from '../../common/routes';
 import { TabBarItem } from './TabBarItem';
+import { AddTransactionModalContext } from '../modals/AddTransactionModalProvider';
+import { AddTransactionModal } from '../modals/AddTransactionModal';
 
 export const TabBar: React.FC<BottomTabBarProps> = props => {
-  const { navigation } = props;
   const animatedPlusValue = useRef(new Animated.Value(0));
-  const { routeName } = navigation.state.routes[navigation.state.index];
-  const animatedPlusRoute = routeName === ERoutes.AddTransactionModal;
+  const { show: showAddTransactionModal, setShow: setShowAddTransactionModal } = useContext(
+    AddTransactionModalContext,
+  );
 
   useEffect(() => {
     Animated.spring(animatedPlusValue.current, {
-      toValue: animatedPlusRoute ? 1 : 0,
+      toValue: showAddTransactionModal ? 1 : 0,
       useNativeDriver: true,
     }).start();
-  }, [animatedPlusRoute]);
+  }, [showAddTransactionModal]);
 
   const handleAdd = useCallback(() => {
-    console.log(animatedPlusRoute);
-
-    if (animatedPlusRoute) {
-      navigation.goBack();
-    } else {
-      navigation.navigate(ERoutes.AddTransactionModal);
-    }
-  }, [animatedPlusRoute]);
+    setShowAddTransactionModal(!showAddTransactionModal);
+  }, [showAddTransactionModal]);
 
   return (
     <View style={styles.root}>
+      <AddTransactionModal />
       <View style={styles.bar}>
         <TabBarItem routeName={ERoutes.HomeScreen} navigation={props.navigation} />
         <TabBarItem routeName={ERoutes.TransactionsScreen} navigation={props.navigation} />
@@ -94,7 +91,7 @@ const styles = StyleSheet.create({
     height: 48,
     justifyContent: 'center',
     alignItems: 'center',
-    top: -20,
+    top: -15,
   },
 
   plusUnderlay: {
@@ -102,7 +99,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     width: 60,
     height: 60,
-    top: -26,
+    top: -21,
     position: 'absolute',
     ...SHADOWS.ELEVATION_1_REVERSED,
   },

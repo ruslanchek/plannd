@@ -16,7 +16,7 @@ import { StatusBar } from 'react-native';
 import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
 import { RegisterScreen } from './src/components/screens/RegisterScreen';
 import { PasswordResetScreen } from './src/components/screens/PasswordResetScreen';
-import { AddTransactionModal } from './src/components/screens/AddTransactionModal';
+import { AddTransactionModalProvider } from './src/components/modals/AddTransactionModalProvider';
 
 const AppStack = createBottomTabNavigator(
   {
@@ -25,7 +25,6 @@ const AppStack = createBottomTabNavigator(
     [ERoutes.TargetsScreen]: TargetsScreen,
     [ERoutes.StatisticsScreen]: StatisticsScreen,
     [ERoutes.SettingsScreen]: SettingsScreen,
-    [ERoutes.AddTransactionModal]: AddTransactionModal,
   },
   {
     lazy: true,
@@ -62,9 +61,9 @@ const Navigation = createAppContainer(
 
 export default () => {
   return (
-    <React.Fragment>
+    <AddTransactionModalProvider>
       <StatusBar barStyle='dark-content' />
       <Navigation />
-    </React.Fragment>
+    </AddTransactionModalProvider>
   );
 };

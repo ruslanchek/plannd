@@ -12,6 +12,4 @@ export enum ERoutes {
   TargetsScreen = 'TargetsScreen',
   StatisticsScreen = 'StatisticsScreen',
   SettingsScreen = 'SettingsScreen',
-
-  AddTransactionModal = 'AddTransactionModal',
 }
