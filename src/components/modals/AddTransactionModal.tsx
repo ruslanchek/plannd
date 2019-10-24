@@ -28,6 +28,7 @@ export const AddTransactionModal: React.FC = () => {
   useEffect(() => {
     Animated.spring(animated, {
       toValue: show ? 1 : 0,
+      useNativeDriver: true,
     }).start();
   }, [show]);
 
