@@ -25,6 +25,7 @@ const AppStack = createBottomTabNavigator(
     [ERoutes.TargetsScreen]: TargetsScreen,
     [ERoutes.StatisticsScreen]: StatisticsScreen,
     [ERoutes.SettingsScreen]: SettingsScreen,
+    [ERoutes.AddTransactionModal]: AddTransactionModal,
   },
   {
     lazy: true,
@@ -52,7 +53,6 @@ const Navigation = createAppContainer(
       [ERoutes.AppLoadingScreen]: AppLoadingScreen,
       [ERoutes.AuthStack]: AuthStack,
       [ERoutes.AppStack]: AppStack,
-      [ERoutes.AddTransactionModal]: AddTransactionModal,
     },
     {
       initialRouteName: ERoutes.AppLoadingScreen,

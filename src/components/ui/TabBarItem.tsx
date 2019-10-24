@@ -16,8 +16,6 @@ export const TabBarItem = React.memo((props: IProps) => {
   const focused = navigation.state.routes[navigation.state.index].routeName === routeName;
   const color = (focused ? COLORS.ACCENT : COLORS.TEXT_FADED).toString();
 
-  console.log(navigation.state);
-
   return (
     <TouchableWithoutFeedback onPress={() => navigation.navigate(routeName)}>
       <View style={styles.root}>

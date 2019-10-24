@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useCallback } from 'react';
 import { StyleSheet, View, TouchableHighlight, Animated } from 'react-native';
 import { ELEMENT_SIZES, BORDER_RADIUS, SHADOWS } from '../../common/constants';
 import { COLORS } from '../../common/colors';
@@ -11,16 +11,25 @@ import { TabBarItem } from './TabBarItem';
 export const TabBar: React.FC<BottomTabBarProps> = props => {
   const { navigation } = props;
   const animatedPlusValue = useRef(new Animated.Value(0));
+  const { routeName } = navigation.state.routes[navigation.state.index];
+  const animatedPlusRoute = routeName === ERoutes.AddTransactionModal;
 
   useEffect(() => {
-    const animatedPlusRoute =
-      navigation.state.routes[navigation.state.index].routeName === ERoutes.AddTransactionModal;
-
     Animated.spring(animatedPlusValue.current, {
       toValue: animatedPlusRoute ? 1 : 0,
       useNativeDriver: true,
     }).start();
-  }, [props.navigation.state]);
+  }, [animatedPlusRoute]);
+
+  const handleAdd = useCallback(() => {
+    console.log(animatedPlusRoute);
+
+    if (animatedPlusRoute) {
+      navigation.goBack();
+    } else {
+      navigation.navigate(ERoutes.AddTransactionModal);
+    }
+  }, [animatedPlusRoute]);
 
   return (
     <View style={styles.root}>
@@ -29,8 +38,9 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
         <TabBarItem routeName={ERoutes.TransactionsScreen} navigation={props.navigation} />
 
         <View style={styles.center}>
+          <View style={styles.plusUnderlay}></View>
           <TouchableHighlight
-            onPress={() => navigation.navigate(ERoutes.AddTransactionModal)}
+            onPress={handleAdd}
             underlayColor={COLORS.ACCENT.darken(0.2).toString()}
             style={styles.plus}>
             <Animated.View
@@ -39,7 +49,7 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
                   {
                     rotateZ: animatedPlusValue.current.interpolate({
                       inputRange: [0, 1],
-                      outputRange: ['0deg', '45deg'],
+                      outputRange: ['0deg', '135deg'],
                     }),
                   },
                 ],
@@ -82,16 +92,23 @@ const styles = StyleSheet.create({
     borderRadius: 24,
     width: 48,
     height: 48,
-    top: -2,
-    ...SHADOWS.ELEVATION_2,
-    shadowColor: COLORS.ACCENT.toString(),
-    shadowOpacity: 0.2,
     justifyContent: 'center',
     alignItems: 'center',
+    top: -20,
+  },
+
+  plusUnderlay: {
+    backgroundColor: COLORS.WHITE.toString(),
+    borderRadius: 30,
+    width: 60,
+    height: 60,
+    top: -26,
+    position: 'absolute',
+    ...SHADOWS.ELEVATION_1_REVERSED,
   },
 
   center: {
-    flex: 0.175,
+    flex: 0.15,
     justifyContent: 'center',
     alignItems: 'center',
   },
