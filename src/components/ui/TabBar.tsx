@@ -11,6 +11,7 @@ import { AddTransactionModalContext } from '../modals/AddTransactionModalProvide
 import { AddTransactionModal } from '../modals/AddTransactionModal';
 
 export const TabBar: React.FC<BottomTabBarProps> = props => {
+  const { navigation } = props;
   const animatedPlusValue = useRef(new Animated.Value(0));
   const { show: showAddTransactionModal, setShow: setShowAddTransactionModal } = useContext(
     AddTransactionModalContext,
@@ -27,12 +28,27 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
     setShowAddTransactionModal(!showAddTransactionModal);
   }, [showAddTransactionModal]);
 
+  const handleOnRoutePress = useCallback(
+    (routeName: ERoutes) => {
+      navigation.navigate(routeName);
+    },
+    [navigation],
+  );
+
   return (
     <View style={styles.root}>
       <AddTransactionModal />
       <View style={styles.bar}>
-        <TabBarItem routeName={ERoutes.HomeScreen} navigation={props.navigation} />
-        <TabBarItem routeName={ERoutes.TransactionsScreen} navigation={props.navigation} />
+        <TabBarItem
+          routeName={ERoutes.HomeScreen}
+          navigation={navigation}
+          onPress={handleOnRoutePress}
+        />
+        <TabBarItem
+          routeName={ERoutes.TransactionsScreen}
+          navigation={navigation}
+          onPress={handleOnRoutePress}
+        />
 
         <View style={styles.center}>
           <View style={styles.plusUnderlay}></View>
@@ -56,8 +72,16 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
           </TouchableHighlight>
         </View>
 
-        <TabBarItem routeName={ERoutes.TargetsScreen} navigation={props.navigation} />
-        <TabBarItem routeName={ERoutes.SettingsScreen} navigation={props.navigation} />
+        <TabBarItem
+          routeName={ERoutes.TargetsScreen}
+          navigation={props.navigation}
+          onPress={handleOnRoutePress}
+        />
+        <TabBarItem
+          routeName={ERoutes.SettingsScreen}
+          navigation={props.navigation}
+          onPress={handleOnRoutePress}
+        />
       </View>
     </View>
   );
