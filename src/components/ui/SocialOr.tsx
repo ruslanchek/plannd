@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { COLORS } from '../../common/colors';
 import { localizeText } from '../../helpers/localeHelpers';
-import { PADDING } from '../../common/constants';
+import { PADDING, FONT_FAMILY } from '../../common/constants';
 
 export const SocialOr: React.FC = () => {
   return (
@@ -23,12 +23,13 @@ const styles = StyleSheet.create({
   socialOrText: {
     color: COLORS.TEXT_FADED.toString(),
     paddingHorizontal: PADDING.SMALL,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 
   socialOrLine: {
     height: 1,
     backgroundColor: COLORS.TEXT_FADED.alpha(0.2).toString(),
     flexGrow: 1,
-    transform: [{ translateY: 9 }],
+    transform: [{ translateY: 10 }],
   },
 });

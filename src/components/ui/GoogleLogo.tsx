@@ -7,6 +7,9 @@ interface IProps {
 
 export const GoogleLogo: React.FC<IProps> = ({ size }) => {
   return (
-    <Image source={require('../../assets/google-logo.png')} style={{ width: size, height: size }} />
+    <Image
+      source={require('../../assets/images/icons/google-logo.png')}
+      style={{ width: size, height: size }}
+    />
   );
 };

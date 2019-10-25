@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { COLORS } from '../../common/colors';
 import { ERoutes } from '../../common/routes';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { ELEMENT_SIZES } from '../../common/constants';

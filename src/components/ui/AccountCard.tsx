@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { PADDING, BORDER_RADIUS, FONT_SIZES } from '../../common/constants';
+import { PADDING, BORDER_RADIUS, FONT_SIZES, FONT_FAMILY } from '../../common/constants';
 import { COLORS } from '../../common/colors';
+import { IconWithShape } from './IconWithShape';
 
-const CHART_HEIGHT = 100;
-const STROKE_WIDTH = 3;
-
-export const AccountCard: React.FC = props => {
-  const [width, setWidth] = useState(0);
-
+export const AccountCard: React.FC = () => {
   return (
     <View style={styles.root}>
-      <Text style={styles.title}>Hellenic Bank</Text>
-      <Text style={styles.amount}>$100,990,923.12</Text>
-      <View
-        style={styles.chartWrapper}
-        onLayout={event => {
-          setWidth(event.nativeEvent.layout.width);
-        }}></View>
+      <IconWithShape shape='square' size={54} name='bullseye' color={COLORS.WHITE} />
+      <View style={styles.info}>
+        <Text style={styles.title}>Hellenic Bank</Text>
+        <Text style={styles.amount}>$100,990,923.12</Text>
+      </View>
     </View>
   );
 };
@@ -27,22 +21,23 @@ const styles = StyleSheet.create({
     padding: PADDING.REGULAR,
     backgroundColor: COLORS.ACCENT.toString(),
     borderRadius: BORDER_RADIUS.LARGE,
+    flexDirection: 'row',
   },
 
-  chartWrapper: {
-    left: -PADDING.REGULAR - STROKE_WIDTH * 2,
-    bottom: -PADDING.REGULAR - STROKE_WIDTH / 2,
+  info: {
+    marginLeft: PADDING.MEDUIM,
   },
 
   title: {
     color: COLORS.WHITE.alpha(0.8).toString(),
     fontSize: FONT_SIZES.REGULAR,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 
   amount: {
-    marginTop: 4,
+    marginTop: PADDING.TINY,
     color: COLORS.WHITE.toString(),
     fontSize: FONT_SIZES.SEMI_LARGE,
-    fontWeight: '800',
+    fontFamily: FONT_FAMILY.BOLD,
   },
 });

@@ -10,8 +10,6 @@ import {
 } from 'react-native';
 import { PADDING, BORDER_RADIUS, SHADOWS } from '../../common/constants';
 import { STYLES } from '../../common/styles';
-import { Row } from './Row';
-import { Col } from './Col';
 import { COLORS } from '../../common/colors';
 
 interface IData {
@@ -24,27 +22,27 @@ const DATA: IData[] = [
   {
     id: 1,
     title: 'Analyze your personal budget',
-    image: require('../../assets/welcome-1.png'),
+    image: require('../../assets/images/pictures/welcome-1.png'),
   },
   {
     id: 2,
     title: 'Set your targets and accumulate money',
-    image: require('../../assets/welcome-2.png'),
+    image: require('../../assets/images/pictures/welcome-2.png'),
   },
   {
     id: 3,
     title: 'Acheive results with no effort',
-    image: require('../../assets/welcome-3.png'),
+    image: require('../../assets/images/pictures/welcome-3.png'),
   },
   {
     id: 4,
     title: 'Get your finacial wellness',
-    image: require('../../assets/welcome-4.png'),
+    image: require('../../assets/images/pictures/welcome-4.png'),
   },
   {
     id: 5,
     title: 'Track and share your results',
-    image: require('../../assets/welcome-5.png'),
+    image: require('../../assets/images/pictures/welcome-5.png'),
   },
 ];
 
@@ -67,7 +65,7 @@ export const WelcomeSlider: React.FC = () => {
         data={DATA}
         keyExtractor={item => item.id.toString()}
         onViewableItemsChanged={onViewableItemsChanged.current}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           return (
             <View style={styles.item}>
               <Text style={STYLES.H1}>{item.title}</Text>

@@ -8,7 +8,7 @@ interface IProps {
 export const FacebookLogo: React.FC<IProps> = ({ size }) => {
   return (
     <Image
-      source={require('../../assets/facebook-logo.png')}
+      source={require('../../assets/images/icons/facebook-logo.png')}
       style={{ width: size, height: size }}
     />
   );

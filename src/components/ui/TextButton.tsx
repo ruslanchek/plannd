@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { FONT_SIZES } from '../../common/constants';
+import { FONT_SIZES, FONT_FAMILY } from '../../common/constants';
 import { COLORS } from '../../common/colors';
 
 interface IProps {
@@ -22,7 +22,7 @@ export const TextButton: React.FC<IProps> = props => {
 const styles = StyleSheet.create({
   text: {
     fontSize: FONT_SIZES.REGULAR,
-    fontWeight: '400',
+    fontFamily: FONT_FAMILY.REGULAR,
     color: COLORS.ACCENT.toString(),
   },
 });

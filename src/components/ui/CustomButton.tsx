@@ -2,7 +2,13 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { COLORS } from '../../common/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING } from '../../common/constants';
+import {
+  FONT_SIZES,
+  BORDER_RADIUS,
+  ELEMENT_SIZES,
+  PADDING,
+  FONT_FAMILY,
+} from '../../common/constants';
 
 interface IProps {
   theme: 'default' | 'accent' | 'facebook' | 'twitter' | 'google';
@@ -82,7 +88,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: FONT_SIZES.MEDIUM,
-    fontWeight: '600',
+    fontFamily: FONT_FAMILY.BOLD,
   },
 
   icon: {

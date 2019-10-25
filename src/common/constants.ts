@@ -17,9 +17,10 @@ export const FONT_SIZES = {
 };
 
 export const FONT_FAMILY = {
-  MONO_BOLD: 'RobotoMono-Bold',
-  MONO_REGULAR: 'RobotoMono-Regular',
-  MONO_MEDIUM: 'RobotoMono-Medium',
+  BOLD: 'NotoSans-Bold',
+  REGULAR: 'NotoSans',
+  ITALIC: 'NotoSans-Italic',
+  BOLD_ITALIC: 'NotoSans-BoldItalic',
 };
 
 export const ASYNC_STORAGE_KEYS = {
@@ -34,6 +35,7 @@ export const BORDER_RADIUS = {
 };
 
 export const PADDING = {
+  TINY: 4,
   SMALL: 10,
   REGULAR: 16,
   MEDUIM: 20,

@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
-import { COLORS } from '../../common/colors';
-import { FONT_SIZES } from '../../common/constants';
+import { FONT_SIZES, FONT_FAMILY } from '../../common/constants';
 import { localizeText } from '../../helpers/localeHelpers';
 
 interface IProps {
@@ -19,7 +18,8 @@ export const TabBarLabel: React.FC<IProps> = props => {
 
 const styles = StyleSheet.create({
   root: {
-    fontSize: FONT_SIZES.TINY,
+    fontSize: FONT_SIZES.SMALL,
     marginTop: 4,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 });
