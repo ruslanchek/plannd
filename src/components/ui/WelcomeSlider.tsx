@@ -31,7 +31,7 @@ const DATA: IData[] = [
   },
   {
     id: 3,
-    title: 'Acheive results with no effort',
+    title: 'Acheive results with minimal effort',
     image: require('../../assets/images/pictures/welcome-3.png'),
   },
   {

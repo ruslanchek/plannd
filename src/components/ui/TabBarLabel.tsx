@@ -19,7 +19,6 @@ export const TabBarLabel: React.FC<IProps> = props => {
 const styles = StyleSheet.create({
   root: {
     fontSize: FONT_SIZES.SMALL,
-    marginTop: 4,
     fontFamily: FONT_FAMILY.REGULAR,
   },
 });
