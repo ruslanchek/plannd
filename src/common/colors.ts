@@ -1,9 +1,9 @@
 import Color from 'color';
 
 interface IColors {
-  WHITE: Color;
+  BG_CONTRAST: Color;
 
-  TINT_BG: Color;
+  BG_TINT: Color;
 
   ELEMENT_BG: Color;
   ELEMENT_IDLE: Color;
@@ -21,11 +21,10 @@ interface IColors {
 }
 
 export const THEME_LIGHT: IColors = {
-  WHITE: Color('#fff'),
+  BG_CONTRAST: Color('#FFFFFF'),
+  BG_TINT: Color('#F9FAFB'),
 
-  TINT_BG: Color('#F9FAFB'),
-
-  ELEMENT_BG: Color('#fff'),
+  ELEMENT_BG: Color('#FFFFFF'),
   ELEMENT_IDLE: Color('#EFF0F1'),
   ELEMENT_STROKE: Color('#F1F1F6'),
 

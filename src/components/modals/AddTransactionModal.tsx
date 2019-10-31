@@ -6,8 +6,9 @@ import { COLORS } from '../../common/colors';
 
 export const AddTransactionModal: React.FC = () => {
   const { show } = useContext(AddTransactionModalContext);
-  const { width, height } = Dimensions.get('window');
+  const [animated] = useState(new Animated.Value(0));
   const positioningStyles = useMemo(() => {
+    const { width, height } = Dimensions.get('window');
     const paddingBottom = getInset('bottom', false);
     const paddingTop = getInset('top', false);
     const offsetTop = 12;
@@ -23,7 +24,6 @@ export const AddTransactionModal: React.FC = () => {
       paddingTop,
     };
   }, [show]);
-  const [animated] = useState(new Animated.Value(0));
 
   useEffect(() => {
     Animated.spring(animated, {
@@ -137,7 +137,7 @@ export const AddTransactionModal: React.FC = () => {
 const styles = StyleSheet.create({
   root: {
     position: 'absolute',
-    backgroundColor: COLORS.WHITE.toString(),
+    backgroundColor: COLORS.BG_CONTRAST.toString(),
     bottom: 0,
     left: 0,
   },

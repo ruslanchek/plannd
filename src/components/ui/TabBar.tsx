@@ -45,7 +45,7 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
           onPress={handleOnRoutePress}
         />
         <TabBarItem
-          routeName={ERoutes.TransactionsScreen}
+          routeName={ERoutes.HistoryScreen}
           navigation={navigation}
           onPress={handleOnRoutePress}
         />
@@ -67,7 +67,7 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
                   },
                 ],
               }}>
-              <Icon name='plus' size={30} color={COLORS.WHITE.toString()} />
+              <Icon name='plus' size={30} color={COLORS.BG_CONTRAST.toString()} />
             </Animated.View>
           </TouchableHighlight>
         </View>
@@ -91,7 +91,7 @@ const bottomInset = getInset('bottom', false);
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: COLORS.TINT_BG.toString(),
+    backgroundColor: COLORS.BG_TINT.toString(),
   },
 
   bar: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
 
   plusUnderlay: {
-    backgroundColor: COLORS.WHITE.toString(),
+    backgroundColor: COLORS.BG_CONTRAST.toString(),
     borderRadius: 30,
     width: 60,
     height: 60,

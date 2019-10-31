@@ -11,7 +11,7 @@ interface IProps {
 
 const ICON_NAMES = {
   [ERoutes.HomeScreen]: 'ios-albums',
-  [ERoutes.TransactionsScreen]: 'ios-book',
+  [ERoutes.HistoryScreen]: 'ios-book',
   [ERoutes.TargetsScreen]: 'ios-planet',
   [ERoutes.StatisticsScreen]: 'signal',
   [ERoutes.SettingsScreen]: 'ios-finger-print',
@@ -19,7 +19,7 @@ const ICON_NAMES = {
 
 const ICON_SIZE_RATIOS = {
   [ERoutes.HomeScreen]: 1,
-  [ERoutes.TransactionsScreen]: 1.1,
+  [ERoutes.HistoryScreen]: 1.1,
   [ERoutes.TargetsScreen]: 1.4,
   [ERoutes.StatisticsScreen]: 1,
   [ERoutes.SettingsScreen]: 1.1,
@@ -27,7 +27,7 @@ const ICON_SIZE_RATIOS = {
 
 const ICON_SIZE_OFFSET_VERTICAL = {
   [ERoutes.HomeScreen]: 0,
-  [ERoutes.TransactionsScreen]: 0,
+  [ERoutes.HistoryScreen]: 0,
   [ERoutes.TargetsScreen]: -4,
   [ERoutes.StatisticsScreen]: 0,
   [ERoutes.SettingsScreen]: 0,

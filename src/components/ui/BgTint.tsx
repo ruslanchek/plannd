@@ -11,6 +11,6 @@ export const BgTint: React.FC = props => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: COLORS.TINT_BG.toString(),
+    backgroundColor: COLORS.BG_TINT.toString(),
   },
 });

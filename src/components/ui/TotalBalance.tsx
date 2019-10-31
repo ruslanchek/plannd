@@ -23,7 +23,7 @@ export const TotalBalance: React.FC<IProps> = props => {
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: COLORS.WHITE.toString(),
+    backgroundColor: COLORS.BG_CONTRAST.toString(),
     padding: PADDING.REGULAR,
     borderRadius: BORDER_RADIUS.LARGE,
     fontFamily: FONT_FAMILY.REGULAR,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   amount: {
     marginTop: PADDING.TINY,
     fontSize: FONT_SIZES.SEMI_LARGE,
-    fontFamily: FONT_FAMILY.BOLD,
+    fontFamily: FONT_FAMILY.REGULAR,
     color: COLORS.TEXT.toString(),
   },
 });

@@ -33,7 +33,7 @@ export const CustomButton: React.FC<IProps> = props => {
 
 const themedTextStyles = StyleSheet.create({
   accent: {
-    color: COLORS.WHITE.toString(),
+    color: COLORS.BG_CONTRAST.toString(),
   },
 
   default: {

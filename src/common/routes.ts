@@ -8,7 +8,7 @@ export enum ERoutes {
   RegisterScreen = 'RegisterScreen',
   PasswordResetScreen = 'PasswordResetScreen',
   HomeScreen = 'HomeScreen',
-  TransactionsScreen = 'TransactionsScreen',
+  HistoryScreen = 'HistoryScreen',
   TargetsScreen = 'TargetsScreen',
   StatisticsScreen = 'StatisticsScreen',
   SettingsScreen = 'SettingsScreen',

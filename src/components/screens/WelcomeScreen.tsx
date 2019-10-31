@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { StyleSheet, View, Dimensions, Text, ScrollView } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import { authHandleAnonimousLogin } from '../../helpers/authHelpers';
 import { Row } from '../ui/Row';
-import { ERoutes as ERoutes } from '../../common/routes';
+import { ERoutes } from '../../common/routes';
 import { BgTint } from '../ui/BgTint';
 import { TextButton } from '../ui/TextButton';
 import { CustomButton } from '../ui/CustomButton';
@@ -13,67 +13,78 @@ import { WelcomeSlider } from '../ui/WelcomeSlider';
 import { PADDING } from '../../common/constants';
 import { STYLES } from '../../common/styles';
 import { FullscreenLoading } from '../ui/FullscreenLoading';
+import { getInset } from 'react-native-safe-area-view';
 
 export interface ISettingsScreenParams {}
 
-const { width, height } = Dimensions.get('screen');
-
-export const WelcomeScreen: React.FC<
-  NavigationSwitchScreenProps<ISettingsScreenParams>
-> = props => {
+export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenParams>> = props => {
   const { navigation } = props;
   const [loading, setLoading] = useState(false);
+  const height = useMemo(() => {
+    const { height } = Dimensions.get('window');
+    const paddingBottom = getInset('bottom', false);
+    const paddingTop = getInset('top', false);
+
+    return height - paddingBottom - paddingTop;
+  }, []);
 
   return (
     <BgTint>
       {loading && <FullscreenLoading />}
-      <ScrollView style={{ width, height }}>
-        <View style={styles.root}>
-          <View>
-            <Row>
-              <Col>
-                <WelcomeSlider />
-              </Col>
-            </Row>
-            <View style={styles.inner}>
+
+      <View style={styles.wrapper}>
+        <ScrollView style={{ height }}>
+          <View
+            style={[
+              styles.root,
+              {
+                minHeight: height,
+              },
+            ]}>
+            <View>
               <Row>
                 <Col>
-                  <CustomButton
-                    theme='default'
-                    text={localizeText('Button::Login')}
-                    onPress={() => navigation.navigate(ERoutes.LoginScreen)}
-                  />
-                </Col>
-                <Col flex={0.1} />
-                <Col>
-                  <CustomButton
-                    theme='accent'
-                    text={localizeText('Button::Register')}
-                    onPress={() => navigation.navigate(ERoutes.RegisterScreen)}
-                  />
+                  <WelcomeSlider />
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>
-                    {localizeText('Text::WelcomePromo')}
-                  </Text>
-                  <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
-                    <TextButton
-                      text={localizeText('Button::Skip')}
-                      onPress={async () => {
-                        setLoading(true);
-                        await authHandleAnonimousLogin(navigation);
-                        setLoading(false);
-                      }}
+              <View style={styles.inner}>
+                <Row>
+                  <Col>
+                    <CustomButton
+                      theme='default'
+                      text={localizeText('Button::Login')}
+                      onPress={() => navigation.navigate(ERoutes.LoginScreen)}
                     />
-                  </View>
-                </Col>
-              </Row>
+                  </Col>
+                  <Col flex={0.1} />
+                  <Col>
+                    <CustomButton
+                      theme='accent'
+                      text={localizeText('Button::Register')}
+                      onPress={() => navigation.navigate(ERoutes.RegisterScreen)}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>{localizeText('Text::WelcomePromo')}</Text>
+                    <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
+                      <TextButton
+                        text={localizeText('Button::Skip')}
+                        onPress={async () => {
+                          setLoading(true);
+                          await authHandleAnonimousLogin(navigation);
+                          setLoading(false);
+                        }}
+                      />
+                    </View>
+                  </Col>
+                </Row>
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </BgTint>
   );
 };
@@ -85,5 +96,9 @@ const styles = StyleSheet.create({
 
   inner: {
     paddingHorizontal: PADDING.MEDUIM,
+  },
+
+  wrapper: {
+    flex: 1,
   },
 });

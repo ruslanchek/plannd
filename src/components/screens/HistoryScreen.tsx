@@ -4,7 +4,7 @@ import { NavigationSwitchScreenProps, useTheme } from 'react-navigation';
 
 export interface ISettingsScreenParams {}
 
-export const TransactionsScreen: React.FC<
+export const HistoryScreen: React.FC<
   NavigationSwitchScreenProps<ISettingsScreenParams>
 > = props => {
   return (

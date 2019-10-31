@@ -17,10 +17,10 @@ export const FONT_SIZES = {
 };
 
 export const FONT_FAMILY = {
-  BOLD: 'NotoSans-Bold',
-  REGULAR: 'NotoSans',
-  ITALIC: 'NotoSans-Italic',
-  BOLD_ITALIC: 'NotoSans-BoldItalic',
+  BOLD: 'OpenSans-Bold',
+  EXTRA_BOLD: 'OpenSans-ExtraBold',
+  REGULAR: 'OpenSans-Regular',
+  SEMI_BOLD: 'OpenSans-SemiBold',
 };
 
 export const ASYNC_STORAGE_KEYS = {

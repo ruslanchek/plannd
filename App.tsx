@@ -9,9 +9,8 @@ import { SettingsScreen } from './src/components/screens/SettingsScreen';
 import { ERoutes } from './src/common/routes';
 import { AppLoadingScreen } from './src/components/screens/AppLoadingScreen';
 import { LoginScreen } from './src/components/screens/LoginScreen';
-import { TransactionsScreen } from './src/components/screens/TransactionsScreen';
+import { HistoryScreen } from './src/components/screens/HistoryScreen';
 import { TargetsScreen } from './src/components/screens/TargetsScreen';
-import { StatisticsScreen } from './src/components/screens/StatisticsScreen';
 import { StatusBar } from 'react-native';
 import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
 import { RegisterScreen } from './src/components/screens/RegisterScreen';
@@ -21,9 +20,8 @@ import { AddTransactionModalProvider } from './src/components/modals/AddTransact
 const AppStack = createBottomTabNavigator(
   {
     [ERoutes.HomeScreen]: HomeScreen,
-    [ERoutes.TransactionsScreen]: TransactionsScreen,
+    [ERoutes.HistoryScreen]: HistoryScreen,
     [ERoutes.TargetsScreen]: TargetsScreen,
-    [ERoutes.StatisticsScreen]: StatisticsScreen,
     [ERoutes.SettingsScreen]: SettingsScreen,
   },
   {
@@ -62,7 +60,7 @@ const Navigation = createAppContainer(
 export default () => {
   return (
     <AddTransactionModalProvider>
-      <StatusBar barStyle='dark-content' />
+      <StatusBar barStyle='light-content' />
       <Navigation />
     </AddTransactionModalProvider>
   );

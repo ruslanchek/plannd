@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     width: width - PADDING.MEDUIM * 2,
     margin: PADDING.MEDUIM,
     padding: PADDING.MEDUIM,
-    backgroundColor: COLORS.WHITE.toString(),
+    backgroundColor: COLORS.BG_CONTRAST.toString(),
     borderRadius: BORDER_RADIUS.LARGE,
     ...SHADOWS.ELEVATION_2,
   },
