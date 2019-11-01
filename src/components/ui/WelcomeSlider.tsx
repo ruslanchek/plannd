@@ -53,7 +53,7 @@ const DATA: IData[] = [
   },
 ];
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 export const WelcomeSlider = forwardRef<IWelcomeSliderHandlers | undefined, IProps>((props, ref) => {
   const { onSlideChanged } = props;
@@ -130,17 +130,18 @@ export const WelcomeSlider = forwardRef<IWelcomeSliderHandlers | undefined, IPro
 const styles = StyleSheet.create({
   root: {
     width,
+    paddingVertical: PADDING.LARGE,
   },
 
   item: {
     width,
-    padding: PADDING.LARGE,
-    marginBottom: PADDING.REGULAR,
+    paddingHorizontal: PADDING.LARGE,
+    marginBottom: PADDING.LARGE,
   },
 
   itemImage: {
     width: width - PADDING.LARGE * 2,
-    height: width - PADDING.LARGE * 3,
+    height: height / 3,
   },
 
   paginator: {
@@ -151,6 +152,7 @@ const styles = StyleSheet.create({
 
   title: {
     textAlign: 'center',
+    marginTop: PADDING.MEDIUM,
   },
 
   subtitle: {

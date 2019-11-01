@@ -23,7 +23,7 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
   const [loading, setLoading] = useState(false);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [animatedDisclaimerValue] = useState(new Animated.Value(isLastSlide ? 1 : 0));
-  const { height, paddingBottom, paddingTop } = useScreenSizes();
+  const { safeHeight, height, paddingBottom, paddingTop } = useScreenSizes();
   const slider = useRef<IWelcomeSliderHandlers | undefined>();
   const disclaimerStyles = [
     styles.disclaimer,
@@ -60,7 +60,6 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
       <ScrollView style={styles.root}>
         <View
           style={[
-            styles.contentWrapper,
             {
               minHeight: height,
               paddingBottom,
@@ -69,36 +68,28 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
           ]}>
           <View style={styles.innerWrapper}>
             <View style={styles.top}>
-              <Row>
-                <Col>
-                  <WelcomeSlider
-                    ref={slider}
-                    onSlideChanged={(index, isLastSlide) => {
-                      setIsLastSlide(isLastSlide);
-                      animateDisclaimer(isLastSlide ? 1 : 0);
-                    }}
-                  />
-                </Col>
-              </Row>
+              <WelcomeSlider
+                ref={slider}
+                onSlideChanged={(index, isLastSlide) => {
+                  setIsLastSlide(isLastSlide);
+                  animateDisclaimer(isLastSlide ? 1 : 0);
+                }}
+              />
             </View>
 
             <View style={styles.bottom}>
               <Animated.View style={disclaimerStyles} pointerEvents={isLastSlide ? 'auto' : 'none'}>
-                <Row>
-                  <Col>
-                    <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>{localizeText('Text::WelcomePromo')}</Text>
-                    <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
-                      <TextButton
-                        text={localizeText('Button::SkipRegister')}
-                        onPress={async () => {
-                          setLoading(true);
-                          await authHandleAnonymousLogin(navigation);
-                          setLoading(false);
-                        }}
-                      />
-                    </View>
-                  </Col>
-                </Row>
+                <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>{localizeText('Text::WelcomePromo')}</Text>
+                <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
+                  <TextButton
+                    text={localizeText('Button::SkipRegister')}
+                    onPress={async () => {
+                      setLoading(true);
+                      await authHandleAnonymousLogin(navigation);
+                      setLoading(false);
+                    }}
+                  />
+                </View>
               </Animated.View>
 
               {isLastSlide ? (
@@ -130,15 +121,11 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
                   </Col>
                 </Row>
               ) : (
-                <Row noMargin>
-                  <Col>
-                    <CustomButton
-                      theme='default'
-                      text={localizeText('Button::NextWelcomeSlide')}
-                      onPress={handleNextSlide}
-                    />
-                  </Col>
-                </Row>
+                <CustomButton
+                  theme='default'
+                  text={localizeText('Button::NextWelcomeSlide')}
+                  onPress={handleNextSlide}
+                />
               )}
             </View>
           </View>
@@ -153,24 +140,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  contentWrapper: {
-    flex: 1,
-  },
-
   innerWrapper: {
     flex: 1,
   },
 
   top: {
-    flexGrow: 1,
     justifyContent: 'center',
+    flexGrow: 1,
   },
 
   bottom: {
-    padding: PADDING.LARGE,
+    paddingHorizontal: PADDING.LARGE,
+    paddingBottom: PADDING.LARGE,
+    flexGrow: 1,
+    justifyContent: 'flex-end',
   },
 
-  disclaimer: {},
+  disclaimer: {
+    paddingBottom: PADDING.MEDIUM,
+  },
 
   wrapper: {
     flex: 1,

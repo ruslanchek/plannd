@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, KeyboardAvoidingView, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, TextInput, KeyboardAvoidingView, ScrollView, Image, Dimensions } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import {
   authHandleLogIn,
@@ -52,7 +52,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState(navigation.getParam('mode', EAuthScreenMode.Register));
-  const { safeHeight, height, paddingBottom, paddingTop } = useScreenSizes();
+  const { height, paddingBottom, paddingTop } = useScreenSizes();
 
   const tabs = [
     {
@@ -88,7 +88,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
       {loading && <FullscreenLoading />}
 
       <ScrollView style={styles.root}>
-        <KeyboardAvoidingView behavior='position' enabled>
+        <KeyboardAvoidingView behavior='height' enabled>
           <View
             style={[
               {
@@ -175,13 +175,13 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                 )}
               </View>
 
-              <Row>
-                <Col>
-                  <SocialOr />
-                </Col>
-              </Row>
-
               <View>
+                <Row>
+                  <Col>
+                    <SocialOr />
+                  </Col>
+                </Row>
+
                 <Row>
                   <Col>
                     <CustomButton
@@ -222,6 +222,8 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
   );
 };
 
+const { height } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   root: {
     flex: 1,
@@ -230,7 +232,7 @@ const styles = StyleSheet.create({
   logo: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 140,
+    height: height / 5.5,
   },
 
   logoImage: {

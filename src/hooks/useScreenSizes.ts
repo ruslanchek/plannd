@@ -17,11 +17,12 @@ interface IScreenSize {
 export const useScreenSizes = (): IScreenSize => {
   return useMemo(() => {
     const { height, width } = Dimensions.get('window');
-    const isLandscape = height < width;
+    const isLandscape: boolean = height < width;
     const paddingBottom = getInset('bottom', isLandscape);
     const paddingTop = getInset('top', isLandscape);
     const paddingLeft = getInset('left', isLandscape);
     const paddingRight = getInset('right', isLandscape);
+
     return {
       width,
       height,
