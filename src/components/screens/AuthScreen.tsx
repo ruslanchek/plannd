@@ -1,14 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  KeyboardAvoidingView,
-  ScrollView,
-  Dimensions,
-  TouchableHighlight,
-} from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, TextInput, KeyboardAvoidingView, ScrollView, Image } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import {
   authHandleLogIn,
@@ -30,8 +21,8 @@ import { Col } from '../ui/Col';
 import { GoogleLogo } from '../ui/GoogleLogo';
 import { FullscreenLoading } from '../ui/FullscreenLoading';
 import { FacebookLogo } from '../ui/FacebookLogo';
-import { getInset } from 'react-native-safe-area-view';
 import { Tabs } from '../ui/Tabs';
+import { useScreenSizes } from '../../hooks/useScreenSizes';
 
 export interface IAuthScreenParams {
   mode: EAuthScreenMode;
@@ -61,20 +52,16 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState(navigation.getParam('mode', EAuthScreenMode.Register));
-  const height = useMemo(() => {
-    const { height } = Dimensions.get('window');
-    const paddingBottom = getInset('bottom', false);
-    const paddingTop = getInset('top', false);
-    return height - paddingBottom - paddingTop;
-  }, []);
+  const { safeHeight, height, paddingBottom, paddingTop } = useScreenSizes();
+
   const tabs = [
-    {
-      id: EAuthScreenMode.Login,
-      text: localizeText('Header::Login'),
-    },
     {
       id: EAuthScreenMode.Register,
       text: localizeText('Header::Register'),
+    },
+    {
+      id: EAuthScreenMode.Login,
+      text: localizeText('Header::Login'),
     },
   ];
 
@@ -100,91 +87,93 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
     <BgTint>
       {loading && <FullscreenLoading />}
 
-      <ScrollView style={[styles.root, { height }]}>
+      <ScrollView style={styles.root}>
         <KeyboardAvoidingView behavior='position' enabled>
           <View
             style={[
-              styles.contentWrapper,
               {
                 minHeight: height,
+                paddingBottom,
+                paddingTop,
               },
             ]}>
             <View style={styles.top}>
               <Row>
                 <Col>
-                  <Tabs tabs={tabs} currentId={mode} onSelect={setMode} />
+                  <View style={styles.logo}>
+                    <Image style={styles.logoImage} source={require('../../assets/images/logos/logo.png')} />
+                  </View>
                 </Col>
               </Row>
+              <Tabs tabs={tabs} currentId={mode} onSelect={setMode} />
             </View>
 
-            <View style={styles.mid}>
-              <Row>
-                <Col>
-                  <TextInput
-                    autoCorrect={false}
-                    autoCapitalize='none'
-                    autoCompleteType='email'
-                    keyboardType='email-address'
-                    numberOfLines={1}
-                    enablesReturnKeyAutomatically
-                    placeholder={localizeText('InputPlaceholder::Email')}
-                    placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                    textContentType='emailAddress'
-                    style={STYLES.INPUT}
-                    value={email}
-                    onSubmitEditing={handleSubmit}
-                    onChange={event => {
-                      setEmail(event.nativeEvent.text);
-                    }}
-                  />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <TextInput
-                    autoCorrect={false}
-                    autoCapitalize='none'
-                    autoCompleteType='password'
-                    numberOfLines={1}
-                    enablesReturnKeyAutomatically
-                    placeholder={localizeText('InputPlaceholder::Password')}
-                    placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
-                    textContentType='password'
-                    secureTextEntry
-                    style={STYLES.INPUT}
-                    value={password}
-                    onSubmitEditing={handleSubmit}
-                    onChange={event => {
-                      setPassword(event.nativeEvent.text);
-                    }}
-                  />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='accent'
-                    text={localizeText(TEXTS[mode].submit)}
-                    onPress={handleSubmit}
-                  />
-                </Col>
-              </Row>
-
-              {mode === EAuthScreenMode.Login && (
+            <View style={styles.bottom}>
+              <View>
                 <Row>
                   <Col>
-                    <View style={STYLES.CENTERED}>
-                      <TextButton
-                        onPress={() => navigation.navigate(ERoutes.PasswordResetScreen)}
-                        text={localizeText('Button::PasswordReset')}
-                      />
-                    </View>
+                    <TextInput
+                      autoCorrect={false}
+                      autoCapitalize='none'
+                      autoCompleteType='email'
+                      keyboardType='email-address'
+                      numberOfLines={1}
+                      enablesReturnKeyAutomatically
+                      placeholder={localizeText('InputPlaceholder::Email')}
+                      placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                      textContentType='emailAddress'
+                      style={STYLES.INPUT}
+                      value={email}
+                      onSubmitEditing={handleSubmit}
+                      onChange={event => {
+                        setEmail(event.nativeEvent.text);
+                      }}
+                    />
                   </Col>
                 </Row>
-              )}
+
+                <Row>
+                  <Col>
+                    <TextInput
+                      autoCorrect={false}
+                      autoCapitalize='none'
+                      autoCompleteType='password'
+                      numberOfLines={1}
+                      enablesReturnKeyAutomatically
+                      placeholder={localizeText('InputPlaceholder::Password')}
+                      placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
+                      textContentType='password'
+                      secureTextEntry
+                      style={STYLES.INPUT}
+                      value={password}
+                      onSubmitEditing={handleSubmit}
+                      onChange={event => {
+                        setPassword(event.nativeEvent.text);
+                      }}
+                    />
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <CustomButton
+                      disabled={loading}
+                      theme='accent'
+                      text={localizeText(TEXTS[mode].submit)}
+                      onPress={handleSubmit}
+                    />
+                  </Col>
+                </Row>
+
+                {mode === EAuthScreenMode.Login && (
+                  <View style={STYLES.CENTERED}>
+                    <TextButton
+                      onPress={() => navigation.navigate(ERoutes.PasswordResetScreen)}
+                      text={localizeText('Button::PasswordReset')}
+                    />
+                  </View>
+                )}
+              </View>
 
               <Row>
                 <Col>
@@ -192,37 +181,39 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                 </Col>
               </Row>
 
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='facebook'
-                    text={localizeText(TEXTS[mode].facebook)}
-                    onPress={async () => {
-                      setLoading(true);
-                      await authHandleFacebookLogin(navigation);
-                      setLoading(false);
-                    }}
-                    icon={<FacebookLogo size={26} />}
-                  />
-                </Col>
-              </Row>
+              <View>
+                <Row>
+                  <Col>
+                    <CustomButton
+                      disabled={loading}
+                      theme='facebook'
+                      text={localizeText(TEXTS[mode].facebook)}
+                      onPress={async () => {
+                        setLoading(true);
+                        await authHandleFacebookLogin(navigation);
+                        setLoading(false);
+                      }}
+                      icon={<FacebookLogo size={26} />}
+                    />
+                  </Col>
+                </Row>
 
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='google'
-                    text={localizeText(TEXTS[mode].google)}
-                    onPress={async () => {
-                      setLoading(true);
-                      await authHandleGoogleLogin(navigation);
-                      setLoading(false);
-                    }}
-                    icon={<GoogleLogo size={26} />}
-                  />
-                </Col>
-              </Row>
+                <Row noMargin>
+                  <Col>
+                    <CustomButton
+                      disabled={loading}
+                      theme='google'
+                      text={localizeText(TEXTS[mode].google)}
+                      onPress={async () => {
+                        setLoading(true);
+                        await authHandleGoogleLogin(navigation);
+                        setLoading(false);
+                      }}
+                      icon={<GoogleLogo size={26} />}
+                    />
+                  </Col>
+                </Row>
+              </View>
             </View>
           </View>
         </KeyboardAvoidingView>
@@ -236,15 +227,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  top: {},
-
-  mid: {
-    flex: 1,
+  logo: {
     justifyContent: 'center',
-    padding: PADDING.LARGE,
+    alignItems: 'center',
+    height: 140,
   },
 
-  contentWrapper: {
-    justifyContent: 'flex-start',
+  logoImage: {
+    width: 72,
+    height: 72,
+  },
+
+  top: {
+    flexShrink: 0,
+  },
+
+  bottom: {
+    flex: 1,
+    padding: PADDING.LARGE,
+    justifyContent: 'space-between',
   },
 });

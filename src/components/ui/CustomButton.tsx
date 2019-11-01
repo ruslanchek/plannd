@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { COLORS } from '../../common/colors';
-import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_FAMILY, SHADOWS } from '../../common/constants';
+import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_FAMILY } from '../../common/constants';
 
 interface IProps {
   theme: 'default' | 'accent' | 'facebook' | 'twitter' | 'google';
@@ -16,7 +16,7 @@ const UNDERLAY_COLORS = {
   default: COLORS.ACCENT.alpha(0.1).toString(),
   facebook: COLORS.FACEBOOK.alpha(0.1).toString(),
   twitter: COLORS.TWITTER.alpha(0.1).toString(),
-  google: COLORS.GOOGLE.alpha(0.1).toString(),
+  google: COLORS.GOOGLE.alpha(0.2).toString(),
 };
 
 export const CustomButton: React.FC<IProps> = props => {
@@ -54,7 +54,7 @@ const themedTextStyles = StyleSheet.create({
   },
 
   google: {
-    color: COLORS.GOOGLE.toString(),
+    color: COLORS.TEXT_FADED.toString(),
   },
 });
 
@@ -69,19 +69,16 @@ const themedRootStyles = StyleSheet.create({
   },
 
   facebook: {
-    backgroundColor: COLORS.FACEBOOK.alpha(0).toString(),
     borderColor: COLORS.FACEBOOK.alpha(1).toString(),
     borderWidth: 1,
   },
 
   twitter: {
-    backgroundColor: COLORS.TWITTER.alpha(0).toString(),
     borderColor: COLORS.TWITTER.alpha(1).toString(),
     borderWidth: 1,
   },
 
   google: {
-    backgroundColor: COLORS.GOOGLE.alpha(0).toString(),
     borderColor: COLORS.GOOGLE.alpha(1).toString(),
     borderWidth: 1,
   },

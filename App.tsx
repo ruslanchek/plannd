@@ -58,7 +58,7 @@ const Navigation = createAppContainer(
 export default () => {
   return (
     <AddTransactionModalProvider>
-      <StatusBar barStyle='light-content' />
+      <StatusBar barStyle='dark-content' />
       <Navigation />
     </AddTransactionModalProvider>
   );

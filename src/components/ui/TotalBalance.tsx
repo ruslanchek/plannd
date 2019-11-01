@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { COLORS } from '../../common/colors';
-import { PADDING, BORDER_RADIUS, SHADOWS, FONT_SIZES, FONT_FAMILY } from '../../common/constants';
-import { STYLES } from '../../common/styles';
+import { PADDING, BORDER_RADIUS, FONT_SIZES, FONT_FAMILY } from '../../common/constants';
+import { STYLES, SHADOWS } from '../../common/styles';
 import { IconWithShape } from './IconWithShape';
 
 interface IProps {}

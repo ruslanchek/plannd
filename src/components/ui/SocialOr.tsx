@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: COLORS.TEXT_FADED.alpha(0.2).toString(),
     flexGrow: 1,
-    transform: [{ translateY: 10 }],
+    transform: [{ translateY: 9 }],
   },
 });

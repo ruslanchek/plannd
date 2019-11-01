@@ -3,6 +3,7 @@ import Color from 'color';
 interface IColors {
   BG_CONTRAST: Color;
 
+  BG: Color;
   BG_TINT: Color;
 
   ELEMENT_BG: Color;
@@ -22,7 +23,8 @@ interface IColors {
 
 export const THEME_LIGHT: IColors = {
   BG_CONTRAST: Color('#FFFFFF'),
-  BG_TINT: Color('#FFFFFF'),
+  BG: Color('#FFFFFF'),
+  BG_TINT: Color('#F6F9FE'),
 
   ELEMENT_BG: Color('#FFFFFF'),
   ELEMENT_IDLE: Color('#EFF0F1'),
@@ -36,7 +38,7 @@ export const THEME_LIGHT: IColors = {
 
   FACEBOOK: Color('#1977F3'),
   TWITTER: Color('#1DA1F2'),
-  GOOGLE: Color('#767676'),
+  GOOGLE: Color('#C9CFE5'),
 };
 
 export let COLORS: IColors = THEME_LIGHT;

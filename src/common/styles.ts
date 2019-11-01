@@ -1,6 +1,48 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from './colors';
-import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES, SHADOWS, FONT_FAMILY } from './constants';
+import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES, FONT_FAMILY } from './constants';
+
+export const SHADOWS = StyleSheet.create({
+  ELEVATION_1_REVERSED: {
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
+    shadowRadius: 5,
+    shadowOffset: {
+      height: -5,
+      width: 0,
+    },
+  },
+
+  ELEVATION_1: {
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
+    shadowRadius: 3,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+  },
+
+  ELEVATION_2: {
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
+    shadowRadius: 4,
+    shadowOffset: {
+      height: 6,
+      width: 0,
+    },
+  },
+
+  ELEVATION_3: {
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
+    shadowRadius: 6,
+    shadowOffset: {
+      height: 3,
+      width: 0,
+    },
+  },
+});
 
 export const STYLES = StyleSheet.create({
   INPUT: {
@@ -11,7 +53,7 @@ export const STYLES = StyleSheet.create({
     fontSize: FONT_SIZES.MEDIUM,
     color: COLORS.TEXT.toString(),
     fontFamily: FONT_FAMILY.REGULAR,
-    ...SHADOWS.ELEVATION_1,
+    ...SHADOWS.ELEVATION_3,
   },
 
   H1: {

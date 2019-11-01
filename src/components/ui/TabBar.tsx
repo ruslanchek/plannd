@@ -1,7 +1,8 @@
 import React, { useRef, useEffect, useContext, useCallback } from 'react';
 import { StyleSheet, View, TouchableHighlight, Animated } from 'react-native';
-import { ELEMENT_SIZES, BORDER_RADIUS, SHADOWS } from '../../common/constants';
+import { ELEMENT_SIZES, BORDER_RADIUS } from '../../common/constants';
 import { COLORS } from '../../common/colors';
+import { SHADOWS } from '../../common/styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { BottomTabBarProps } from 'react-navigation-tabs/lib/typescript/src/types';
 import { getInset } from 'react-native-safe-area-view';
@@ -13,9 +14,7 @@ import { AddTransactionModal } from '../modals/AddTransactionModal';
 export const TabBar: React.FC<BottomTabBarProps> = props => {
   const { navigation } = props;
   const animatedPlusValue = useRef(new Animated.Value(0));
-  const { show: showAddTransactionModal, setShow: setShowAddTransactionModal } = useContext(
-    AddTransactionModalContext,
-  );
+  const { show: showAddTransactionModal, setShow: setShowAddTransactionModal } = useContext(AddTransactionModalContext);
 
   useEffect(() => {
     Animated.spring(animatedPlusValue.current, {
@@ -39,19 +38,11 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
     <View style={styles.root}>
       <AddTransactionModal />
       <View style={styles.bar}>
-        <TabBarItem
-          routeName={ERoutes.HomeScreen}
-          navigation={navigation}
-          onPress={handleOnRoutePress}
-        />
-        <TabBarItem
-          routeName={ERoutes.HistoryScreen}
-          navigation={navigation}
-          onPress={handleOnRoutePress}
-        />
+        <TabBarItem routeName={ERoutes.HomeScreen} navigation={navigation} onPress={handleOnRoutePress} />
+        <TabBarItem routeName={ERoutes.HistoryScreen} navigation={navigation} onPress={handleOnRoutePress} />
 
         <View style={styles.center}>
-          <View style={styles.plusUnderlay}></View>
+          <View style={styles.plusUnderlay} />
           <TouchableHighlight
             onPress={handleAdd}
             underlayColor={COLORS.ACCENT.darken(0.2).toString()}
@@ -72,16 +63,8 @@ export const TabBar: React.FC<BottomTabBarProps> = props => {
           </TouchableHighlight>
         </View>
 
-        <TabBarItem
-          routeName={ERoutes.TargetsScreen}
-          navigation={props.navigation}
-          onPress={handleOnRoutePress}
-        />
-        <TabBarItem
-          routeName={ERoutes.SettingsScreen}
-          navigation={props.navigation}
-          onPress={handleOnRoutePress}
-        />
+        <TabBarItem routeName={ERoutes.TargetsScreen} navigation={props.navigation} onPress={handleOnRoutePress} />
+        <TabBarItem routeName={ERoutes.SettingsScreen} navigation={props.navigation} onPress={handleOnRoutePress} />
       </View>
     </View>
   );
@@ -91,7 +74,7 @@ const bottomInset = getInset('bottom', false);
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: COLORS.BG_TINT.toString(),
+    backgroundColor: COLORS.BG.toString(),
   },
 
   bar: {
