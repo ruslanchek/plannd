@@ -92,7 +92,7 @@ export const STYLES = StyleSheet.create({
 
   SUBTITLE: {
     fontSize: FONT_SIZES.REGULAR,
-    fontFamily: FONT_FAMILY.BOLD,
+    fontFamily: FONT_FAMILY.REGULAR,
     color: COLORS.TEXT_FADED.toString(),
   },
 });

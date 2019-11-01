@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   amount: {
     marginTop: PADDING.TINY,
     fontSize: FONT_SIZES.SEMI_LARGE,
-    fontFamily: FONT_FAMILY.REGULAR,
+    fontFamily: FONT_FAMILY.SEMI_BOLD,
     color: COLORS.TEXT.toString(),
   },
 });

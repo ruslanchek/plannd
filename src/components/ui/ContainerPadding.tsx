@@ -8,6 +8,6 @@ export const ContainerPadding: React.FC = props => {
 
 const styles = StyleSheet.create({
   root: {
-    paddingHorizontal: PADDING.MEDIUM,
+    paddingHorizontal: PADDING.LARGE,
   },
 });
