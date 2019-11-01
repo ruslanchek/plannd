@@ -102,7 +102,7 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
               </Animated.View>
 
               {isLastSlide ? (
-                <Row>
+                <Row noMargin>
                   <Col>
                     <CustomButton
                       theme='default'
@@ -130,7 +130,7 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
                   </Col>
                 </Row>
               ) : (
-                <Row>
+                <Row noMargin>
                   <Col>
                     <CustomButton
                       theme='default'
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
 
   bottom: {
-    paddingHorizontal: PADDING.LARGE,
+    padding: PADDING.LARGE,
   },
 
   disclaimer: {},
