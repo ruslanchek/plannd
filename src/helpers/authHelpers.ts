@@ -25,18 +25,14 @@ export const getUid = async (): Promise<string | undefined> => {
     if (currentUid) {
       return currentUid;
     }
-    currentUid = await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID);
+    currentUid = (await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.UID)) || undefined;
     return currentUid;
   } catch (e) {
     return undefined;
   }
 };
 
-export const authHandleRegister = async (
-  email: string,
-  password: string,
-  navigation: NavigationSwitchProp,
-) => {
+export const authHandleRegister = async (email: string, password: string, navigation: NavigationSwitchProp) => {
   try {
     const result = await auth().createUserWithEmailAndPassword(email, password);
     await authorize(result.user.uid, navigation);
@@ -45,11 +41,7 @@ export const authHandleRegister = async (
   }
 };
 
-export const authHandleLogIn = async (
-  email: string,
-  password: string,
-  navigation: NavigationSwitchProp,
-) => {
+export const authHandleLogIn = async (email: string, password: string, navigation: NavigationSwitchProp) => {
   try {
     const result = await auth().signInWithEmailAndPassword(email, password);
     await authorize(result.user.uid, navigation);
@@ -71,9 +63,12 @@ export const authHandleFacebookLogin = async (navigation: NavigationSwitchProp) 
   try {
     await LoginManager.logInWithPermissions(['public_profile', 'email']);
     const data = await AccessToken.getCurrentAccessToken();
-    const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
-    const signInData = await firebase.auth().signInWithCredential(credential);
-    await authorize(signInData.user.uid, navigation);
+
+    if (data) {
+      const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
+      const signInData = await firebase.auth().signInWithCredential(credential);
+      await authorize(signInData.user.uid, navigation);
+    }
   } catch (e) {
     Alert.alert('Facebook', e.message);
   }
@@ -90,10 +85,7 @@ export const authHandleGoogleLogin = async (navigation: NavigationSwitchProp) =>
       isGoogleAuthConfigured = true;
     }
     const result = await GoogleSignin.signIn();
-    const credential = firebase.auth.GoogleAuthProvider.credential(
-      result.idToken,
-      result.serverAuthCode,
-    );
+    const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken, result.serverAuthCode || undefined);
     const signInData = await firebase.auth().signInWithCredential(credential);
     await authorize(signInData.user.uid, navigation);
   } catch (e) {
@@ -101,12 +93,12 @@ export const authHandleGoogleLogin = async (navigation: NavigationSwitchProp) =>
   }
 };
 
-export const authHandleAnonimousLogin = async (navigation: NavigationSwitchProp) => {
+export const authHandleAnonymousLogin = async (navigation: NavigationSwitchProp) => {
   try {
     const result = await firebase.auth().signInAnonymously();
     await authorize(result.user.uid, navigation);
   } catch (e) {
-    Alert.alert('Authorize Anonimous', e.message);
+    Alert.alert('Authorize Anonymous', e.message);
   }
 };
 

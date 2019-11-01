@@ -11,13 +11,11 @@ import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
 import { Col } from '../ui/Col';
 
-export interface ISettingsScreenParams {}
+export interface IPasswordResetScreenParams {}
 
 const { width, height } = Dimensions.get('window');
 
-export const PasswordResetScreen: React.FC<
-  NavigationSwitchScreenProps<ISettingsScreenParams>
-> = props => {
+export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPasswordResetScreenParams>> = props => {
   const { navigation } = props;
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -78,7 +76,7 @@ export const PasswordResetScreen: React.FC<
 
 const styles = StyleSheet.create({
   root: {
-    padding: PADDING.MEDUIM,
+    padding: PADDING.MEDIUM,
   },
   centerButton: {
     flexDirection: 'row',

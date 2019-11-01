@@ -8,12 +8,11 @@ import { HomeScreen } from './src/components/screens/HomeScreen';
 import { SettingsScreen } from './src/components/screens/SettingsScreen';
 import { ERoutes } from './src/common/routes';
 import { AppLoadingScreen } from './src/components/screens/AppLoadingScreen';
-import { LoginScreen } from './src/components/screens/LoginScreen';
+import { AuthScreen } from './src/components/screens/AuthScreen';
 import { HistoryScreen } from './src/components/screens/HistoryScreen';
 import { TargetsScreen } from './src/components/screens/TargetsScreen';
 import { StatusBar } from 'react-native';
 import { WelcomeScreen } from './src/components/screens/WelcomeScreen';
-import { RegisterScreen } from './src/components/screens/RegisterScreen';
 import { PasswordResetScreen } from './src/components/screens/PasswordResetScreen';
 import { AddTransactionModalProvider } from './src/components/modals/AddTransactionModalProvider';
 
@@ -34,13 +33,12 @@ const AppStack = createBottomTabNavigator(
 const AuthStack = createStackNavigator(
   {
     [ERoutes.WelcomeScreen]: WelcomeScreen,
-    [ERoutes.RegisterScreen]: RegisterScreen,
-    [ERoutes.LoginScreen]: LoginScreen,
+    [ERoutes.AuthScreen]: AuthScreen,
     [ERoutes.PasswordResetScreen]: PasswordResetScreen,
   },
   {
     headerMode: 'none',
-    initialRouteName: ERoutes.WelcomeScreen,
+    initialRouteName: ERoutes.AuthScreen, //@todo
   },
 );
 

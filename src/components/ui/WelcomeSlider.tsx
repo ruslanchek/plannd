@@ -1,75 +1,118 @@
-import React, { useRef, useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-  Dimensions,
-  ImageRequireSource,
-} from 'react-native';
-import { PADDING, BORDER_RADIUS, SHADOWS } from '../../common/constants';
+import React, { useCallback, useRef, useState, useImperativeHandle, forwardRef } from 'react';
+import { StyleSheet, Text, View, Image, FlatList, Dimensions, ImageRequireSource } from 'react-native';
+import { PADDING } from '../../common/constants';
 import { STYLES } from '../../common/styles';
 import { COLORS } from '../../common/colors';
+
+interface IProps {
+  onSlideChanged: (index: number, isLastSlide: boolean) => void;
+}
 
 interface IData {
   id: number;
   title: string;
+  subtitle: string;
   image: ImageRequireSource;
+}
+
+export interface IWelcomeSliderHandlers {
+  nextItem: () => void;
+  scrollToEnd: () => void;
 }
 
 const DATA: IData[] = [
   {
     id: 1,
-    title: 'Analyze your personal budget',
+    title: 'Analyze your\npersonal budget',
+    subtitle: 'Get powerful tools\nto see what you sending on',
     image: require('../../assets/images/pictures/welcome-1.png'),
   },
   {
     id: 2,
-    title: 'Set your targets and accumulate money',
+    title: 'Set your targets\nand accumulate money',
+    subtitle: 'Challenge yourself to accrue\nmuch enough for your dreams',
     image: require('../../assets/images/pictures/welcome-2.png'),
   },
   {
     id: 3,
-    title: 'Acheive results with minimal effort',
+    title: 'Achieve results\nwith minimal effort',
+    subtitle: 'See what`s happening with\nyour balance and change habits',
     image: require('../../assets/images/pictures/welcome-3.png'),
   },
   {
     id: 4,
-    title: 'Get your finacial wellness',
+    title: 'Get your\nfinancial wellness',
+    subtitle: 'Find out what you dreaming\nof last years becomes true',
     image: require('../../assets/images/pictures/welcome-4.png'),
   },
   {
     id: 5,
-    title: 'Track and share your results',
+    title: 'Track and share\nyour results',
+    subtitle: 'You can share your account\nwith your family members',
     image: require('../../assets/images/pictures/welcome-5.png'),
   },
 ];
 
 const { width } = Dimensions.get('window');
 
-export const WelcomeSlider: React.FC = () => {
+export const WelcomeSlider = forwardRef<IWelcomeSliderHandlers | undefined, IProps>((props, ref) => {
+  const { onSlideChanged } = props;
+  const lastIndex = DATA.length - 1;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const onViewableItemsChanged = useRef(({ viewableItems }) => {
-    if (viewableItems.length === 1) {
-      setCurrentIndex(viewableItems[0].index);
+  const flatList = useRef<FlatList<IData>>(null);
+  const onViewableItemsChanged = useCallback(event => {
+    if (event.viewableItems.length === 1) {
+      const { index } = event.viewableItems[0];
+      setCurrentIndex(index);
+      onSlideChanged(index, index === lastIndex);
     }
-  });
+  }, []);
+
+  const scrollToEnd = () => {
+    if (flatList.current) {
+      flatList.current.scrollToIndex({
+        animated: true,
+        index: lastIndex,
+      });
+    }
+  };
+
+  const nextItem = () => {
+    if (currentIndex === lastIndex) {
+      return;
+    }
+
+    const index = currentIndex + 1;
+
+    if (flatList.current) {
+      flatList.current.scrollToIndex({
+        animated: true,
+        index,
+      });
+    }
+  };
+
+  useImperativeHandle(ref, () => ({
+    nextItem,
+    scrollToEnd,
+  }));
 
   return (
     <View style={styles.root}>
-      <FlatList
+      <FlatList<IData>
+        ref={flatList}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         data={DATA}
         keyExtractor={item => item.id.toString()}
-        onViewableItemsChanged={onViewableItemsChanged.current}
+        onViewableItemsChanged={onViewableItemsChanged}
         renderItem={({ item }) => {
           return (
             <View style={styles.item}>
-              <Text style={STYLES.H1}>{item.title}</Text>
               <Image style={styles.itemImage} resizeMode='contain' source={item.image} />
+              <Text style={[STYLES.H1, styles.title]}>{item.title}</Text>
+              <Text style={[STYLES.H3, styles.subtitle]}>{item.subtitle}</Text>
             </View>
           );
         }}
@@ -77,17 +120,12 @@ export const WelcomeSlider: React.FC = () => {
 
       <View style={styles.paginator}>
         {DATA.map((item, index) => {
-          return (
-            <View
-              key={index}
-              style={[styles.page, index === currentIndex ? styles.pageActive : null]}
-            />
-          );
+          return <View key={index} style={[styles.page, index === currentIndex ? styles.pageActive : null]} />;
         })}
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   root: {
@@ -95,24 +133,29 @@ const styles = StyleSheet.create({
   },
 
   item: {
-    width: width - PADDING.MEDUIM * 2,
-    margin: PADDING.MEDUIM,
-    padding: PADDING.MEDUIM,
-    backgroundColor: COLORS.BG_CONTRAST.toString(),
-    borderRadius: BORDER_RADIUS.LARGE,
-    ...SHADOWS.ELEVATION_2,
+    width,
+    padding: PADDING.LARGE,
+    marginBottom: PADDING.REGULAR,
   },
 
   itemImage: {
-    width: width - PADDING.MEDUIM * 4,
-    height: width - PADDING.MEDUIM * 5,
-    marginTop: PADDING.MEDUIM,
+    width: width - PADDING.LARGE * 2,
+    height: width - PADDING.LARGE * 3,
   },
 
   paginator: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+
+  title: {
+    textAlign: 'center',
+  },
+
+  subtitle: {
+    textAlign: 'center',
+    marginTop: PADDING.REGULAR,
   },
 
   page: {

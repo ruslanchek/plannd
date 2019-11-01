@@ -8,8 +8,8 @@ export const ELEMENT_SIZES = {
 };
 
 export const FONT_SIZES = {
-  LARGE: 28,
-  SEMI_LARGE: 22,
+  LARGE: 24,
+  SEMI_LARGE: 20,
   MEDIUM: 16,
   REGULAR: 14,
   SMALL: 12,
@@ -17,10 +17,10 @@ export const FONT_SIZES = {
 };
 
 export const FONT_FAMILY = {
-  BOLD: 'OpenSans-Bold',
-  EXTRA_BOLD: 'OpenSans-ExtraBold',
-  REGULAR: 'OpenSans-Regular',
-  SEMI_BOLD: 'OpenSans-SemiBold',
+  BOLD: 'Rubik-Bold',
+  EXTRA_BOLD: 'Rubik-Black',
+  REGULAR: 'Rubik-Regular',
+  SEMI_BOLD: 'Rubik-Medium',
 };
 
 export const ASYNC_STORAGE_KEYS = {
@@ -30,22 +30,22 @@ export const ASYNC_STORAGE_KEYS = {
 export const BORDER_RADIUS = {
   SMALL: 4,
   REGULAR: 6,
-  MEDIUM: 10,
-  LARGE: 14,
+  MEDIUM: 12,
+  LARGE: 16,
 };
 
 export const PADDING = {
   TINY: 4,
   SMALL: 10,
   REGULAR: 16,
-  MEDUIM: 20,
+  MEDIUM: 20,
   LARGE: 30,
 };
 
 export const SHADOWS = {
   ELEVATION_1_REVERSED: {
-    shadowColor: COLORS.TEXT_FADED.toString(),
-    shadowOpacity: 0.1,
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
     shadowRadius: 5,
     shadowOffset: {
       height: -5,
@@ -54,8 +54,8 @@ export const SHADOWS = {
   },
 
   ELEVATION_1: {
-    shadowColor: COLORS.TEXT_FADED.toString(),
-    shadowOpacity: 0.1,
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
     shadowRadius: 3,
     shadowOffset: {
       height: 2,
@@ -64,11 +64,11 @@ export const SHADOWS = {
   },
 
   ELEVATION_2: {
-    shadowColor: COLORS.TEXT_FADED.toString(),
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.075,
+    shadowRadius: 6,
     shadowOffset: {
-      height: 5,
+      height: 3,
       width: 0,
     },
   },

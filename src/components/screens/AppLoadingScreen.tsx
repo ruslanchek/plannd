@@ -5,11 +5,9 @@ import { authBootstrap } from '../../helpers/authHelpers';
 import { BgTint } from '../ui/BgTint';
 import { COLORS } from '../../common/colors';
 
-export interface ISettingsScreenParams {}
+export interface IAppLoadingScreenParams {}
 
-export const AppLoadingScreen: React.FC<
-  NavigationSwitchScreenProps<ISettingsScreenParams>
-> = props => {
+export const AppLoadingScreen: React.FC<NavigationSwitchScreenProps<IAppLoadingScreenParams>> = props => {
   useEffect(() => {
     authBootstrap(props.navigation);
   }, []);

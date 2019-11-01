@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 
   info: {
-    marginLeft: PADDING.MEDUIM,
+    marginLeft: PADDING.MEDIUM,
   },
 
   title: {

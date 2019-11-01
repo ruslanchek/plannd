@@ -1,13 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from './colors';
-import {
-  BORDER_RADIUS,
-  ELEMENT_SIZES,
-  PADDING,
-  FONT_SIZES,
-  SHADOWS,
-  FONT_FAMILY,
-} from './constants';
+import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES, SHADOWS, FONT_FAMILY } from './constants';
 
 export const STYLES = StyleSheet.create({
   INPUT: {
@@ -17,18 +10,21 @@ export const STYLES = StyleSheet.create({
     paddingHorizontal: PADDING.REGULAR,
     fontSize: FONT_SIZES.MEDIUM,
     color: COLORS.TEXT.toString(),
-    fontFamily: FONT_FAMILY.BOLD,
+    fontFamily: FONT_FAMILY.REGULAR,
     ...SHADOWS.ELEVATION_1,
-  },
-
-  SMALL_BUTTON: {
-    fontSize: FONT_SIZES.SMALL,
   },
 
   H1: {
     fontSize: FONT_SIZES.LARGE,
-    fontFamily: FONT_FAMILY.BOLD,
-    lineHeight: FONT_SIZES.LARGE * 1.2,
+    fontFamily: FONT_FAMILY.SEMI_BOLD,
+    lineHeight: FONT_SIZES.LARGE * 1.15,
+    color: COLORS.TEXT.toString(),
+  },
+
+  H3: {
+    fontSize: FONT_SIZES.SEMI_LARGE,
+    fontFamily: FONT_FAMILY.REGULAR,
+    lineHeight: FONT_SIZES.MEDIUM * 1.5,
     color: COLORS.TEXT.toString(),
   },
 
@@ -49,6 +45,7 @@ export const STYLES = StyleSheet.create({
 
   CENTERED_TEXT: {
     textAlign: 'center',
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 
   SUBTITLE: {

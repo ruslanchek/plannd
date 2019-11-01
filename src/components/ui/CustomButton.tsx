@@ -1,14 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { COLORS } from '../../common/colors';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import {
-  FONT_SIZES,
-  BORDER_RADIUS,
-  ELEMENT_SIZES,
-  PADDING,
-  FONT_FAMILY,
-} from '../../common/constants';
+import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_FAMILY, SHADOWS } from '../../common/constants';
 
 interface IProps {
   theme: 'default' | 'accent' | 'facebook' | 'twitter' | 'google';
@@ -18,16 +11,28 @@ interface IProps {
   disabled?: boolean;
 }
 
+const UNDERLAY_COLORS = {
+  accent: COLORS.ACCENT.darken(0.1).toString(),
+  default: COLORS.ACCENT.alpha(0.1).toString(),
+  facebook: COLORS.FACEBOOK.alpha(0.1).toString(),
+  twitter: COLORS.TWITTER.alpha(0.1).toString(),
+  google: COLORS.GOOGLE.alpha(0.1).toString(),
+};
+
 export const CustomButton: React.FC<IProps> = props => {
   const { theme, text, onPress, icon, disabled } = props;
 
   return (
-    <TouchableOpacity onPress={onPress} disabled={disabled}>
-      <View style={[styles.root, themedRootStyles[theme]]}>
+    <TouchableHighlight
+      style={[styles.root, [themedRootStyles[theme]]]}
+      onPress={onPress}
+      disabled={disabled}
+      underlayColor={UNDERLAY_COLORS[theme]}>
+      <View style={styles.inner}>
         {icon && <View style={styles.icon}>{icon}</View>}
         <Text style={[styles.text, themedTextStyles[theme]]}>{text}</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
@@ -64,23 +69,33 @@ const themedRootStyles = StyleSheet.create({
   },
 
   facebook: {
-    backgroundColor: COLORS.FACEBOOK.alpha(0.125).toString(),
+    backgroundColor: COLORS.FACEBOOK.alpha(0).toString(),
+    borderColor: COLORS.FACEBOOK.alpha(1).toString(),
+    borderWidth: 1,
   },
 
   twitter: {
-    backgroundColor: COLORS.TWITTER.alpha(0.125).toString(),
+    backgroundColor: COLORS.TWITTER.alpha(0).toString(),
+    borderColor: COLORS.TWITTER.alpha(1).toString(),
+    borderWidth: 1,
   },
 
   google: {
-    backgroundColor: COLORS.GOOGLE.alpha(0.07).toString(),
+    backgroundColor: COLORS.GOOGLE.alpha(0).toString(),
+    borderColor: COLORS.GOOGLE.alpha(1).toString(),
+    borderWidth: 1,
   },
 });
 
 const styles = StyleSheet.create({
   root: {
-    height: ELEMENT_SIZES.BUTTON_HEIGHT,
-    paddingHorizontal: PADDING.MEDUIM,
     borderRadius: BORDER_RADIUS.MEDIUM,
+  },
+
+  inner: {
+    height: ELEMENT_SIZES.BUTTON_HEIGHT,
+    paddingHorizontal: PADDING.MEDIUM,
+    position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -88,10 +103,12 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: FONT_SIZES.MEDIUM,
-    fontFamily: FONT_FAMILY.BOLD,
+    fontFamily: FONT_FAMILY.REGULAR,
   },
 
   icon: {
     marginRight: PADDING.SMALL,
+    position: 'absolute',
+    left: PADDING.MEDIUM,
   },
 });

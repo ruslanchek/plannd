@@ -2,11 +2,9 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { NavigationSwitchScreenProps, useTheme } from 'react-navigation';
 
-export interface ISettingsScreenParams {}
+export interface ITargetsScreenParams {}
 
-export const TargetsScreen: React.FC<
-  NavigationSwitchScreenProps<ISettingsScreenParams>
-> = props => {
+export const TargetsScreen: React.FC<NavigationSwitchScreenProps<ITargetsScreenParams>> = props => {
   return (
     <View style={styles.root}>
       <Text>Targets</Text>

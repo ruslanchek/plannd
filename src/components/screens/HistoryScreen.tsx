@@ -2,11 +2,9 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { NavigationSwitchScreenProps, useTheme } from 'react-navigation';
 
-export interface ISettingsScreenParams {}
+export interface IHistoryScreenParams {}
 
-export const HistoryScreen: React.FC<
-  NavigationSwitchScreenProps<ISettingsScreenParams>
-> = props => {
+export const HistoryScreen: React.FC<NavigationSwitchScreenProps<IHistoryScreenParams>> = props => {
   return (
     <View style={styles.root}>
       <Text>Transactions</Text>

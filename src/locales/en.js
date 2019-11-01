@@ -9,25 +9,27 @@ export default {
   'InputPlaceholder::Password': 'Password',
 
   'Button::Register': 'Sign up',
-  'Button::Login': 'Log in',
+  'Button::Login': 'Login',
+  'Button::Skip': 'Skip',
 
   'Button::FacebookRegister': 'Sign up with Facebook',
-  'Button::FacebookLogin': 'Log in with Facebook',
+  'Button::FacebookLogin': 'Login with Facebook',
 
   'Button::TwitterRegister': 'Sign up with Twitter',
-  'Button::TwitterLogin': 'Log in with Twitter',
+  'Button::TwitterLogin': 'Login with Twitter',
 
   'Button::GoogleRegister': 'Sign up with Google',
-  'Button::GoogleLogin': 'Log in with Google',
+  'Button::GoogleLogin': 'Login with Google',
 
   'Button::RequestPasswordReset': 'Request password reset',
   'Button::PasswordReset': 'Password reset',
 
-  'Button::Skip': 'Skip registration',
+  'Button::SkipRegister': 'Skip registration',
+  'Button::NextWelcomeSlide': 'Next',
 
   'Social::Or': 'or',
 
-  'Header::Login': 'Log In',
+  'Header::Login': 'Login',
   'Header::Register': 'Sign Up',
   'Header::PasswordReset': 'Password reset',
 

@@ -4,8 +4,7 @@ export enum ERoutes {
 
   AppLoadingScreen = 'AppLoadingScreen',
   WelcomeScreen = 'WelcomeScreen',
-  LoginScreen = 'LoginScreen',
-  RegisterScreen = 'RegisterScreen',
+  AuthScreen = 'AuthScreen',
   PasswordResetScreen = 'PasswordResetScreen',
   HomeScreen = 'HomeScreen',
   HistoryScreen = 'HistoryScreen',

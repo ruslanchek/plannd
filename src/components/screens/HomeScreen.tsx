@@ -10,9 +10,9 @@ import { AccountCard } from '../ui/AccountCard';
 import { Row } from '../ui/Row';
 import { Col } from '../ui/Col';
 
-export interface ISettingsScreenParams {}
+export interface IHomeScreenParams {}
 
-export const HomeScreen: React.FC<NavigationSwitchScreenProps<ISettingsScreenParams>> = props => {
+export const HomeScreen: React.FC<NavigationSwitchScreenProps<IHomeScreenParams>> = props => {
   const { navigation } = props;
   const [refreshing, setRefreshing] = useState(false);
 
