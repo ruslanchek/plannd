@@ -110,7 +110,11 @@ export const WelcomeSlider = forwardRef<IWelcomeSliderHandlers | undefined, IPro
         renderItem={({ item }) => {
           return (
             <View style={styles.item}>
-              <Image style={styles.itemImage} resizeMode='contain' source={item.image} />
+              <View style={styles.imageWrapper}>
+                <View style={styles.imageHolder}>
+                  <Image style={styles.itemImage} resizeMode='contain' source={item.image} />
+                </View>
+              </View>
               <Text style={[STYLES.H1, styles.title]}>{item.title}</Text>
               <Text style={[STYLES.H3, styles.subtitle]}>{item.subtitle}</Text>
             </View>
@@ -127,6 +131,8 @@ export const WelcomeSlider = forwardRef<IWelcomeSliderHandlers | undefined, IPro
   );
 });
 
+const imageSize = height / 3.5;
+
 const styles = StyleSheet.create({
   root: {
     width,
@@ -137,11 +143,25 @@ const styles = StyleSheet.create({
     width,
     paddingHorizontal: PADDING.LARGE,
     marginBottom: PADDING.LARGE,
+    justifyContent: 'center',
+  },
+
+  imageWrapper: {
+    alignItems: 'center',
+    height: imageSize,
+  },
+
+  imageHolder: {
+    height: imageSize,
+    width: imageSize,
+    overflow: 'hidden',
+    borderRadius: imageSize / 2,
+    backgroundColor: COLORS.BG_CONTRAST.toString(),
   },
 
   itemImage: {
-    width: width - PADDING.LARGE * 2,
-    height: height / 3,
+    width: imageSize,
+    height: imageSize,
   },
 
   paginator: {

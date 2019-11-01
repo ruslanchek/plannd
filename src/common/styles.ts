@@ -35,10 +35,20 @@ export const SHADOWS = StyleSheet.create({
 
   ELEVATION_3: {
     shadowColor: COLORS.ACCENT.toString(),
-    shadowOpacity: 0.075,
-    shadowRadius: 6,
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
     shadowOffset: {
-      height: 3,
+      height: 4,
+      width: 0,
+    },
+  },
+
+  ELEVATION_4: {
+    shadowColor: COLORS.ACCENT.toString(),
+    shadowOpacity: 0.32,
+    shadowRadius: 10,
+    shadowOffset: {
+      height: 5,
       width: 0,
     },
   },
@@ -83,11 +93,14 @@ export const STYLES = StyleSheet.create({
   FADED_TEXT: {
     color: COLORS.TEXT_FADED.toString(),
     fontFamily: FONT_FAMILY.REGULAR,
+    fontSize: FONT_SIZES.SMALL,
   },
 
   CENTERED_TEXT: {
     textAlign: 'center',
     fontFamily: FONT_FAMILY.REGULAR,
+    fontSize: FONT_SIZES.REGULAR,
+    lineHeight: FONT_SIZES.REGULAR * 1.4,
   },
 
   SUBTITLE: {

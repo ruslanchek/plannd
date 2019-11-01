@@ -1,10 +1,8 @@
-import { COLORS } from './colors';
-
 export const ELEMENT_SIZES = {
   TAB_BAR_HEIGHT: 56,
   TAB_BAR_ICON_SIZE: 24,
-  INPUT_HEIGHT: 48,
-  BUTTON_HEIGHT: 48,
+  INPUT_HEIGHT: 58,
+  BUTTON_HEIGHT: 52,
   TAB_HEIGHT: 56,
 };
 

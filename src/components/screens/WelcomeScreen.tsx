@@ -31,9 +31,9 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
       opacity: animatedDisclaimerValue,
       transform: [
         {
-          translateY: animatedDisclaimerValue.interpolate({
+          scale: animatedDisclaimerValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [-15, 0],
+            outputRange: [0.9, 1],
           }),
         },
       ],
@@ -122,7 +122,7 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
                 </Row>
               ) : (
                 <CustomButton
-                  theme='default'
+                  theme='accent'
                   text={localizeText('Button::NextWelcomeSlide')}
                   onPress={handleNextSlide}
                 />
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
 
   top: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     flexGrow: 1,
   },
 

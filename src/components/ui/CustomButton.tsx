@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import { COLORS } from '../../common/colors';
 import { FONT_SIZES, BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_FAMILY } from '../../common/constants';
+import { SHADOWS } from '../../common/styles';
 
 interface IProps {
   theme: 'default' | 'accent' | 'facebook' | 'twitter' | 'google';
@@ -12,8 +13,8 @@ interface IProps {
 }
 
 const UNDERLAY_COLORS = {
-  accent: COLORS.ACCENT.darken(0.1).toString(),
-  default: COLORS.ACCENT.alpha(0.1).toString(),
+  accent: COLORS.ACCENT.darken(0.05).toString(),
+  default: COLORS.ACCENT.lighten(0.52).toString(),
   facebook: COLORS.FACEBOOK.alpha(0.1).toString(),
   twitter: COLORS.TWITTER.alpha(0.1).toString(),
   google: COLORS.GOOGLE.alpha(0.2).toString(),
@@ -38,7 +39,7 @@ export const CustomButton: React.FC<IProps> = props => {
 
 const themedTextStyles = StyleSheet.create({
   accent: {
-    color: COLORS.BG_CONTRAST.toString(),
+    color: '#fff',
   },
 
   default: {
@@ -61,11 +62,12 @@ const themedTextStyles = StyleSheet.create({
 const themedRootStyles = StyleSheet.create({
   accent: {
     backgroundColor: COLORS.ACCENT.toString(),
+    ...SHADOWS.ELEVATION_4,
   },
 
   default: {
-    borderColor: COLORS.ACCENT.toString(),
-    borderWidth: 1,
+    backgroundColor: COLORS.BG_CONTRAST.toString(),
+    ...SHADOWS.ELEVATION_3,
   },
 
   facebook: {
@@ -99,8 +101,9 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: FONT_SIZES.MEDIUM,
-    fontFamily: FONT_FAMILY.REGULAR,
+    fontSize: FONT_SIZES.REGULAR,
+    fontFamily: FONT_FAMILY.SEMI_BOLD,
+    textTransform: 'uppercase',
   },
 
   icon: {
