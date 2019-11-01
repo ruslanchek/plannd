@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, KeyboardAvoidingView, Dimensions, View } from 'react-native';
+import { StyleSheet, Text, TextInput, KeyboardAvoidingView, Dimensions, View, Image } from 'react-native';
 import { NavigationSwitchScreenProps, ScrollView } from 'react-navigation';
 import { authHandleResetPassword } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
@@ -61,7 +61,6 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
                 />
               </Col>
             </Row>
-
             <Row>
               <Col>
                 <CustomButton
