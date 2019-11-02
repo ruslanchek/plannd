@@ -38,7 +38,7 @@ const AuthStack = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: ERoutes.WelcomeScreen,
+    initialRouteName: ERoutes.AuthScreen,
   },
 );
 

@@ -21,8 +21,9 @@ export const TextButton: React.FC<IProps> = props => {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: FONT_SIZES.REGULAR,
-    fontFamily: FONT_FAMILY.REGULAR,
+    fontSize: FONT_SIZES.SMALL,
+    fontFamily: FONT_FAMILY.SEMI_BOLD,
+    textTransform: 'uppercase',
     color: COLORS.ACCENT.toString(),
   },
 });

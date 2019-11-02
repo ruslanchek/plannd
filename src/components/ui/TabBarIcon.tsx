@@ -5,11 +5,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { View, StyleSheet } from 'react-native';
 
 interface IProps {
-  routeName: string;
+  routeName: ERoutes;
   tintColor: string;
 }
 
-const ICON_NAMES = {
+const ICON_NAMES: { [key: string]: string } = {
   [ERoutes.HomeScreen]: 'ios-albums',
   [ERoutes.HistoryScreen]: 'ios-book',
   [ERoutes.TargetsScreen]: 'ios-planet',
@@ -17,7 +17,7 @@ const ICON_NAMES = {
   [ERoutes.SettingsScreen]: 'ios-finger-print',
 };
 
-const ICON_SIZE_RATIOS = {
+const ICON_SIZE_RATIOS: { [key: string]: number } = {
   [ERoutes.HomeScreen]: 1,
   [ERoutes.HistoryScreen]: 1.1,
   [ERoutes.TargetsScreen]: 1.4,
@@ -25,7 +25,7 @@ const ICON_SIZE_RATIOS = {
   [ERoutes.SettingsScreen]: 1.1,
 };
 
-const ICON_SIZE_OFFSET_VERTICAL = {
+const ICON_SIZE_OFFSET_VERTICAL: { [key: string]: number } = {
   [ERoutes.HomeScreen]: 0,
   [ERoutes.HistoryScreen]: 0,
   [ERoutes.TargetsScreen]: -4,

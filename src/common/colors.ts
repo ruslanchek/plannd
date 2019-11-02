@@ -29,10 +29,10 @@ export const THEME_LIGHT: IColors = {
 
   ELEMENT_BG: Color('#FFFFFF'),
   ELEMENT_IDLE: Color('#EFF0F1'),
-  ELEMENT_STROKE: Color('#F1F1F6'),
+  ELEMENT_STROKE: Color('#F4F7FB'),
 
-  TEXT: Color('#454963'),
-  TEXT_FADED: Color('#9AA1A9'),
+  TEXT: Color('#384354'),
+  TEXT_FADED: Color('#606B78'),
   TEXT_TINT: Color('#9AA1A9'),
   TEXT_PLACEHOLDER: Color('#C5C9CE'),
 

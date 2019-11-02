@@ -1,18 +1,23 @@
 export const ELEMENT_SIZES = {
   TAB_BAR_HEIGHT: 56,
   TAB_BAR_ICON_SIZE: 24,
-  INPUT_HEIGHT: 58,
-  BUTTON_HEIGHT: 52,
+  INPUT_HEIGHT: 64,
+  BUTTON_HEIGHT: 64,
   TAB_HEIGHT: 56,
 };
 
+export const LINE_HEIGHTS = {
+  TEXT: 1.3,
+  HEADER: 1.2,
+};
+
 export const FONT_SIZES = {
-  LARGE: 24,
-  SEMI_LARGE: 20,
-  MEDIUM: 16,
-  REGULAR: 14,
-  SMALL: 12,
-  TINY: 10,
+  LARGE: 26,
+  SEMI_LARGE: 22,
+  MEDIUM: 18,
+  REGULAR: 16,
+  SMALL: 14,
+  TINY: 12,
 };
 
 export const FONT_FAMILY = {
@@ -28,9 +33,9 @@ export const ASYNC_STORAGE_KEYS = {
 
 export const BORDER_RADIUS = {
   SMALL: 4,
-  REGULAR: 6,
-  MEDIUM: 12,
-  LARGE: 16,
+  REGULAR: 8,
+  MEDIUM: 16,
+  LARGE: 20,
 };
 
 export const PADDING = {

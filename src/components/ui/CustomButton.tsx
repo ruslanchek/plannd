@@ -9,19 +9,20 @@ interface IProps {
   text: string;
   onPress: () => void;
   icon?: React.ReactNode;
+  iconPosition?: 'start' | 'end';
   disabled?: boolean;
 }
 
 const UNDERLAY_COLORS = {
   accent: COLORS.ACCENT.darken(0.05).toString(),
-  default: COLORS.ACCENT.lighten(0.52).toString(),
+  default: COLORS.ACCENT.lighten(0.51).toString(),
   facebook: COLORS.FACEBOOK.alpha(0.1).toString(),
   twitter: COLORS.TWITTER.alpha(0.1).toString(),
   google: COLORS.GOOGLE.alpha(0.2).toString(),
 };
 
 export const CustomButton: React.FC<IProps> = props => {
-  const { theme, text, onPress, icon, disabled } = props;
+  const { theme, text, onPress, icon, iconPosition = 'start', disabled } = props;
 
   return (
     <TouchableHighlight
@@ -30,8 +31,9 @@ export const CustomButton: React.FC<IProps> = props => {
       disabled={disabled}
       underlayColor={UNDERLAY_COLORS[theme]}>
       <View style={styles.inner}>
-        {icon && <View style={styles.icon}>{icon}</View>}
+        {iconPosition === 'start' && icon && <View style={[styles.icon, styles.iconStart]}>{icon}</View>}
         <Text style={[styles.text, themedTextStyles[theme]]}>{text}</Text>
+        {iconPosition === 'end' && icon && <View style={[styles.icon, styles.iconEnd]}>{icon}</View>}
       </View>
     </TouchableHighlight>
   );
@@ -107,8 +109,14 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    marginRight: PADDING.SMALL,
     position: 'absolute',
+  },
+
+  iconStart: {
     left: PADDING.MEDIUM,
+  },
+
+  iconEnd: {
+    right: PADDING.MEDIUM,
   },
 });

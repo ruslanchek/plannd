@@ -30,7 +30,7 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
 
   return (
     <BgTint>
-      <ScrollView style={[styles.root, { width, height }]}>
+      <View style={styles.root}>
         <View
           style={{
             height,
@@ -52,7 +52,7 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
                   placeholder={localizeText('InputPlaceholder::Email')}
                   placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
                   textContentType='emailAddress'
-                  style={STYLES.INPUT}
+                  style={[STYLES.INPUT, STYLES.INPUT_EFFECTS]}
                   value={email}
                   onChange={event => {
                     setEmail(event.nativeEvent.text);
@@ -73,7 +73,7 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
             </Row>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </BgTint>
   );
 };

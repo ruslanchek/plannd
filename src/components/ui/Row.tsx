@@ -8,7 +8,7 @@ interface IProps {
 
 export const Row: React.FC<IProps> = props => {
   const { children, noMargin } = props;
-  return <View style={[styles.root, noMargin ? {} : { marginBottom: PADDING.MEDIUM }]}>{children}</View>;
+  return <View style={[styles.root, noMargin ? {} : { marginBottom: PADDING.LARGE }]}>{children}</View>;
 };
 
 const styles = StyleSheet.create({

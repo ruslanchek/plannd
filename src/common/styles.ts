@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { COLORS } from './colors';
-import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES, FONT_FAMILY } from './constants';
+import { BORDER_RADIUS, ELEMENT_SIZES, PADDING, FONT_SIZES, FONT_FAMILY, LINE_HEIGHTS } from './constants';
 
 export const SHADOWS = StyleSheet.create({
   ELEVATION_1_REVERSED: {
@@ -56,27 +56,42 @@ export const SHADOWS = StyleSheet.create({
 
 export const STYLES = StyleSheet.create({
   INPUT: {
-    backgroundColor: COLORS.ELEMENT_BG.toString(),
-    borderRadius: BORDER_RADIUS.MEDIUM,
     height: ELEMENT_SIZES.INPUT_HEIGHT,
-    paddingHorizontal: PADDING.REGULAR,
+    paddingHorizontal: PADDING.MEDIUM,
     fontSize: FONT_SIZES.MEDIUM,
     color: COLORS.TEXT.toString(),
     fontFamily: FONT_FAMILY.REGULAR,
+  },
+
+  INPUT_SEPARATOR_BOTTOM: {
+    borderBottomColor: COLORS.ELEMENT_STROKE.toString(),
+    borderBottomWidth: 2,
+  },
+
+  INPUT_EFFECTS: {
+    borderRadius: BORDER_RADIUS.MEDIUM,
+    backgroundColor: COLORS.ELEMENT_BG.toString(),
     ...SHADOWS.ELEVATION_3,
   },
 
   H1: {
     fontSize: FONT_SIZES.LARGE,
     fontFamily: FONT_FAMILY.SEMI_BOLD,
-    lineHeight: FONT_SIZES.LARGE * 1.15,
+    lineHeight: FONT_SIZES.LARGE * LINE_HEIGHTS.HEADER,
+    color: COLORS.TEXT.toString(),
+  },
+
+  H2: {
+    fontSize: FONT_SIZES.MEDIUM,
+    fontFamily: FONT_FAMILY.SEMI_BOLD,
+    lineHeight: FONT_SIZES.LARGE * LINE_HEIGHTS.HEADER,
     color: COLORS.TEXT.toString(),
   },
 
   H3: {
-    fontSize: FONT_SIZES.SEMI_LARGE,
+    fontSize: FONT_SIZES.MEDIUM,
     fontFamily: FONT_FAMILY.REGULAR,
-    lineHeight: FONT_SIZES.MEDIUM * 1.5,
+    lineHeight: FONT_SIZES.MEDIUM * LINE_HEIGHTS.HEADER,
     color: COLORS.TEXT.toString(),
   },
 
@@ -93,14 +108,20 @@ export const STYLES = StyleSheet.create({
   FADED_TEXT: {
     color: COLORS.TEXT_FADED.toString(),
     fontFamily: FONT_FAMILY.REGULAR,
+    fontSize: FONT_SIZES.REGULAR,
+  },
+
+  SMALL_TEXT: {
+    fontFamily: FONT_FAMILY.REGULAR,
     fontSize: FONT_SIZES.SMALL,
   },
 
   CENTERED_TEXT: {
+    color: COLORS.TEXT.toString(),
     textAlign: 'center',
     fontFamily: FONT_FAMILY.REGULAR,
-    fontSize: FONT_SIZES.REGULAR,
-    lineHeight: FONT_SIZES.REGULAR * 1.4,
+    fontSize: FONT_SIZES.SMALL,
+    lineHeight: FONT_SIZES.REGULAR * LINE_HEIGHTS.TEXT,
   },
 
   SUBTITLE: {

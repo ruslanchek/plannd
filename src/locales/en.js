@@ -11,21 +11,21 @@ export default {
   'Button::Register': 'Sign up',
   'Button::Login': 'Login',
   'Button::Skip': 'Skip',
+  'Button::Continue': 'Continue',
 
-  'Button::FacebookRegister': 'Sign up with Facebook',
-  'Button::FacebookLogin': 'Login with Facebook',
+  'Button::FacebookRegister': 'Facebook',
+  'Button::FacebookLogin': 'Facebook',
 
-  'Button::TwitterRegister': 'Sign up with Twitter',
-  'Button::TwitterLogin': 'Login with Twitter',
+  'Button::TwitterRegister': 'Twitter',
+  'Button::TwitterLogin': 'Twitter',
 
-  'Button::GoogleRegister': 'Sign up with Google',
-  'Button::GoogleLogin': 'Login with Google',
+  'Button::GoogleRegister': 'Google',
+  'Button::GoogleLogin': 'Google',
 
   'Button::RequestPasswordReset': 'Request password reset',
   'Button::PasswordReset': 'Password reset',
 
   'Button::SkipRegister': 'Skip registration',
-  'Button::NextWelcomeSlide': 'Next',
 
   'Social::Or': 'or',
 
@@ -34,4 +34,6 @@ export default {
   'Header::PasswordReset': 'Password reset',
 
   'Text::WelcomePromo': 'Sign up to use your\npersonal budget cloud for free.',
+  'Text::RegisterDisclaimer': 'Already have an account?',
+  'Text::LoginDisclaimer': 'Would like to create new account?',
 };

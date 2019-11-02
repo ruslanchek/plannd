@@ -23,7 +23,7 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
   const [loading, setLoading] = useState(false);
   const [isLastSlide, setIsLastSlide] = useState(false);
   const [animatedDisclaimerValue] = useState(new Animated.Value(isLastSlide ? 1 : 0));
-  const { safeHeight, height, paddingBottom, paddingTop } = useScreenSizes();
+  const { height, paddingBottom, paddingTop } = useScreenSizes();
   const slider = useRef<IWelcomeSliderHandlers | undefined>();
   const disclaimerStyles = [
     styles.disclaimer,
@@ -57,7 +57,7 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
     <BgTint>
       {loading && <FullscreenLoading />}
 
-      <ScrollView style={styles.root}>
+      <View style={styles.root}>
         <View
           style={[
             {
@@ -79,7 +79,9 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
 
             <View style={styles.bottom}>
               <Animated.View style={disclaimerStyles} pointerEvents={isLastSlide ? 'auto' : 'none'}>
-                <Text style={[STYLES.FADED_TEXT, STYLES.CENTERED_TEXT]}>{localizeText('Text::WelcomePromo')}</Text>
+                <Text style={[STYLES.CENTERED_TEXT, STYLES.FADED_TEXT, STYLES.SMALL_TEXT]}>
+                  {localizeText('Text::WelcomePromo')}
+                </Text>
                 <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
                   <TextButton
                     text={localizeText('Button::SkipRegister')}
@@ -121,16 +123,12 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
                   </Col>
                 </Row>
               ) : (
-                <CustomButton
-                  theme='accent'
-                  text={localizeText('Button::NextWelcomeSlide')}
-                  onPress={handleNextSlide}
-                />
+                <CustomButton theme='accent' text={localizeText('Button::Continue')} onPress={handleNextSlide} />
               )}
             </View>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </BgTint>
   );
 };
