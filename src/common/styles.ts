@@ -82,7 +82,7 @@ export const STYLES = StyleSheet.create({
   },
 
   H2: {
-    fontSize: FONT_SIZES.MEDIUM,
+    fontSize: FONT_SIZES.SEMI_LARGE,
     fontFamily: FONT_FAMILY.SEMI_BOLD,
     lineHeight: FONT_SIZES.LARGE * LINE_HEIGHTS.HEADER,
     color: COLORS.TEXT.toString(),

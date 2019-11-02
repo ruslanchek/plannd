@@ -8,15 +8,13 @@ import {
   authHandleRegister,
 } from '../../helpers/authHelpers';
 import { CustomButton } from '../ui/CustomButton';
-import { PADDING } from '../../common/constants';
+import { ELEMENT_SIZES, PADDING } from '../../common/constants';
 import { Row } from '../ui/Row';
 import { localizeText } from '../../helpers/localeHelpers';
 import { COLORS } from '../../common/colors';
 import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
-import { SocialOr } from '../ui/SocialOr';
 import { TextButton } from '../ui/TextButton';
-import { ERoutes } from '../../common/routes';
 import { Col } from '../ui/Col';
 import { GoogleLogo } from '../ui/GoogleLogo';
 import { FullscreenLoading } from '../ui/FullscreenLoading';
@@ -24,6 +22,7 @@ import { FacebookLogo } from '../ui/FacebookLogo';
 import { useScreenSizes } from '../../hooks/useScreenSizes';
 import { NextButtonIcon } from '../ui/NextButtonIcon';
 import { Header } from '../ui/Header';
+import { ERoutes } from '../../common/routes';
 
 export interface IAuthScreenParams {
   mode: EAuthScreenMode;
@@ -40,12 +39,16 @@ const TEXTS = {
     google: 'Button::GoogleLogin',
     switch: 'Button::Register',
     switchDisclaimer: 'Text::LoginDisclaimer',
+    title: 'Title::AuthLogin',
+    subtitle: 'Subtitle::AuthLogin',
   },
   [EAuthScreenMode.Register]: {
     facebook: 'Button::FacebookRegister',
     google: 'Button::GoogleRegister',
     switch: 'Button::Login',
     switchDisclaimer: 'Text::RegisterDisclaimer',
+    title: 'Title::AuthRegister',
+    subtitle: 'Subtitle::AuthRegister',
   },
 };
 
@@ -79,6 +82,10 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
     setMode(mode === EAuthScreenMode.Register ? EAuthScreenMode.Login : EAuthScreenMode.Register);
   };
 
+  const handleResetPassword = () => {
+    navigation.navigate(ERoutes.PasswordResetScreen);
+  };
+
   return (
     <BgTint>
       {loading && <FullscreenLoading />}
@@ -93,11 +100,15 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
             },
           ]}>
           <View style={styles.top}>
-            <Header />
+            <Header
+              navigation={navigation}
+              title={localizeText(TEXTS[mode].title)}
+              subtitle={localizeText(TEXTS[mode].subtitle)}
+            />
           </View>
 
-          <View style={styles.bottom}>
-            <View style={styles.form}>
+          <View style={styles.mid}>
+            <View>
               <Row>
                 <Col>
                   <View style={STYLES.INPUT_EFFECTS}>
@@ -106,6 +117,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                       autoCapitalize='none'
                       autoCompleteType='email'
                       keyboardType='email-address'
+                      returnKeyType='next'
                       numberOfLines={1}
                       enablesReturnKeyAutomatically
                       placeholder={localizeText('InputPlaceholder::Email')}
@@ -129,13 +141,19 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                       placeholderTextColor={COLORS.TEXT_PLACEHOLDER.toString()}
                       textContentType='password'
                       secureTextEntry
-                      style={STYLES.INPUT}
+                      style={[STYLES.INPUT, mode === EAuthScreenMode.Login ? styles.inputWithButton : null]}
                       value={password}
                       onSubmitEditing={handleSubmit}
                       onChange={event => {
                         setPassword(event.nativeEvent.text);
                       }}
                     />
+
+                    {mode === EAuthScreenMode.Login && (
+                      <View style={styles.inputButton}>
+                        <TextButton faded onPress={handleResetPassword} text={localizeText('Button::ForgotPassword')} />
+                      </View>
+                    )}
                   </View>
                 </Col>
               </Row>
@@ -162,40 +180,40 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                 </View>
               </View>
             </View>
+          </View>
 
-            <View>
-              <Row>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='facebook'
-                    text={localizeText(TEXTS[mode].facebook)}
-                    onPress={async () => {
-                      setLoading(true);
-                      await authHandleFacebookLogin(navigation);
-                      setLoading(false);
-                    }}
-                    icon={<FacebookLogo size={34} />}
-                  />
-                </Col>
-              </Row>
+          <View style={styles.bottom}>
+            <Row>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='facebook'
+                  text={localizeText(TEXTS[mode].facebook)}
+                  onPress={async () => {
+                    setLoading(true);
+                    await authHandleFacebookLogin(navigation);
+                    setLoading(false);
+                  }}
+                  icon={<FacebookLogo size={34} />}
+                />
+              </Col>
+            </Row>
 
-              <Row noMargin>
-                <Col>
-                  <CustomButton
-                    disabled={loading}
-                    theme='google'
-                    text={localizeText(TEXTS[mode].google)}
-                    onPress={async () => {
-                      setLoading(true);
-                      await authHandleGoogleLogin(navigation);
-                      setLoading(false);
-                    }}
-                    icon={<GoogleLogo size={34} />}
-                  />
-                </Col>
-              </Row>
-            </View>
+            <Row noMargin>
+              <Col>
+                <CustomButton
+                  disabled={loading}
+                  theme='google'
+                  text={localizeText(TEXTS[mode].google)}
+                  onPress={async () => {
+                    setLoading(true);
+                    await authHandleGoogleLogin(navigation);
+                    setLoading(false);
+                  }}
+                  icon={<GoogleLogo size={34} />}
+                />
+              </Col>
+            </Row>
           </View>
         </View>
       </View>
@@ -206,6 +224,20 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+  },
+
+  inputWithButton: {
+    paddingRight: 80,
+  },
+
+  inputButton: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    height: ELEMENT_SIZES.INPUT_HEIGHT,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: PADDING.MEDIUM,
   },
 
   disclaimer: {
@@ -221,14 +253,15 @@ const styles = StyleSheet.create({
     flexShrink: 0,
   },
 
-  bottom: {
+  mid: {
     flexGrow: 1,
     padding: PADDING.LARGE,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
 
-  form: {
-    justifyContent: 'flex-start',
-    flex: 1,
+  bottom: {
+    paddingHorizontal: PADDING.LARGE,
+    paddingBottom: PADDING.LARGE,
+    justifyContent: 'space-between',
   },
 });

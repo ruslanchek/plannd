@@ -15,6 +15,7 @@ import { TextButton } from '../ui/TextButton';
 import { authHandleAnonymousLogin } from '../../helpers/authHelpers';
 import { EAuthScreenMode, IAuthScreenParams } from './AuthScreen';
 import { useScreenSizes } from '../../hooks/useScreenSizes';
+import { NextButtonIcon } from '../ui/NextButtonIcon';
 
 export interface IWelcomeScreenParams {}
 
@@ -123,7 +124,13 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
                   </Col>
                 </Row>
               ) : (
-                <CustomButton theme='accent' text={localizeText('Button::Continue')} onPress={handleNextSlide} />
+                <CustomButton
+                  icon={<NextButtonIcon />}
+                  iconPosition='end'
+                  theme='accent'
+                  text={localizeText('Button::Continue')}
+                  onPress={handleNextSlide}
+                />
               )}
             </View>
           </View>

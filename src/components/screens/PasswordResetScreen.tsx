@@ -11,6 +11,8 @@ import { STYLES } from '../../common/styles';
 import { BgTint } from '../ui/BgTint';
 import { Col } from '../ui/Col';
 import { useScreenSizes } from '../../hooks/useScreenSizes';
+import { Header } from '../ui/Header';
+import { NextButtonIcon } from '../ui/NextButtonIcon';
 
 export interface IPasswordResetScreenParams {}
 
@@ -37,9 +39,15 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
             paddingBottom,
             paddingTop,
           }}>
-          <Text style={STYLES.H1}>{localizeText('Header::PasswordReset')}</Text>
+          <View style={styles.top}>
+            <Header
+              navigation={navigation}
+              title={localizeText('Title::PasswordReset')}
+              subtitle={localizeText('Subtitle::PasswordReset')}
+            />
+          </View>
 
-          <View style={styles.contentWrapper}>
+          <View style={styles.mid}>
             <Row>
               <Col>
                 <TextInput
@@ -66,7 +74,9 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
                 <CustomButton
                   disabled={loading}
                   theme='accent'
-                  text={localizeText('Button::RequestPasswordReset')}
+                  text={localizeText('Button::Continue')}
+                  icon={<NextButtonIcon />}
+                  iconPosition='end'
                   onPress={handleSubmit}
                 />
               </Col>
@@ -80,7 +90,15 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
 
 const styles = StyleSheet.create({
   root: {
+    flex: 1,
+  },
+
+  top: {},
+
+  mid: {
     padding: PADDING.LARGE,
+    flexGrow: 1,
+    justifyContent: 'center',
   },
 
   centerButton: {

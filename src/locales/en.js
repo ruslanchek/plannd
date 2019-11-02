@@ -22,18 +22,21 @@ export default {
   'Button::GoogleRegister': 'Google',
   'Button::GoogleLogin': 'Google',
 
-  'Button::RequestPasswordReset': 'Request password reset',
-  'Button::PasswordReset': 'Password reset',
+  'Button::ForgotPassword': 'Forgot',
 
   'Button::SkipRegister': 'Skip registration',
 
   'Social::Or': 'or',
 
-  'Header::Login': 'Login',
-  'Header::Register': 'Sign Up',
-  'Header::PasswordReset': 'Password reset',
-
   'Text::WelcomePromo': 'Sign up to use your\npersonal budget cloud for free.',
   'Text::RegisterDisclaimer': 'Already have an account?',
   'Text::LoginDisclaimer': 'Would like to create new account?',
+
+  'Title::AuthRegister': 'New account',
+  'Title::AuthLogin': 'Login',
+  'Title::PasswordReset': 'Password reset',
+
+  'Subtitle::AuthRegister': 'Start by entering your email\nand password below',
+  'Subtitle::AuthLogin': 'Enter your login details\nto access your account',
+  'Subtitle::PasswordReset': 'Enter your email and we will\nsend you a link to get back into your account',
 };
