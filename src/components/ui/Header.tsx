@@ -18,7 +18,7 @@ export const Header: React.FC<IProps> = props => {
   return (
     <View style={styles.root}>
       <TouchableOpacity style={styles.icon} onPress={() => navigation.goBack()}>
-        <Icon name='arrowleft' size={22} color={COLORS.ACCENT.toString()} />
+        <Icon name='arrowleft' size={28} color={COLORS.ACCENT.toString()} />
       </TouchableOpacity>
 
       <Text style={STYLES.H2}>{title}</Text>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 
   icon: {
     left: PADDING.LARGE,
-    top: 15,
+    top: 12,
     position: 'absolute',
   },
 });

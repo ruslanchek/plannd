@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { StyleSheet, View, TextInput, KeyboardAvoidingView, ScrollView, Image, Dimensions, Text } from 'react-native';
 import { NavigationSwitchScreenProps } from 'react-navigation';
 import {
@@ -59,6 +59,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState(navigation.getParam('mode', EAuthScreenMode.Register));
   const { height, paddingBottom, paddingTop } = useScreenSizes();
+  const passwordField = useRef<TextInput>(null);
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -78,6 +79,12 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
     setLoading(false);
   };
 
+  const handleFocusPassword = () => {
+    if (passwordField.current) {
+      passwordField.current.focus();
+    }
+  };
+
   const handleSwitchMode = () => {
     setMode(mode === EAuthScreenMode.Register ? EAuthScreenMode.Login : EAuthScreenMode.Register);
   };
@@ -90,7 +97,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
     <BgTint>
       {loading && <FullscreenLoading />}
 
-      <View style={styles.root}>
+      <ScrollView style={styles.root}>
         <View
           style={[
             {
@@ -113,6 +120,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                 <Col>
                   <View style={STYLES.INPUT_EFFECTS}>
                     <TextInput
+                      blurOnSubmit
                       autoCorrect={false}
                       autoCapitalize='none'
                       autoCompleteType='email'
@@ -125,13 +133,14 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                       textContentType='emailAddress'
                       style={[STYLES.INPUT, STYLES.INPUT_SEPARATOR_BOTTOM]}
                       value={email}
-                      onSubmitEditing={handleSubmit}
+                      onSubmitEditing={handleFocusPassword}
                       onChange={event => {
                         setEmail(event.nativeEvent.text);
                       }}
                     />
 
                     <TextInput
+                      ref={passwordField}
                       autoCorrect={false}
                       autoCapitalize='none'
                       autoCompleteType='password'
@@ -217,7 +226,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
             </Row>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </BgTint>
   );
 };

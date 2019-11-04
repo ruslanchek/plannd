@@ -32,7 +32,7 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
 
   return (
     <BgTint>
-      <View style={styles.root}>
+      <ScrollView style={styles.root}>
         <View
           style={{
             height,
@@ -83,7 +83,7 @@ export const PasswordResetScreen: React.FC<NavigationSwitchScreenProps<IPassword
             </Row>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </BgTint>
   );
 };
