@@ -80,10 +80,11 @@ export const WelcomeScreen: React.FC<NavigationSwitchScreenProps<IWelcomeScreenP
 
             <View style={styles.bottom}>
               <Animated.View style={disclaimerStyles} pointerEvents={isLastSlide ? 'auto' : 'none'}>
-                <Text style={[STYLES.CENTERED_TEXT, STYLES.FADED_TEXT, STYLES.SMALL_TEXT]}>
+                <Text style={[STYLES.CENTERED_TEXT, STYLES.FADED_TEXT, STYLES.SMALL_TEXT, styles.promoText]}>
                   {localizeText('Text::WelcomePromo')}
                 </Text>
-                <View style={[STYLES.CENTERED, { marginTop: 5 }]}>
+
+                <View style={STYLES.CENTERED}>
                   <TextButton
                     text={localizeText('Button::SkipRegister')}
                     onPress={async () => {
@@ -145,6 +146,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  promoText: {
+    marginBottom: PADDING.TINY,
+  },
+
   innerWrapper: {
     flex: 1,
   },
@@ -162,7 +167,7 @@ const styles = StyleSheet.create({
   },
 
   disclaimer: {
-    paddingBottom: PADDING.MEDIUM,
+    paddingBottom: PADDING.LARGE,
   },
 
   wrapper: {
