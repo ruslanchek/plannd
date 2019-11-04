@@ -135,6 +135,7 @@ export const AuthScreen: React.FC<NavigationSwitchScreenProps<IAuthScreenParams>
                       autoCorrect={false}
                       autoCapitalize='none'
                       autoCompleteType='password'
+                      returnKeyType='send'
                       numberOfLines={1}
                       enablesReturnKeyAutomatically
                       placeholder={localizeText('InputPlaceholder::Password')}
